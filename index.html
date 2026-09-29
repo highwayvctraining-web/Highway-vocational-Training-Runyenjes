@@ -158,7 +158,7 @@ h1,h2,h3,h4,h5,h6,p,span,div,a,li,td,th,label{overflow-wrap:break-word;word-wrap
 /* ============================================================
    MAIN NAV (desktop) + PREMIUM MOBILE HAMBURGER + DRAWER
    ============================================================ */
-.main-nav{background:var(--navy);position:sticky;top:0;z-index:99;box-shadow:0 3px 12px rgba(10,31,61,.15);padding-top:var(--safe-top)}
+.main-nav{background:var(--navy);position:sticky;top:0;z-index:99;box-shadow:0 3px 12px rgba(10,31,61,.15);padding-top:var(--safe-top);overflow:visible}
 .main-nav .container{display:flex;align-items:center;justify-content:space-between;gap:8px;min-width:0}
 .nav-list{display:flex;list-style:none;gap:0;align-items:stretch;flex-wrap:wrap;min-width:0}
 .nav-list > li{position:relative;min-width:0}
@@ -235,10 +235,14 @@ h1,h2,h3,h4,h5,h6,p,span,div,a,li,td,th,label{overflow-wrap:break-word;word-wrap
 
 /* --- MOBILE NAV DRAWER + BACKDROP --- */
 .nav-backdrop{
-  position:fixed;inset:0;background:rgba(5,19,42,.55);
-  backdrop-filter:blur(4px);-webkit-backdrop-filter:blur(4px);
-  opacity:0;visibility:hidden;z-index:198;
+  position:fixed;
+  inset:0;
+  background:rgba(5,19,42,.6);
+  opacity:0;
+  visibility:hidden;
+  z-index:2147482999;
   transition:opacity .3s var(--ease),visibility .3s;
+  -webkit-tap-highlight-color:transparent;
 }
 .nav-backdrop.open{opacity:1;visibility:visible}
 
@@ -1312,15 +1316,15 @@ h1,h2,h3,h4,h5,h6,p,span,div,a,li,td,th,label{overflow-wrap:break-word;word-wrap
 /* Mobile breakpoint — switch to drawer nav */
 @media (max-width:768px){
   /* -- Mobile nav drawer -- */
-  .nav-toggle{display:flex}
-  .main-nav .container{padding-top:2px;padding-bottom:2px}
+  .nav-toggle{display:flex;position:relative;z-index:2147483001}
+  .main-nav .container{padding-top:2px;padding-bottom:2px;position:relative;z-index:2147483001}
+  .main-nav{isolation:isolate}
   .nav-list{
     position:fixed;
     top:0;
     right:0;
+    bottom:0;
     width:min(320px,86vw);
-    height:100vh;
-    height:100dvh;
     background:linear-gradient(180deg,var(--navy-dark) 0%,var(--navy) 100%);
     flex-direction:column;
     padding:calc(56px + var(--safe-top)) 0 calc(18px + var(--safe-bottom));
@@ -1329,11 +1333,13 @@ h1,h2,h3,h4,h5,h6,p,span,div,a,li,td,th,label{overflow-wrap:break-word;word-wrap
     transform:translateX(100%);
     transition:transform .35s var(--ease);
     box-shadow:-8px 0 30px rgba(0,0,0,.4);
-    z-index:199;
+    z-index:2147483000;
     gap:0;
     flex-wrap:nowrap;
     align-items:stretch;
     will-change:transform;
+    pointer-events:auto;
+    visibility:visible;
   }
   .nav-list.open{transform:translateX(0)}
   .nav-list > li{border-bottom:1px solid rgba(255,255,255,.08);position:static}
@@ -4422,6 +4428,11 @@ function toggleMobileNav(){
   if(toggle) toggle.setAttribute('aria-expanded', isOpen ? 'true' : 'false');
   if(backdrop) backdrop.classList.toggle('open', isOpen);
   if(isOpen){
+    // On mobile, hoist drawer + backdrop to <body> so no parent stacking context traps them
+    if(window.innerWidth <= 768){
+      if(navList.parentNode !== document.body) document.body.appendChild(navList);
+      if(backdrop && backdrop.parentNode !== document.body) document.body.appendChild(backdrop);
+    }
     document.body.style.overflow = 'hidden';
     document.documentElement.style.overflow = 'hidden';
   } else {
@@ -4440,6 +4451,16 @@ function closeMobileNav(){
   document.body.style.overflow = '';
   document.documentElement.style.overflow = '';
   document.querySelectorAll('.nav-list > li').forEach(function(li){ li.classList.remove('open'); });
+  // On desktop, restore drawer to its original home inside .main-nav
+  if(window.innerWidth > 768){
+    var mainNavContainer = document.querySelector('.main-nav .container');
+    if(navList && mainNavContainer && navList.parentNode !== mainNavContainer){
+      mainNavContainer.appendChild(navList);
+    }
+    if(backdrop && backdrop.parentNode !== document.body && backdrop.parentNode){
+      // keep backdrop on body — it's position:fixed anyway
+    }
+  }
 }
 function toggleDropdown(btn){
   var li = btn.closest('li');
@@ -8934,6 +8955,12 @@ function init(){
   loadLiveCamPosition();
   ensureLiveCamChannels();
   initApplicationFormLiveValidation();
+
+  window.addEventListener('resize', function(){
+    if(window.innerWidth > 768){
+      closeMobileNav();
+    }
+  });
 
   if(!safeGet('highway_welcome_shown', false)){
     setTimeout(function(){
