@@ -4,25 +4,46 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover, maximum-scale=5.0">
 <meta name="format-detection" content="telephone=no">
+<meta name="color-scheme" content="light only">
 <title>Highway Vocational Center | NITA Registered TVET Institution — Embu County, Kenya</title>
-<style>
-  html,body{max-width:100vw;overflow-x:clip}
-</style>
 <meta name="description" content="Highway Vocational Center — NITA registered TVET institution offering Beauty & Therapy, HairDressing, Computer Packages, and Cyber & eCitizen Services in Embu County, Kenya.">
 <meta name="theme-color" content="#0a1f3d">
-<meta name="color-scheme" content="light only">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+<meta name="apple-mobile-web-app-title" content="HVC">
+<meta name="mobile-web-app-capable" content="yes">
+
+<!-- Inline emergency overflow guard -->
+<style>
+  html,body{max-width:100vw;overflow-x:hidden}
+</style>
+
+<!-- PWA manifest -->
 <link rel="manifest" id="dynamicManifest" href="data:application/manifest+json,%7B%22name%22%3A%22Highway%20Vocational%20Center%22%2C%22short_name%22%3A%22HVC%22%2C%22display%22%3A%22standalone%22%2C%22start_url%22%3A%22.%2F%22%2C%22theme_color%22%3A%22%230a1f3d%22%2C%22background_color%22%3A%22%230a1f3d%22%2C%22icons%22%3A%5B%5D%7D">
+
+<!-- Supabase client + bridge -->
 <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2.45.0/dist/umd/supabase.js"></script>
 <script src="supabase-bridge.js"></script>
+
+<!-- Preconnects -->
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link rel="preconnect" href="https://cdnjs.cloudflare.com">
 <link rel="preconnect" href="https://nqpinzqlmplbbjdqxyss.supabase.co">
+
+<!-- Fonts -->
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=Poppins:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+
+<!-- Font Awesome -->
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+
+<!-- QR scanner -->
 <script src="https://cdn.jsdelivr.net/npm/jsqr@1.4.0/dist/jsQR.js" defer></script>
+
+<!-- Favicon -->
 <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 192 192'%3E%3Crect width='192' height='192' fill='%230a1f3d'/%3E%3Ctext x='96' y='135' text-anchor='middle' fill='%23ffffff' font-size='115' font-family='Arial' font-weight='bold'%3EH%3C/text%3E%3C/svg%3E">
 <link rel="apple-touch-icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 192 192'%3E%3Crect width='192' height='192' fill='%230a1f3d'/%3E%3Ctext x='96' y='135' text-anchor='middle' fill='%23ffffff' font-size='115' font-family='Arial' font-weight='bold'%3EH%3C/text%3E%3C/svg%3E">
+
 <style>
 /* ============================================================
    RESET + GLOBAL GUARDS
@@ -38,6 +59,7 @@ a{color:var(--navy);text-decoration:none;transition:color .2s var(--ease)}
 a:hover{color:var(--green)}
 input,select,textarea,button{max-width:100%;font-family:inherit}
 h1,h2,h3,h4,h5,h6,p,span,div,a,li,td,th,label{overflow-wrap:break-word;word-wrap:break-word;word-break:break-word}
+.brand-text,.brand-text *,.brand-name,.brand-sub,.brand-name *,.hvc-brand-text,.hvc-brand-text *,.hvc-brand-text .hvc-brand-text,.footer-brand h4,.footer-brand h4 span{word-break:normal!important;overflow-wrap:normal!important;white-space:nowrap!important}
 [hidden]{display:none!important}
 
 /* ============================================================
@@ -62,7 +84,6 @@ h1,h2,h3,h4,h5,h6,p,span,div,a,li,td,th,label{overflow-wrap:break-word;word-wrap
   --ease:cubic-bezier(.4,0,.2,1);
   --container-max:1200px;
   --container-pad:clamp(14px,3vw,18px);
-  --header-sticky-top:0px;
   --safe-top:env(safe-area-inset-top,0px);
   --safe-right:env(safe-area-inset-right,0px);
   --safe-bottom:env(safe-area-inset-bottom,0px);
@@ -103,14 +124,12 @@ h1,h2,h3,h4,h5,h6,p,span,div,a,li,td,th,label{overflow-wrap:break-word;word-wrap
 .topbar .quick-links a{color:#c8d4e3;font-size:inherit;line-height:1;display:inline-flex;align-items:center;gap:5px;font-weight:500;transition:color .2s var(--ease)}
 .topbar .quick-links a:hover{color:#fff}
 .topbar .quick-links a i{font-size:.88em}
-.topbar .badge-apply{background:linear-gradient(135deg,var(--green) 0%,var(--green-dark) 100%);color:#fff;padding:5px 12px;border-radius:14px;font-weight:700;font-size:.92em;letter-spacing:.4px;text-transform:uppercase;transition:transform .25s var(--ease),background .25s var(--ease);line-height:1.3;box-shadow:0 3px 8px rgba(10,107,59,.3);display:inline-flex;align-items:center;gap:5px}
-.topbar .badge-apply:hover{background:var(--green-dark);color:#fff;transform:translateY(-1px)}
 .topbar-cam-btn{background:rgba(201,162,39,.15);border:1px solid rgba(201,162,39,.45);color:#e5c876;padding:4px 9px;border-radius:14px;font-weight:700;font-size:.92em;cursor:pointer;display:inline-flex;align-items:center;gap:5px;line-height:1;transition:background .2s var(--ease),transform .2s var(--ease);font-family:inherit}
 .topbar-cam-btn:hover{background:rgba(201,162,39,.28);color:#fff;transform:translateY(-1px)}
 .topbar-cam-btn i{font-size:1em}
 
 /* ============================================================
-   SITE HEADER (brand + actions)
+   SITE HEADER
    ============================================================ */
 .site-header{
   background:var(--panel);
@@ -126,20 +145,20 @@ h1,h2,h3,h4,h5,h6,p,span,div,a,li,td,th,label{overflow-wrap:break-word;word-wrap
 }
 .brand{display:flex;align-items:center;gap:clamp(8px,1.5vw,10px);cursor:pointer;text-decoration:none;min-width:0;flex-shrink:1}
 .brand-mark{
-  width:clamp(36px,5vw,42px);height:clamp(36px,5vw,42px);
+  width:clamp(40px,5.4vw,46px);height:clamp(40px,5.4vw,46px);
   border-radius:8px;background:linear-gradient(135deg,var(--navy) 0%,var(--navy-light) 100%);
   color:#fff;display:flex;align-items:center;justify-content:center;
   font-family:var(--font-heading);font-weight:900;
-  font-size:clamp(15px,2.2vw,18px);
+  font-size:clamp(17px,2.4vw,20px);
   flex-shrink:0;overflow:hidden;
   border:2px solid var(--green);
   box-shadow:0 2px 6px rgba(10,31,61,.18);
 }
 .brand-mark img{width:100%;height:100%;object-fit:cover;border-radius:6px}
 .brand-text{line-height:1.15;min-width:0}
-.brand-text .brand-name{font-family:var(--font-heading);font-weight:800;font-size:clamp(13px,1.5vw,15px);color:var(--navy);letter-spacing:-.2px}
+.brand-text .brand-name{font-family:var(--font-heading);font-weight:800;font-size:clamp(15px,1.8vw,17.5px);color:var(--navy);letter-spacing:-.2px}
 .brand-text .brand-name span{color:var(--green)}
-.brand-text .brand-sub{font-size:clamp(8.5px,.75vw,9.5px);color:var(--text-muted);text-transform:uppercase;letter-spacing:1.1px;font-weight:600;margin-top:2px}
+.brand-text .brand-sub{font-size:clamp(9.5px,.85vw,10.5px);color:var(--text-muted);text-transform:uppercase;letter-spacing:1.1px;font-weight:600;margin-top:2px}
 .header-right{display:flex;align-items:center;gap:clamp(6px,1vw,9px);flex-wrap:wrap;min-width:0}
 .header-stat{text-align:right;padding:3px 10px;border-left:1px solid var(--border);line-height:1.2;flex-shrink:0}
 .header-stat .num{font-family:var(--font-heading);font-size:clamp(12.5px,1.3vw,14px);font-weight:800;color:var(--navy);letter-spacing:-.2px}
@@ -156,7 +175,7 @@ h1,h2,h3,h4,h5,h6,p,span,div,a,li,td,th,label{overflow-wrap:break-word;word-wrap
 .notification-bell .bell-dot.show{display:block}
 
 /* ============================================================
-   MAIN NAV (desktop) + PREMIUM MOBILE HAMBURGER + DRAWER
+   MAIN NAV — desktop
    ============================================================ */
 .main-nav{background:var(--navy);position:sticky;top:0;z-index:99;box-shadow:0 3px 12px rgba(10,31,61,.15);padding-top:var(--safe-top);overflow:visible}
 .main-nav .container{display:flex;align-items:center;justify-content:space-between;gap:8px;min-width:0}
@@ -190,7 +209,7 @@ h1,h2,h3,h4,h5,h6,p,span,div,a,li,td,th,label{overflow-wrap:break-word;word-wrap
 .nav-list > li .caret{font-size:.72em;color:#8296ae;transition:transform .25s var(--ease)}
 .nav-list > li.open .caret{transform:rotate(180deg)}
 
-/* Dropdown */
+/* Desktop dropdown */
 .dropdown{
   position:absolute;top:100%;left:0;min-width:220px;
   background:var(--panel);border:1px solid var(--border);border-top:3px solid var(--green);
@@ -204,47 +223,6 @@ h1,h2,h3,h4,h5,h6,p,span,div,a,li,td,th,label{overflow-wrap:break-word;word-wrap
 .dropdown li a{display:flex;align-items:center;gap:9px;padding:9px 15px;color:var(--text-body);font-size:12px;font-weight:500;transition:background .2s var(--ease),color .2s var(--ease),padding-left .2s var(--ease)}
 .dropdown li a:hover{background:var(--gray-50);color:var(--navy);padding-left:19px}
 .dropdown li a i{color:var(--green);font-size:10px;width:14px;flex-shrink:0}
-
-/* --- PREMIUM MOBILE HAMBURGER --- */
-.nav-toggle{
-  display:none;
-  position:relative;
-  width:44px;height:44px;
-  border-radius:10px;
-  background:linear-gradient(135deg,rgba(255,255,255,.08),rgba(255,255,255,.04));
-  border:1.5px solid rgba(255,255,255,.18);
-  cursor:pointer;margin:6px 0;padding:0;
-  align-items:center;justify-content:center;
-  transition:background .25s var(--ease),border-color .25s var(--ease),transform .2s var(--ease);
-  flex-shrink:0;
-}
-.nav-toggle:hover{background:rgba(255,255,255,.12);border-color:rgba(255,255,255,.32)}
-.nav-toggle:active{transform:scale(.94)}
-.nav-toggle .burger{position:relative;width:22px;height:16px;display:block}
-.nav-toggle .burger span{
-  position:absolute;left:0;right:0;height:2px;border-radius:2px;
-  background:#fff;
-  transition:transform .35s var(--ease),opacity .2s var(--ease),top .35s var(--ease),width .3s var(--ease);
-}
-.nav-toggle .burger span:nth-child(1){top:0;width:100%}
-.nav-toggle .burger span:nth-child(2){top:7px;width:100%}
-.nav-toggle .burger span:nth-child(3){top:14px;width:70%}
-.nav-toggle[aria-expanded="true"] .burger span:nth-child(1){top:7px;transform:rotate(45deg)}
-.nav-toggle[aria-expanded="true"] .burger span:nth-child(2){opacity:0;transform:scaleX(.3)}
-.nav-toggle[aria-expanded="true"] .burger span:nth-child(3){top:7px;width:100%;transform:rotate(-45deg)}
-
-/* --- MOBILE NAV DRAWER + BACKDROP --- */
-.nav-backdrop{
-  position:fixed;
-  inset:0;
-  background:rgba(5,19,42,.6);
-  opacity:0;
-  visibility:hidden;
-  z-index:2147482999;
-  transition:opacity .3s var(--ease),visibility .3s;
-  -webkit-tap-highlight-color:transparent;
-}
-.nav-backdrop.open{opacity:1;visibility:visible}
 
 /* ============================================================
    SECTIONS + PAGE TRANSITIONS
@@ -271,14 +249,10 @@ h1,h2,h3,h4,h5,h6,p,span,div,a,li,td,th,label{overflow-wrap:break-word;word-wrap
 .section-head h2{font-family:var(--font-heading);font-size:clamp(1.35rem,3.6vw,1.65rem);font-weight:800;color:var(--navy);line-height:1.22;letter-spacing:-.5px;margin-bottom:9px}
 .section-head p{color:var(--text-muted);font-size:clamp(12.5px,1.3vw,13px);max-width:640px;margin:0 auto;line-height:1.65;padding:0 4px}
 
-/* Highlight flash for navigation */
-.section-highlight{animation:sectionPulse 2.2s var(--ease);border-radius:var(--radius);position:relative}
-@keyframes sectionPulse{0%{box-shadow:0 0 0 0 rgba(201,162,39,.7)}30%{box-shadow:0 0 0 10px rgba(201,162,39,.3)}70%{box-shadow:0 0 0 18px rgba(201,162,39,0)}100%{box-shadow:0 0 0 0 rgba(201,162,39,0)}}
 .target-flash{position:absolute;top:-6px;left:-6px;right:-6px;bottom:-6px;border:3px solid var(--gold);border-radius:14px;pointer-events:none;animation:flashFade 2s var(--ease) forwards}
 @keyframes flashFade{0%{opacity:0}15%{opacity:1}85%{opacity:.5}100%{opacity:0}}
-
 /* ============================================================
-   HERO SLIDER — RESPONSIVE
+   HERO SLIDER (dots removed — no slide indicators)
    ============================================================ */
 .hero-slider{
   position:relative;
@@ -292,12 +266,7 @@ h1,h2,h3,h4,h5,h6,p,span,div,a,li,td,th,label{overflow-wrap:break-word;word-wrap
 .hero-slide::before{content:'';position:absolute;inset:0;background:linear-gradient(to top,rgba(5,19,42,.88) 0%,rgba(5,19,42,.6) 25%,rgba(5,19,42,.18) 50%,rgba(5,19,42,0) 70%);z-index:1;pointer-events:none}
 .hero-slide .hero-content{position:relative;z-index:2;width:100%;max-width:680px;padding:0 clamp(16px,3vw,24px) clamp(20px,3vw,28px) clamp(16px,4vw,5%)}
 .hero-slide .hero-eyebrow{display:inline-flex;align-items:center;gap:6px;background:rgba(10,107,59,.85);border:1px solid rgba(255,255,255,.15);color:#fff;padding:4px 11px;border-radius:14px;font-size:clamp(9.5px,.85vw,10px);font-weight:700;text-transform:uppercase;letter-spacing:.9px;margin-bottom:9px;backdrop-filter:blur(8px);-webkit-backdrop-filter:blur(8px)}
-.hero-slide h1{
-  font-family:var(--font-heading);
-  font-size:clamp(1.25rem,4.4vw,2rem);
-  font-weight:800;line-height:1.18;letter-spacing:-.5px;margin-bottom:9px;color:#fff;
-  text-shadow:0 2px 12px rgba(0,0,0,.55);max-width:600px;
-}
+.hero-slide h1{font-family:var(--font-heading);font-size:clamp(1.25rem,4.4vw,2rem);font-weight:800;line-height:1.18;letter-spacing:-.5px;margin-bottom:9px;color:#fff;text-shadow:0 2px 12px rgba(0,0,0,.55);max-width:600px}
 .hero-slide h1 .accent{background:linear-gradient(135deg,#e5c876 0%,#c9a227 100%);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;color:transparent}
 .hero-slide p{font-size:clamp(12px,1.35vw,13px);line-height:1.65;color:#e8edf3;margin-bottom:clamp(12px,2vw,16px);max-width:520px;text-shadow:0 1px 8px rgba(0,0,0,.5)}
 .hero-slide .hero-buttons{display:flex;gap:9px;flex-wrap:wrap}
@@ -328,9 +297,6 @@ h1,h2,h3,h4,h5,h6,p,span,div,a,li,td,th,label{overflow-wrap:break-word;word-wrap
 .hero-nav:hover{background:var(--green);border-color:var(--green);transform:translateY(-50%) scale(1.08)}
 .hero-prev{left:clamp(8px,1.5vw,14px)}
 .hero-next{right:clamp(8px,1.5vw,14px)}
-.hero-dots{position:absolute;bottom:12px;left:clamp(16px,4vw,5%);z-index:10;display:flex;gap:6px}
-.hero-dots button{width:22px;height:4px;border-radius:2px;background:rgba(255,255,255,.4);border:none;cursor:pointer;padding:0;transition:background .25s var(--ease),width .25s var(--ease),box-shadow .25s var(--ease)}
-.hero-dots button.active{background:var(--gold);width:34px;box-shadow:0 0 10px rgba(201,162,39,.5)}
 
 /* Hero slide manager (admin) */
 .hero-slide-manager{display:none;background:var(--panel);border:1px solid var(--border);border-top:3px solid var(--green);border-radius:var(--radius);padding:clamp(12px,2vw,16px);margin-top:12px;box-shadow:var(--shadow-sm)}
@@ -374,7 +340,7 @@ h1,h2,h3,h4,h5,h6,p,span,div,a,li,td,th,label{overflow-wrap:break-word;word-wrap
 .qa-item.highlight:hover i{background:rgba(255,255,255,.3)}
 
 /* ============================================================
-   CARDS + GRIDS
+   GRIDS + CARDS
    ============================================================ */
 .grid-4{display:grid;grid-template-columns:repeat(4,1fr);gap:clamp(12px,2vw,16px);min-width:0}
 .grid-3{display:grid;grid-template-columns:repeat(3,1fr);gap:clamp(14px,2.2vw,20px);min-width:0}
@@ -413,7 +379,7 @@ h1,h2,h3,h4,h5,h6,p,span,div,a,li,td,th,label{overflow-wrap:break-word;word-wrap
 .course-card .cc-actions .btn-apply-sm:hover{background:var(--green-dark);transform:translateY(-1px)}
 
 /* ============================================================
-   FILTER BAR + SEARCH
+   FILTER BAR
    ============================================================ */
 .filter-bar{display:flex;gap:10px;flex-wrap:wrap;margin-bottom:20px;padding:clamp(11px,1.8vw,13px);background:var(--panel);border:1px solid var(--border);border-radius:var(--radius);box-shadow:var(--shadow-xs);position:relative;min-width:0}
 .filter-bar input,
@@ -429,7 +395,7 @@ h1,h2,h3,h4,h5,h6,p,span,div,a,li,td,th,label{overflow-wrap:break-word;word-wrap
 .search-results-info.show{display:block}
 
 /* ============================================================
-   DATA TABLE (desktop) — becomes card stack on mobile below
+   DATA TABLE
    ============================================================ */
 .data-table{width:100%;border-collapse:collapse;background:var(--panel);border:1px solid var(--border);border-radius:var(--radius);overflow:hidden;font-size:13px;box-shadow:var(--shadow-xs)}
 .data-table th{background:var(--navy);color:#fff;text-align:left;padding:12px 14px;font-weight:700;font-size:11px;text-transform:uppercase;letter-spacing:.5px;white-space:nowrap}
@@ -522,8 +488,18 @@ h1,h2,h3,h4,h5,h6,p,span,div,a,li,td,th,label{overflow-wrap:break-word;word-wrap
 .info-box h4 i{color:var(--green)}
 .info-box p{color:var(--text-body);font-size:clamp(12.5px,1.3vw,13px);line-height:1.65}
 
+/* Departments & Facilities lists */
+.dept-list{list-style:none;padding:0;margin:0;display:flex;flex-direction:column;gap:9px}
+.dept-list li{display:flex;align-items:flex-start;gap:10px;font-size:13px;line-height:1.5;color:var(--text-body);padding:0}
+.dept-list li i{color:var(--green);font-size:11px;flex-shrink:0;margin-top:5px;line-height:1}
+.dept-list li span{flex:1;min-width:0;word-break:normal;overflow-wrap:break-word}
+.dept-grid{align-items:stretch}
+.dept-grid .card{display:flex;flex-direction:column;height:100%}
+.dept-grid .card h3{order:1}
+.dept-grid .card-icon{order:0}
+.dept-grid .dept-list{order:2;margin-top:2px}
 /* ============================================================
-   CONTACT GRID + MAP
+   CONTACT + MAP
    ============================================================ */
 .contact-grid{display:grid;grid-template-columns:1fr 1.05fr;gap:clamp(18px,3vw,24px);align-items:start;margin-bottom:24px;min-width:0}
 .contact-info-list{display:flex;flex-direction:column;gap:0;background:var(--panel);border:1px solid var(--border);border-radius:var(--radius);overflow:hidden;box-shadow:var(--shadow-xs)}
@@ -566,9 +542,9 @@ h1,h2,h3,h4,h5,h6,p,span,div,a,li,td,th,label{overflow-wrap:break-word;word-wrap
 .footer-grid > *{min-width:0}
 .footer-brand .brand-row{display:flex;align-items:center;gap:10px;margin-bottom:12px}
 .footer-brand .brand-mark-sm{width:40px;height:40px;border-radius:6px;background:var(--green);color:#fff;display:flex;align-items:center;justify-content:center;font-family:var(--font-heading);font-weight:900;font-size:17px;flex-shrink:0}
-.footer-brand h4{font-family:var(--font-heading);font-size:clamp(14px,1.5vw,15px);font-weight:700;color:#fff;line-height:1.2}
+.footer-brand h4{font-family:var(--font-heading);font-size:clamp(16px,1.7vw,17.5px);font-weight:700;color:#fff;line-height:1.2}
 .footer-brand h4 span{color:#e5c876}
-.footer-brand .brand-sub-sm{font-size:9px;color:#94a3b8;text-transform:uppercase;letter-spacing:1.1px;margin-top:2px}
+.footer-brand .brand-sub-sm{font-size:10px;color:#94a3b8;text-transform:uppercase;letter-spacing:1.1px;margin-top:2px}
 .footer-brand p{font-size:12px;line-height:1.65;color:#94a3b8;margin-bottom:13px}
 .footer-social{display:flex;gap:7px;flex-wrap:wrap}
 .footer-social a{width:34px;height:34px;border-radius:var(--radius-sm);background:rgba(255,255,255,.05);display:flex;align-items:center;justify-content:center;color:#cbd5e1;font-size:13px;transition:background .25s var(--ease),color .25s var(--ease),transform .25s var(--ease),border-color .25s var(--ease);border:1px solid rgba(255,255,255,.06)}
@@ -643,7 +619,7 @@ h1,h2,h3,h4,h5,h6,p,span,div,a,li,td,th,label{overflow-wrap:break-word;word-wrap
 .pause-overlay .mobile-unpause-dot{bottom:calc(80px + var(--safe-bottom));right:calc(20px + var(--safe-right))}
 
 /* ============================================================
-   PASSWORD MODALS + DURATION MODAL
+   PASSWORD + DURATION MODALS
    ============================================================ */
 .pw-modal,
 .admin-password-modal{position:fixed;inset:0;background:rgba(5,19,42,.9);backdrop-filter:blur(8px);-webkit-backdrop-filter:blur(8px);z-index:99999;display:none;align-items:center;justify-content:center;padding:20px}
@@ -675,7 +651,6 @@ h1,h2,h3,h4,h5,h6,p,span,div,a,li,td,th,label{overflow-wrap:break-word;word-wrap
 .pw-modal .box .error.show,
 .admin-password-modal .modal-box .error-msg.show{display:block}
 
-/* Duration modal */
 .dur-modal{position:fixed;inset:0;background:rgba(5,19,42,.9);backdrop-filter:blur(8px);-webkit-backdrop-filter:blur(8px);z-index:99999;display:none;align-items:center;justify-content:center;padding:20px}
 .dur-modal.active{display:flex}
 .dur-modal .box{background:var(--panel);border-radius:var(--radius-lg);padding:clamp(20px,3.5vw,26px) clamp(18px,3vw,24px);max-width:460px;width:100%;box-shadow:var(--shadow-lg);position:relative;text-align:center;border:1px solid var(--border);animation:modalIn .3s var(--ease);max-height:calc(100dvh - 40px);overflow-y:auto}
@@ -714,7 +689,7 @@ h1,h2,h3,h4,h5,h6,p,span,div,a,li,td,th,label{overflow-wrap:break-word;word-wrap
 .install-banner .ib-dismiss-btn{background:transparent;color:#94a3b8;border:1.5px solid rgba(255,255,255,.2);padding:10px 14px;border-radius:8px;font-weight:600;font-size:11px;cursor:pointer;font-family:inherit;white-space:nowrap}
 
 /* ============================================================
-   ADMIN MODE INDICATORS + FLOATING BUTTONS
+   ADMIN INDICATORS
    ============================================================ */
 .admin-mode-indicator{position:fixed;top:calc(14px + var(--safe-top));right:calc(14px + var(--safe-right));z-index:99999;background:#dc2626;color:#fff;padding:7px 13px;border-radius:5px;font-size:11px;font-weight:700;display:none;align-items:center;gap:8px;text-transform:uppercase;letter-spacing:.4px;box-shadow:var(--shadow-lg)}
 .admin-mode-indicator.active{display:flex}
@@ -727,7 +702,6 @@ h1,h2,h3,h4,h5,h6,p,span,div,a,li,td,th,label{overflow-wrap:break-word;word-wrap
 .admin-export-btn.active{display:flex}
 .admin-edit-hint{position:fixed;bottom:calc(18px + var(--safe-bottom));left:calc(18px + var(--safe-left));z-index:99998;background:var(--navy);color:#fff;padding:8px 13px;border-radius:var(--radius-sm);font-size:11px;font-weight:600;display:none;align-items:center;gap:7px;box-shadow:var(--shadow-lg);border-left:4px solid #10b981}
 .admin-edit-hint.active{display:flex}
-
 /* ============================================================
    STUDENT DASHBOARD
    ============================================================ */
@@ -933,7 +907,7 @@ h1,h2,h3,h4,h5,h6,p,span,div,a,li,td,th,label{overflow-wrap:break-word;word-wrap
 .tt-editor-actions{display:flex;gap:8px;flex-wrap:wrap;margin-top:12px}
 
 /* ============================================================
-   SOCIAL EDIT PANEL
+   SOCIAL EDIT PANEL + DYNAMIC LISTS
    ============================================================ */
 .social-edit-panel{display:none;background:var(--panel);border:1px solid var(--border);border-radius:var(--radius);padding:clamp(14px,2.2vw,18px);margin-bottom:16px;box-shadow:var(--shadow-xs)}
 .admin-mode .social-edit-panel{display:block}
@@ -965,7 +939,6 @@ h1,h2,h3,h4,h5,h6,p,span,div,a,li,td,th,label{overflow-wrap:break-word;word-wrap
 .dyn-social-item .dsi-actions .dsi-del{background:#fee2e2;color:#991b1b}
 .dyn-social-detected{display:inline-flex;align-items:center;gap:6px;padding:4px 10px;border-radius:12px;background:var(--green-light);color:var(--green-dark);font-size:11px;font-weight:700;margin-top:6px}
 
-/* Dynamic list items (menu, cards, courses) */
 .dyn-menu-list,
 .dyn-card-list,
 .dyn-course-list{display:flex;flex-direction:column;gap:8px;margin-top:12px}
@@ -999,7 +972,7 @@ h1,h2,h3,h4,h5,h6,p,span,div,a,li,td,th,label{overflow-wrap:break-word;word-wrap
 .dmi-del,.dci-del,.dc-del{background:#fee2e2;color:#991b1b}
 
 /* ============================================================
-   NEWS CARDS
+   NEWS CARDS + LIVE CLASS CARDS
    ============================================================ */
 .news-card{background:var(--panel);border:1px solid var(--border);border-radius:var(--radius);overflow:hidden;transition:border-color .3s var(--ease),box-shadow .3s var(--ease),transform .3s var(--ease);height:100%;display:flex;flex-direction:column;box-shadow:var(--shadow-xs);min-width:0}
 .news-card:hover{border-color:var(--border-dark);box-shadow:var(--shadow-md);transform:translateY(-3px)}
@@ -1013,9 +986,6 @@ h1,h2,h3,h4,h5,h6,p,span,div,a,li,td,th,label{overflow-wrap:break-word;word-wrap
 .news-card h3{font-family:var(--font-heading);color:var(--navy);font-size:clamp(13.5px,1.5vw,14.5px);font-weight:700;margin-bottom:7px;line-height:1.35}
 .news-card p{font-size:clamp(12px,1.25vw,12.5px);line-height:1.6;color:var(--text-body);flex:1}
 
-/* ============================================================
-   LIVE CLASS CARDS
-   ============================================================ */
 .live-class-card{background:var(--panel);border:1px solid var(--border);border-left:4px solid #3b82f6;border-radius:var(--radius);padding:clamp(12px,2vw,15px) clamp(13px,2.2vw,17px);margin-bottom:11px;box-shadow:var(--shadow-xs);display:flex;justify-content:space-between;align-items:center;gap:12px;flex-wrap:wrap;min-width:0}
 .live-class-card.ended{border-left-color:var(--border-dark);opacity:.7}
 .live-class-card > div:first-child{flex:1 1 220px;min-width:0}
@@ -1029,7 +999,7 @@ h1,h2,h3,h4,h5,h6,p,span,div,a,li,td,th,label{overflow-wrap:break-word;word-wrap
 @keyframes livePulse{0%,100%{opacity:1;box-shadow:0 0 0 0 rgba(220,38,38,.6)}50%{opacity:.55;box-shadow:0 0 0 6px rgba(220,38,38,0)}}
 
 /* ============================================================
-   NOTIFICATION DISPLAY
+   NOTIFICATION DISPLAY + SCROLL TOP + GALLERY + TESTIMONIALS
    ============================================================ */
 .notification-display{position:fixed;top:calc(60px + var(--safe-top));right:calc(14px + var(--safe-right));z-index:9999;max-width:330px;width:calc(100% - 28px);background:var(--panel);border:1px solid var(--border);border-left:4px solid var(--green);border-radius:var(--radius);padding:15px 17px;box-shadow:var(--shadow-lg);display:none}
 .notification-display.show{display:block;animation:notifIn .25s var(--ease)}
@@ -1046,16 +1016,10 @@ h1,h2,h3,h4,h5,h6,p,span,div,a,li,td,th,label{overflow-wrap:break-word;word-wrap
 .notification-display .notif-actions button{padding:6px 13px;border-radius:var(--radius-sm);border:none;font-weight:700;font-size:10.5px;cursor:pointer;font-family:inherit;text-transform:uppercase;letter-spacing:.4px}
 .notification-display .notif-action-secondary{background:var(--gray-100);color:var(--text-body)}
 
-/* ============================================================
-   SCROLL-TOP
-   ============================================================ */
 .scroll-top-btn{position:fixed;bottom:calc(18px + var(--safe-bottom));right:calc(18px + var(--safe-right));width:38px;height:38px;border-radius:50%;background:var(--navy);color:#fff;border:none;cursor:pointer;display:none;align-items:center;justify-content:center;font-size:14px;z-index:9998;box-shadow:var(--shadow-lg);transition:background .2s var(--ease),transform .2s var(--ease)}
 .scroll-top-btn.visible{display:flex}
 .scroll-top-btn:hover{background:var(--navy-dark);transform:scale(1.06)}
 
-/* ============================================================
-   GALLERY
-   ============================================================ */
 .gallery-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(160px,1fr));gap:11px}
 .gallery-item{position:relative;border-radius:var(--radius);overflow:hidden;aspect-ratio:1;border:1px solid var(--border);background:var(--gray-100);cursor:pointer;transition:box-shadow .25s var(--ease),transform .25s var(--ease)}
 .gallery-item:hover{box-shadow:var(--shadow-md);transform:translateY(-3px)}
@@ -1066,9 +1030,6 @@ h1,h2,h3,h4,h5,h6,p,span,div,a,li,td,th,label{overflow-wrap:break-word;word-wrap
 .gallery-empty{grid-column:1/-1;text-align:center;padding:44px 20px;color:var(--text-muted)}
 .gallery-empty i{font-size:40px;color:var(--border-dark);margin-bottom:11px;display:block}
 
-/* ============================================================
-   TESTIMONIALS
-   ============================================================ */
 .testimonial-slider-wrapper{overflow:hidden;border-radius:var(--radius)}
 .testimonial-slider{display:flex;transition:transform .5s var(--ease)}
 .testimonial-slide{min-width:100%;padding:clamp(20px,3.5vw,26px) clamp(14px,2.5vw,16px);text-align:center;background:var(--panel);border:1px solid var(--border);border-radius:var(--radius);box-shadow:var(--shadow-xs)}
@@ -1081,7 +1042,7 @@ h1,h2,h3,h4,h5,h6,p,span,div,a,li,td,th,label{overflow-wrap:break-word;word-wrap
 .testimonial-dots .tdot.active{background:var(--green);transform:scale(1.3)}
 
 /* ============================================================
-   ADMIN MODE OVERLAY
+   ADMIN MODE EDITABLE
    ============================================================ */
 .admin-mode [contenteditable="true"]{outline:1px dashed rgba(10,107,59,.5);outline-offset:3px;border-radius:3px;min-height:1em;cursor:text}
 .admin-mode [contenteditable="true"]:hover{outline-color:var(--green);background:rgba(10,107,59,.06)}
@@ -1161,9 +1122,7 @@ h1,h2,h3,h4,h5,h6,p,span,div,a,li,td,th,label{overflow-wrap:break-word;word-wrap
 .btn-action-del{background:#fee2e2;color:#991b1b}
 .btn-action-del:hover{background:#991b1b;color:#fff}
 
-/* ============================================================
-   STATUS TIMELINE
-   ============================================================ */
+/* Status timeline */
 .status-timeline{display:flex;flex-direction:column;gap:0;position:relative;padding-left:22px}
 .status-timeline::before{content:'';position:absolute;left:9px;top:8px;bottom:8px;width:2px;background:var(--border)}
 .status-timeline .tl-item{position:relative;padding:8px 0 8px 12px;font-size:12.5px}
@@ -1187,8 +1146,8 @@ h1,h2,h3,h4,h5,h6,p,span,div,a,li,td,th,label{overflow-wrap:break-word;word-wrap
 .live-cam-header .lc-btn{width:26px;height:26px;border-radius:50%;background:rgba(255,255,255,.09);border:1px solid rgba(255,255,255,.14);color:#fff;cursor:pointer;font-size:10.5px;display:flex;align-items:center;justify-content:center;transition:background .2s var(--ease)}
 .live-cam-header .lc-btn:hover{background:rgba(255,255,255,.18)}
 .live-cam-header .lc-btn.danger{background:#dc2626;border-color:#dc2626}
-.live-cam-stage{position:relative;background:#000;overflow:hidden;flex:1 1 auto;min-height:0;aspect-ratio:4/3;max-height:56vh}
-.live-cam-stage video{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;display:block;background:#000}
+.live-cam-stage{position:relative;background:#000;overflow:hidden;flex:1 1 auto;min-height:220px;aspect-ratio:4/3;max-height:56vh}
+.live-cam-stage video{position:absolute!important;top:0;left:0;right:0;bottom:0;width:100%!important;height:100%!important;min-height:100%!important;max-height:none!important;object-fit:cover;display:block!important;background:#000;z-index:1}
 .live-cam-stage video.mirrored{transform:scaleX(-1)}
 .live-cam-stage .live-badge{position:absolute;top:8px;left:8px;background:rgba(220,38,38,.95);color:#fff;font-size:9.5px;font-weight:800;letter-spacing:1px;padding:3px 8px;border-radius:10px;display:flex;align-items:center;gap:4px;text-transform:uppercase}
 .live-cam-stage .live-badge .dot{width:6px;height:6px;border-radius:50%;background:#fff;animation:livePulse 1.2s infinite}
@@ -1272,22 +1231,27 @@ h1,h2,h3,h4,h5,h6,p,span,div,a,li,td,th,label{overflow-wrap:break-word;word-wrap
 .mb-20{margin-bottom:20px}
 .hidden{display:none!important}
 
+/* Home CTA buttons */
+.home-cta-buttons{
+  display:flex;gap:10px;justify-content:center;flex-wrap:wrap;
+  max-width:520px;margin:0 auto;
+}
+.home-cta-btn{
+  padding:12px 24px;border-radius:8px;font-weight:700;font-size:13px;
+  cursor:pointer;display:inline-flex;align-items:center;gap:8px;
+  text-transform:uppercase;letter-spacing:.5px;border:none;font-family:inherit;
+  transition:transform .2s var(--ease),background .2s var(--ease);
+}
+.home-cta-primary{background:var(--green);color:#fff}
+.home-cta-primary:hover{background:var(--green-dark);transform:translateY(-1px)}
+.home-cta-secondary{background:transparent;color:#fff;border:1.5px solid rgba(255,255,255,.4)}
+.home-cta-secondary:hover{background:rgba(255,255,255,.1);transform:translateY(-1px)}
+
 /* ============================================================
-   RESPONSIVE BREAKPOINTS
+   TABLET
    ============================================================ */
-
-/* Large desktop — cap container so content doesn't stretch */
-@media (min-width:1600px){
-  :root{--container-max:1280px}
-}
-
-/* Small desktop / large laptop */
-@media (max-width:1200px){
-  .header-stat{display:none}
-  .grid-4{grid-template-columns:repeat(4,1fr)}
-}
-
-/* Tablet landscape / small laptop */
+@media (min-width:1600px){ :root{--container-max:1280px} }
+@media (max-width:1200px){ .header-stat{display:none} }
 @media (max-width:1024px){
   .hero-slide .hero-description{max-width:280px;bottom:44px;font-size:11.5px}
   .grid-4{grid-template-columns:repeat(2,1fr)}
@@ -1301,269 +1265,692 @@ h1,h2,h3,h4,h5,h6,p,span,div,a,li,td,th,label{overflow-wrap:break-word;word-wrap
   .results-table{min-width:0}
   .ledger-table{min-width:0}
 }
-
-/* Tablet portrait / large phone landscape */
 @media (max-width:900px){
   .hero-slider{height:clamp(360px,60vh,520px)}
-  .hero-slide .hero-description{
-    position:static;max-width:none;margin:12px 0 0;
-    background:rgba(5,19,42,.7);border-left-width:3px;
-  }
+  .hero-slide .hero-description{position:static;max-width:none;margin:12px 0 0;background:rgba(5,19,42,.7);border-left-width:3px}
   .hero-slide .hero-content{padding-bottom:26px}
   .hero-slide h1{font-size:clamp(1.2rem,3.6vw,1.6rem)}
+  #aboutWho,#aboutVision{grid-template-columns:1fr}
 }
 
-/* Mobile breakpoint — switch to drawer nav */
-@media (max-width:768px){
-  /* -- Mobile nav drawer -- */
-  .nav-toggle{display:flex;position:relative;z-index:2147483001}
-  .main-nav .container{padding-top:2px;padding-bottom:2px;position:relative;z-index:2147483001}
-  .main-nav{isolation:isolate}
-  .nav-list{
-    position:fixed;
-    top:0;
-    right:0;
-    bottom:0;
-    width:min(320px,86vw);
-    background:linear-gradient(180deg,var(--navy-dark) 0%,var(--navy) 100%);
-    flex-direction:column;
-    padding:calc(56px + var(--safe-top)) 0 calc(18px + var(--safe-bottom));
-    overflow-y:auto;
-    -webkit-overflow-scrolling:touch;
-    transform:translateX(100%);
-    transition:transform .35s var(--ease);
-    box-shadow:-8px 0 30px rgba(0,0,0,.4);
-    z-index:2147483000;
-    gap:0;
-    flex-wrap:nowrap;
-    align-items:stretch;
-    will-change:transform;
-    pointer-events:auto;
-    visibility:visible;
-  }
-  .nav-list.open{transform:translateX(0)}
-  .nav-list > li{border-bottom:1px solid rgba(255,255,255,.08);position:static}
-  .nav-list > li > a,
-  .nav-list > li > button{
-    padding:14px 20px;
-    width:100%;
-    justify-content:space-between;
-    font-size:13px;
-    letter-spacing:.5px;
-  }
-  .nav-list > li > a::before,
-  .nav-list > li > button::before{display:none}
-  .nav-list > li > a:hover,
-  .nav-list > li > button:hover,
-  .nav-list > li.active > a,
-  .nav-list > li.active > button{background:rgba(255,255,255,.06)}
-  .dropdown{
-    position:static;
-    opacity:1;
-    visibility:visible;
-    transform:none;
-    box-shadow:none;
-    border:none;
-    border-top:1px solid rgba(255,255,255,.08);
-    background:rgba(255,255,255,.03);
-    max-height:0;
-    overflow:hidden;
-    padding:0;
-    transition:max-height .35s var(--ease);
-    border-radius:0;
-  }
-  .nav-list > li.open .dropdown{max-height:800px;padding:6px 0}
-  .dropdown li a{color:#cbd5e1;padding:12px 32px;font-size:12.5px}
-  .dropdown li a:hover{padding-left:36px;background:rgba(255,255,255,.05);color:#fff}
+/* ============================================================
+   HAMBURGER BUTTON + MOBILE DRAWER
+   ============================================================ */
+.hvc-hamburger{
+  display:none;
+  width:44px;height:44px;min-width:44px;min-height:44px;
+  border-radius:11px;
+  background:var(--panel-soft);
+  border:1.5px solid var(--border);
+  color:var(--navy);
+  cursor:pointer;padding:0;
+  align-items:center;justify-content:center;
+  flex-shrink:0;
+  transition:background .2s var(--ease),border-color .2s var(--ease),color .2s var(--ease);
+  position:relative;z-index:1002;
+}
+.hvc-hamburger:hover,.hvc-hamburger:active{background:var(--green-light);border-color:var(--green);color:var(--green)}
+.hvc-hamburger i{font-size:18px;pointer-events:none}
 
-  /* -- Mobile home hero -- */
-  .hero-slider{
-    height:auto;
-    min-height:0;
-    max-height:none;
+.hvc-drawer-backdrop{
+  display:none;
+  position:fixed;inset:0;
+  background:rgba(5,19,42,.55);
+  backdrop-filter:blur(3px);-webkit-backdrop-filter:blur(3px);
+  z-index:999998;
+  opacity:0;transition:opacity .25s var(--ease);
+}
+.hvc-drawer-backdrop.open{display:block;opacity:1}
+
+.hvc-drawer{
+  position:fixed;
+  top:0;right:0;bottom:0;
+  width:min(260px,74vw);
+  max-width:100vw;
+  background:#05132a;
+  color:#e8edf3;
+  z-index:999999;
+  transform:translateX(100%);
+  transition:transform .3s cubic-bezier(.4,0,.2,1);
+  display:flex;flex-direction:column;
+  box-shadow:-8px 0 32px rgba(0,0,0,.55);
+  overflow-y:auto;-webkit-overflow-scrolling:touch;
+  padding-top:var(--safe-top);
+  padding-bottom:calc(16px + var(--safe-bottom));
+  overscroll-behavior:contain;
+}
+.hvc-drawer.open{transform:translateX(0)}
+
+.hvc-drawer-head{
+  display:flex;align-items:center;justify-content:space-between;
+  padding:12px 14px;
+  gap:8px;
+  border-bottom:1px solid rgba(255,255,255,.08);
+  background:linear-gradient(90deg,#05132a,#0a1f3d);
+  position:sticky;top:0;z-index:2;
+}
+.hvc-drawer-head .hvc-brand{display:flex;align-items:center;gap:8px;min-width:0;overflow:hidden}
+.hvc-drawer-head .hvc-brand-mark{
+  width:36px;height:36px;border-radius:8px;
+  background:linear-gradient(135deg,var(--navy),var(--navy-light));
+  border:2px solid var(--green);
+  color:#fff;font-family:var(--font-heading);font-weight:900;
+  font-size:16px;display:flex;align-items:center;justify-content:center;flex-shrink:0;
+}
+.hvc-drawer-head .hvc-brand-text{
+  font-family:var(--font-heading);font-weight:800;
+  font-size:14px;color:#fff;line-height:1.15;letter-spacing:-.2px;
+  white-space:nowrap;overflow:hidden;text-overflow:ellipsis;
+}
+.hvc-drawer-head .hvc-brand-text span{color:#e5c876}
+.hvc-drawer-close{
+  width:36px;height:36px;border-radius:50%;
+  background:rgba(255,255,255,.08);
+  border:1px solid rgba(255,255,255,.12);
+  color:#fff;cursor:pointer;font-size:14px;
+  display:flex;align-items:center;justify-content:center;flex-shrink:0;
+  transition:background .2s var(--ease),transform .2s var(--ease);
+}
+.hvc-drawer-close:hover{background:rgba(220,38,38,.6);transform:rotate(90deg)}
+
+.hvc-drawer-list{list-style:none;padding:8px 0;margin:0}
+.hvc-drawer-list > li{border-bottom:1px solid rgba(255,255,255,.05)}
+.hvc-drawer-list > li:last-child{border-bottom:none}
+
+.hvc-drawer-list > li > a,
+.hvc-drawer-list > li > button.hvc-drawer-toggle{
+  display:flex;align-items:center;gap:10px;
+  width:100%;padding:12px 14px;
+  color:#cbd5e1;font-size:13px;font-weight:600;
+  text-decoration:none;background:transparent;border:none;
+  font-family:inherit;cursor:pointer;text-align:left;
+  transition:background .2s var(--ease),color .2s var(--ease),padding-left .2s var(--ease);
+  letter-spacing:.2px;
+}
+.hvc-drawer-list > li > a > i,
+.hvc-drawer-list > li > button.hvc-drawer-toggle > i:first-child{
+  color:var(--gold);font-size:13px;width:18px;text-align:center;flex-shrink:0;
+}
+.hvc-drawer-list > li > a:hover,
+.hvc-drawer-list > li > button.hvc-drawer-toggle:hover,
+.hvc-drawer-list > li.open > button.hvc-drawer-toggle{
+  background:rgba(255,255,255,.05);color:#fff;padding-left:17px;
+}
+.hvc-drawer-list > li.active > a,
+.hvc-drawer-list > li.active > button.hvc-drawer-toggle{
+  background:linear-gradient(90deg,rgba(10,107,59,.55),rgba(10,107,59,.15));
+  color:#fff;border-left:3px solid var(--green);padding-left:11px;
+}
+.hvc-drawer-list .hvc-drawer-caret{
+  margin-left:auto;color:#8fa3bd;font-size:11px;
+  transition:transform .25s var(--ease);
+}
+.hvc-drawer-list > li.open .hvc-drawer-caret{transform:rotate(180deg);color:var(--gold)}
+
+.hvc-drawer-submenu{
+  list-style:none;margin:0;padding:0 0 6px 0;
+  max-height:0;overflow:hidden;
+  transition:max-height .35s var(--ease);
+  background:rgba(0,0,0,.18);
+}
+.hvc-drawer-list > li.open > .hvc-drawer-submenu{max-height:520px}
+.hvc-drawer-submenu li a{
+  display:flex;align-items:center;gap:9px;
+  padding:10px 14px 10px 34px;
+  font-size:12.5px;color:#a9b5c4;
+  text-decoration:none;font-weight:500;
+  transition:background .2s var(--ease),color .2s var(--ease),padding-left .2s var(--ease);
+}
+.hvc-drawer-submenu li a i{font-size:10.5px;color:var(--green);width:14px;text-align:center;flex-shrink:0}
+.hvc-drawer-submenu li a:hover,
+.hvc-drawer-submenu li a:active{background:rgba(255,255,255,.05);color:#fff;padding-left:38px}
+
+.hvc-drawer-actions{
+  padding:14px 14px 8px;
+  display:flex;flex-direction:column;gap:8px;
+  margin-top:auto;
+}
+/* 2×2 grid layout — every button fully visible, no truncated text */
+.hvc-drawer-actions.hvc-drawer-actions-grid{
+  display:grid;
+  grid-template-columns:1fr 1fr;
+  gap:8px;
+  align-items:stretch;
+  padding:14px 14px 10px;
+}
+.hvc-drawer-actions.hvc-drawer-actions-grid .hvc-drawer-btn{
+  width:100%;
+  min-width:0;
+  padding:12px 6px;
+  font-size:12px;
+  gap:7px;
+  letter-spacing:.3px;
+  white-space:nowrap;
+  overflow:hidden;
+}
+.hvc-drawer-actions.hvc-drawer-actions-grid .hvc-drawer-btn span{
+  overflow:hidden;
+  text-overflow:ellipsis;
+  white-space:nowrap;
+}
+.hvc-drawer-actions.hvc-drawer-actions-grid .hvc-drawer-btn i{
+  font-size:14px;
+}
+.hvc-drawer-actions .hvc-drawer-btn{
+  display:flex;align-items:center;justify-content:center;gap:6px;
+  padding:11px 8px;border-radius:10px;
+  font-weight:700;font-size:11.5px;letter-spacing:.2px;
+  text-transform:uppercase;text-decoration:none;
+  border:none;cursor:pointer;font-family:inherit;
+  transition:transform .2s var(--ease),background .2s var(--ease);
+  min-width:0;flex:1 1 0;white-space:nowrap;
+}
+.hvc-drawer-actions .hvc-drawer-btn span{
+  overflow:hidden;text-overflow:ellipsis;
+}
+.hvc-drawer-actions .hvc-drawer-btn i{
+  font-size:13px;flex-shrink:0;
+}
+.hvc-drawer-actions .hvc-drawer-btn:active{transform:scale(.97)}
+.hvc-drawer-actions .hvc-drawer-btn-primary{background:linear-gradient(135deg,var(--green),var(--green-dark));color:#fff;box-shadow:0 4px 12px rgba(10,107,59,.35)}
+.hvc-drawer-actions .hvc-drawer-btn-secondary{background:rgba(255,255,255,.06);color:#fff;border:1.5px solid rgba(255,255,255,.16)}
+.hvc-drawer-actions .hvc-drawer-btn-secondary:hover{background:rgba(255,255,255,.12)}
+.hvc-drawer-actions .hvc-drawer-btn-admin{background:linear-gradient(135deg,#c9a227,#a3861d);color:#fff;border:none;box-shadow:0 4px 12px rgba(201,162,39,.35);font-weight:800}
+.hvc-drawer-actions .hvc-drawer-btn-admin:hover{background:linear-gradient(135deg,#e5c876,#c9a227)}
+.hvc-drawer-actions .hvc-drawer-btn-admin i{color:#fff}
+.hvc-drawer-actions .hvc-drawer-btn-install{background:linear-gradient(135deg,#0a6b3b,#08552f);color:#fff;border:none;box-shadow:0 4px 12px rgba(10,107,59,.35);font-weight:800}
+.hvc-drawer-actions .hvc-drawer-btn-install:hover{background:linear-gradient(135deg,#0a8a4c,#0a6b3b)}
+.hvc-drawer-actions .hvc-drawer-btn-install i{color:#fff}
+
+@media (min-width:769px){
+  .hvc-hamburger,.hvc-drawer,.hvc-drawer-backdrop{display:none!important}
+}
+
+/* ============================================================
+   MOBILE — ALL PHASE-1 FIXES
+   ============================================================ */
+@media (max-width:768px){
+
+  :root{--container-pad:16px}
+  .container{padding-left:16px;padding-right:16px}
+  .page-section{padding:40px 0;overflow-x:clip}
+  .section-head{margin-bottom:24px;text-align:left;padding:0}
+  .section-head .eyebrow{font-size:11px;padding:0;letter-spacing:1.5px;margin-bottom:6px}
+  .section-head .eyebrow::before,
+  .section-head .eyebrow::after{display:none}
+  .section-head h2{font-size:24px;line-height:1.2;margin-bottom:8px;letter-spacing:-.3px}
+  .section-head p{font-size:14px;line-height:1.55;text-align:left;margin:0}
+
+  input,select,textarea{font-size:16px!important}
+
+  /* ---------- TOPBAR ---------- */
+  .topbar{padding:9px 0;font-size:11.5px}
+  .topbar .container{gap:8px;justify-content:space-between;flex-wrap:nowrap}
+  .topbar .contact-info{gap:8px;flex:1 1 auto;min-width:0}
+  .topbar .contact-info a:nth-child(2),
+  .topbar .contact-info a:nth-child(3){display:none!important}
+  .topbar .quick-links a[href*="status"]{display:none!important}
+  .topbar .contact-info a{font-size:11.5px;display:inline-flex;align-items:center;gap:6px}
+  .topbar .contact-info a i{
+    font-size:11px;width:20px;height:20px;border-radius:50%;
+    background:rgba(201,162,39,.15);
+    display:inline-flex;align-items:center;justify-content:center;flex-shrink:0;
   }
-  .hero-slide{
-    position:relative;
-    min-height:auto;
-    display:none;
-    align-items:flex-end;
+  .topbar .contact-info a span{
+    white-space:nowrap;overflow:hidden;text-overflow:ellipsis;
+    font-weight:600;letter-spacing:.2px;
+  }
+
+  /* Camera button hidden entirely on mobile */
+  .topbar-cam-btn{display:none!important}
+
+  /* ---------- HEADER (stacked: brand on top, actions below) ---------- */
+  .site-header .container{
+    display:flex;flex-direction:column;align-items:stretch;justify-content:flex-start;
+    gap:10px;padding-top:12px;padding-bottom:12px;flex-wrap:nowrap;
+  }
+
+  /* ROW 1: Brand on its own full-width row */
+  .site-header .brand{
+    display:flex;align-items:center;justify-content:flex-start;
+    gap:10px;width:100%;min-width:0;
+    padding-bottom:0;border-bottom:none;flex:0 0 auto;
+  }
+  .site-header .brand-mark{width:44px;height:44px;font-size:18px;flex-shrink:0}
+  .site-header .brand-text{
+    min-width:0;flex:1 1 auto;
+    display:flex;flex-direction:column;justify-content:center;
+    overflow:hidden;
+  }
+  .site-header .brand-text .brand-name{
+    font-size:16px;line-height:1.15;
+    white-space:nowrap!important;
+    overflow:hidden;text-overflow:ellipsis;
+    word-break:normal!important;
+    overflow-wrap:normal!important;
+    display:block;
+  }
+  .site-header .brand-text .brand-name span{
+    display:inline!important;
+    white-space:nowrap!important;
+    word-break:normal!important;
+    overflow-wrap:normal!important;
+  }
+  .site-header .brand-text .brand-sub{display:none}
+
+  /* ROW 2: Action buttons below the brand — Admin, Apply, Portal, Menu on one row */
+  .site-header .header-right{
+    display:grid;
+    grid-template-columns:44px 1fr 1fr 44px;
+    grid-template-areas:"admin apply portal menu";
+    align-items:center;gap:8px;
+    width:100%;min-width:0;
+    flex:0 0 auto;
+  }
+  .site-header .header-stat{display:none!important}
+  .site-header .notification-bell{display:none!important}
+  .site-header .lock-icon-header{
+    grid-area:admin;
+    display:inline-flex!important;
+    width:44px;height:44px;
+    justify-content:center;align-items:center;
+    color:var(--navy);
+    border-radius:11px;
+    border:1.5px solid var(--border);
+    background:var(--panel-soft);
     padding:0;
   }
-  .hero-slide.active{display:flex}
-  .hero-slide img{position:relative;width:100%;height:auto;aspect-ratio:16/10;object-fit:cover}
-  .hero-slide::before{
-    background:linear-gradient(180deg,rgba(5,19,42,0) 0%,rgba(5,19,42,.35) 45%,rgba(5,19,42,.88) 100%);
+
+  /* Hamburger sits at the right of the second row */
+  .hvc-hamburger{
+    display:inline-flex;
+    grid-area:menu;
+    width:44px;height:44px;min-width:44px;min-height:44px;
+    justify-self:end;
   }
+
+  /* Apply Now button */
+  .site-header .btn-apply-header{
+    grid-area:apply;
+    height:44px;min-height:44px;
+    padding:0 8px;
+    font-size:11px;font-weight:800;
+    letter-spacing:.1px;
+    border-radius:11px;
+    display:inline-flex;
+    align-items:center;
+    justify-content:center;
+    gap:5px;
+    white-space:nowrap;
+    flex-shrink:1;
+    min-width:0;
+    overflow:hidden;
+    background:linear-gradient(135deg,var(--green),var(--green-dark));
+    color:#fff;
+    box-shadow:0 3px 10px rgba(10,107,59,.28);
+    border:none;
+  }
+  .site-header .btn-apply-header .long{
+    overflow:hidden;text-overflow:ellipsis;min-width:0;
+  }
+
+  /* Student Portal button */
+  .site-header .btn-portal-header{
+    grid-area:portal;
+    height:44px;min-height:44px;
+    padding:0 8px;
+    font-size:11px;font-weight:800;
+    letter-spacing:.1px;
+    border-radius:11px;
+    display:inline-flex;
+    align-items:center;
+    justify-content:center;
+    gap:5px;
+    white-space:nowrap;
+    flex-shrink:1;
+    min-width:0;
+    overflow:hidden;
+    background:var(--panel);
+    border:1.5px solid var(--navy);
+    color:var(--navy);
+  }
+  .site-header .btn-portal-header .long{
+    overflow:hidden;text-overflow:ellipsis;min-width:0;
+  }
+
+  /* Show icons + text on both buttons */
+  .site-header .btn-portal-header > i:first-child,
+  .site-header .btn-apply-header > i:first-child{
+    display:inline-block!important;
+    font-size:13px;flex-shrink:0;
+  }
+  .site-header .btn-portal-header .long,
+  .site-header .btn-apply-header .long{
+    display:inline!important;white-space:nowrap;
+  }
+
+  /* Hide header nav entirely on mobile — drawer handles it */
+  .main-nav{display:none!important}
+
+  /* ---------- HERO ---------- */
+  .hero-slider{
+    position:relative!important;
+    display:block!important;
+    height:auto!important;
+    min-height:0!important;max-height:none!important;
+    background:var(--navy);
+    overflow:hidden;
+    touch-action:pan-y;
+  }
+  .hero-slider.has-slides .hero-placeholder{display:none!important}
+  .hero-slide{
+    position:relative!important;inset:auto!important;
+    display:none!important;
+    flex-direction:column!important;
+    opacity:1!important;
+    padding:0!important;margin:0!important;
+    width:100%!important;
+    background:var(--navy);
+  }
+  .hero-slide.active{display:flex!important;visibility:visible!important;z-index:2}
+  .hero-slide::before{display:none!important;content:none!important}
+  .hero-slide img{
+    position:relative!important;inset:auto!important;
+    display:block!important;
+    width:100%!important;height:auto!important;
+    aspect-ratio:3/4!important;
+    min-height:520px!important;max-height:92vh!important;
+    object-fit:cover!important;object-position:center!important;
+    margin:0!important;
+  }
+  @supports not (aspect-ratio:3/4){
+    .hero-slide img{height:133vw!important;max-height:92vh!important}
+  }
+
   .hero-slide .hero-content{
-    position:relative;
-    max-width:none;
-    padding:16px clamp(14px,4vw,20px) 20px;
-    margin-top:-40px;
+    position:absolute!important;inset:0!important;
+    display:flex!important;flex-direction:column!important;
+    justify-content:flex-end!important;
+    padding:28px 20px 26px!important;margin:0!important;
+    max-width:none!important;width:100%!important;
+    box-sizing:border-box!important;
+    background:linear-gradient(
+      180deg,
+      rgba(5,19,42,0) 0%,
+      rgba(5,19,42,0) 45%,
+      rgba(5,19,42,.55) 65%,
+      rgba(5,19,42,.94) 92%,
+      rgba(5,19,42,.98) 100%
+    )!important;
     z-index:2;
+    pointer-events:none!important;
   }
-  .hero-slide h1{font-size:clamp(1.15rem,5vw,1.5rem);line-height:1.2}
-  .hero-slide p{font-size:12.5px;margin-bottom:14px}
-  .hero-slide .hero-eyebrow{font-size:9.5px;padding:4px 10px;margin-bottom:8px}
-  .hero-slide .hero-buttons{gap:8px}
+  .hero-slide .hero-content > *{pointer-events:auto!important}
+
+  .hero-slide .hero-eyebrow{
+    display:inline-flex!important;align-self:flex-start!important;
+    background:rgba(10,107,59,.92)!important;color:#fff!important;
+    font-size:9.5px!important;font-weight:700!important;
+    padding:4px 11px!important;border-radius:13px!important;
+    letter-spacing:.8px!important;text-transform:uppercase!important;
+    margin:0 0 8px!important;
+    border:1px solid rgba(255,255,255,.18)!important;
+  }
+
+  .hero-slide h1{
+    font-size:clamp(1.3rem,6.4vw,1.75rem)!important;
+    line-height:1.15!important;
+    margin:0 0 10px!important;
+    font-weight:800!important;letter-spacing:-.4px!important;
+    color:#fff!important;
+    text-shadow:0 2px 14px rgba(0,0,0,.65)!important;
+  }
+
+  .hero-slide p{
+    font-size:13px!important;line-height:1.5!important;
+    margin:0 0 12px!important;
+    color:#dbe4ee!important;
+    text-shadow:0 1px 8px rgba(0,0,0,.7)!important;
+    max-width:100%!important;
+    display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;
+    overflow:hidden;
+  }
+
+  /* Smaller hero CTAs */
+  .hero-slide .hero-buttons{
+    display:flex!important;
+    gap:8px!important;
+    width:auto!important;
+    margin:0 0 8px!important;
+    flex-wrap:nowrap;
+  }
   .hero-slide .btn-hero-primary,
   .hero-slide .btn-hero-secondary{
-    padding:10px 16px;font-size:11px;flex:1 1 auto;justify-content:center;
+    width:auto!important;
+    min-height:0!important;
+    height:36px!important;
+    padding:0 12px!important;
+    font-size:10.5px!important;
+    font-weight:700!important;
+    border-radius:8px!important;
+    letter-spacing:.3px!important;
+    white-space:nowrap!important;
+    line-height:1!important;
+    display:inline-flex!important;
+    align-items:center!important;
+    justify-content:center!important;
+    gap:5px!important;
   }
-  .hero-slide .hero-description{
-    position:relative;
-    bottom:auto;right:auto;
-    margin:12px 0 0;
-    max-width:none;
-    font-size:11.5px;
-    padding:10px 12px;
+  .hero-slide .btn-hero-primary i,
+  .hero-slide .btn-hero-secondary i{font-size:10.5px!important}
+  .hero-slide .btn-hero-primary{background:#0a6b3b!important;color:#fff!important;border:none!important}
+  .hero-slide .btn-hero-secondary{
+    background:rgba(255,255,255,.14)!important;
+    color:#fff!important;
+    border:1.5px solid rgba(255,255,255,.38)!important;
   }
-  .hero-nav{width:34px;height:34px;font-size:11px}
-  .hero-prev{left:8px}
-  .hero-next{right:8px}
-  .hero-dots{left:50%;transform:translateX(-50%);bottom:10px}
 
-  /* -- Mobile grids -- */
-  .grid-4,
-  .grid-3,
-  .grid-2{grid-template-columns:1fr;gap:14px}
+  .hero-slide .hero-description{
+    position:static!important;inset:auto!important;
+    margin:0!important;padding:0!important;
+    max-width:none!important;width:100%!important;
+    background:transparent!important;border:none!important;
+    border-left:none!important;border-radius:0!important;
+    box-shadow:none!important;
+    font-size:11px!important;font-style:italic!important;
+    line-height:1.4!important;
+    color:rgba(200,212,227,.85)!important;
+    text-shadow:0 1px 6px rgba(0,0,0,.75)!important;
+  }
+  .hero-slide .hero-description .hd-label{display:none!important}
+
+  /* Hide hero arrows on mobile */
+  .hero-nav{display:none!important}
+
+  /* Hide any leftover hero dots (defense in depth) */
+  .hero-dots{display:none!important}
+
+  .hero-placeholder{
+    position:relative!important;inset:auto!important;
+    min-height:520px!important;
+    padding:60px 20px!important;
+    display:flex!important;flex-direction:column!important;
+    align-items:center!important;justify-content:center!important;
+    background:linear-gradient(135deg,#0a1f3d 0%,#05132a 100%)!important;
+    text-align:center!important;width:100%!important;
+  }
+  .hero-placeholder i{font-size:52px!important;color:#2a4a75!important;margin-bottom:16px!important;display:block!important}
+  .hero-placeholder p{font-size:13.5px!important;color:#94a3b8!important;line-height:1.55!important;max-width:300px!important}
+
+  /* ---------- QUICK ACCESS ---------- */
+  .quick-access{padding:0}
+  .quick-access .container{grid-template-columns:repeat(3,1fr);gap:0;padding:0}
+  .qa-item{
+    flex-direction:column;gap:8px;padding:16px 8px;
+    border-right:1px solid var(--border);
+    border-bottom:1px solid var(--border);
+    min-height:92px;justify-content:center;
+  }
+  .qa-item:nth-child(3n){border-right:none}
+  .qa-item:nth-child(4),
+  .qa-item:nth-child(5),
+  .qa-item:nth-child(6){border-bottom:none}
+  .qa-item i{width:40px;height:40px;font-size:17px;border-radius:12px}
+  .qa-item .qa-label{
+    font-size:11.5px;font-weight:700;white-space:normal;
+    line-height:1.2;text-align:center;letter-spacing:.2px;
+  }
+  .qa-item.highlight{background:linear-gradient(135deg,var(--green),var(--green-dark))}
+  .qa-item.highlight i{background:rgba(255,255,255,.22)}
+
+  /* ---------- GRIDS + CARDS ---------- */
+  .grid-4,.grid-3,.grid-2{grid-template-columns:1fr;gap:12px}
   .form-row{grid-template-columns:1fr;gap:12px}
   .footer-grid{grid-template-columns:1fr;gap:22px}
-  .quick-access .container{grid-template-columns:repeat(3,1fr)}
   .contact-grid{grid-template-columns:1fr;gap:18px}
   .ledger-summary{grid-template-columns:1fr;gap:9px}
-  .timetable-grid{min-width:0;grid-template-columns:repeat(6,minmax(52px,1fr));gap:4px;font-size:10px}
-  .timetable-grid .tt-head{padding:6px 3px;font-size:9px}
-  .timetable-grid .tt-slot{padding:6px 3px;min-height:52px}
-  .timetable-grid .tt-subject{font-size:9.5px;line-height:1.2}
-  .timetable-grid .tt-room{font-size:8.5px}
+  .home-cta-buttons{flex-direction:column;width:100%;max-width:100%;gap:10px}
+  .home-cta-btn{width:100%;justify-content:center;padding:15px 18px;font-size:13px;border-radius:11px;height:50px}
 
-  /* -- Live cam on mobile -- */
-  .live-cam-popup{
-    width:calc(100vw - 20px);
-    left:10px;
-    right:10px;
-    top:60px;
-    max-height:calc(100dvh - 80px);
-    overflow-y:auto;
+  .card{
+    padding:16px;border-radius:14px;
+    display:grid;
+    grid-template-columns:44px 1fr;
+    grid-template-areas:"icon title" "body body";
+    column-gap:12px;row-gap:8px;align-items:start;
   }
-  .live-cam-stage{max-height:52vh}
-  .live-cam-footer .lc-mini{width:30px;height:30px;font-size:10px}
-  .live-cam-footer .lc-shutter{width:44px;height:44px;font-size:14px}
+  .card .card-icon{
+    grid-area:icon;width:44px;height:44px;font-size:18px;
+    margin:0;border-radius:11px;flex-shrink:0;
+  }
+  .card h3{
+    grid-area:title;font-size:15.5px;margin:0;
+    padding-top:10px;line-height:1.25;align-self:center;
+  }
+  .card p{grid-area:body;font-size:13.5px;line-height:1.6;margin:0;color:var(--text-body)}
+  .card .card-link{margin-top:4px;font-size:12px}
+  .card:not(:has(.card-icon)){display:block}
 
-  /* -- Admin mobile card tables -- */
+  /* ---------- DEPARTMENTS & FACILITIES (mobile) ---------- */
+  .dept-grid{grid-template-columns:1fr;gap:14px}
+  .dept-grid .card{
+    display:block;          /* undo the mobile grid for these cards */
+    padding:16px 15px;
+  }
+  .dept-grid .card-icon{width:42px;height:42px;font-size:17px;margin-bottom:11px}
+  .dept-grid .card h3{font-size:15px;padding-top:0;margin-bottom:12px;grid-area:auto}
+  .dept-list{gap:10px;margin-top:2px}
+  .dept-list li{
+    font-size:13.5px;
+    line-height:1.55;
+    align-items:flex-start;
+    padding:2px 0;
+    border-bottom:1px dashed rgba(10,107,59,.12);
+    padding-bottom:9px;
+  }
+  .dept-list li:last-child{border-bottom:none;padding-bottom:2px}
+  .dept-list li i{font-size:12px;margin-top:5px}
+  .dept-list li span{font-size:13.5px}
+
+  .course-card{border-radius:14px}
+  .course-card .cc-head{padding:14px 16px;gap:12px;align-items:center}
+  .course-card .cc-icon{width:44px;height:44px;font-size:20px;border-radius:11px}
+  .course-card .cc-head h3{font-size:15.5px;line-height:1.25;margin-bottom:2px}
+  .course-card .cc-head .cc-level{font-size:10.5px;letter-spacing:.4px}
+  .course-card .cc-body{padding:14px 16px;gap:12px}
+  .course-card .cc-body p{font-size:13.5px;line-height:1.6}
+  .course-card .cc-meta{gap:6px}
+  .course-card .cc-meta span{font-size:10.5px;padding:4px 9px}
+  .course-card .cc-actions{padding:0 16px 16px}
+  .course-card .cc-actions button{
+    padding:11px 14px;font-size:12px;border-radius:10px;height:44px;letter-spacing:.5px;
+  }
+
+  /* ---------- TABLES TO CARD STACK ---------- */
   .data-table{font-size:12.5px;border:none;background:transparent;box-shadow:none;overflow:visible}
   .data-table thead{display:none}
   .data-table tbody,
   .data-table tr,
   .data-table td{display:block;width:100%}
   .data-table tr{
-    background:var(--panel);
-    border:1px solid var(--border);
-    border-radius:var(--radius);
-    margin-bottom:10px;
-    padding:6px 0;
-    box-shadow:var(--shadow-xs);
+    background:var(--panel);border:1px solid var(--border);border-radius:var(--radius);
+    margin-bottom:10px;padding:6px 0;box-shadow:var(--shadow-xs);
   }
   .data-table tr:hover td{background:transparent}
   .data-table td{
     border-bottom:1px solid var(--border);
     padding:9px 14px;
-    display:flex;
-    justify-content:space-between;
-    align-items:center;
-    gap:12px;
-    text-align:right;
-    min-height:36px;
-    word-break:break-word;
+    display:flex;justify-content:space-between;align-items:center;
+    gap:12px;text-align:right;min-height:36px;word-break:break-word;
   }
   .data-table td:last-child{border-bottom:none}
   .data-table td::before{
     content:attr(data-label);
-    font-weight:700;
-    font-size:10px;
-    text-transform:uppercase;
-    letter-spacing:.4px;
-    color:var(--text-muted);
-    text-align:left;
-    flex:0 0 auto;
-    min-width:90px;
+    font-weight:700;font-size:10px;
+    text-transform:uppercase;letter-spacing:.4px;color:var(--text-muted);
+    text-align:left;flex:0 0 auto;min-width:90px;
   }
   .data-table td:not([data-label])::before{display:none}
-  .data-table td[colspan]{
-    justify-content:center;
-    text-align:center;
-    padding:20px;
-  }
+  .data-table td[colspan]{justify-content:center;text-align:center;padding:20px}
   .data-table td[colspan]::before{display:none}
   .admin-table-wrap{border:none;background:transparent;overflow:visible}
 
-  /* -- Admin stat grid -- */
-  .admin-stat-grid{grid-template-columns:repeat(2,1fr);gap:10px}
+  .timetable-grid{min-width:0;grid-template-columns:repeat(6,minmax(52px,1fr));gap:4px;font-size:10px}
+  .timetable-grid .tt-head{padding:6px 3px;font-size:9px}
+  .timetable-grid .tt-slot{padding:6px 3px;min-height:52px}
+  .timetable-grid .tt-subject{font-size:9.5px;line-height:1.2}
+  .timetable-grid .tt-room{font-size:8.5px}
 
-  /* -- Admin search bar -- */
+  /* ---------- ADMIN ---------- */
+  .admin-stat-grid{grid-template-columns:repeat(2,1fr);gap:10px}
   .admin-search-bar{flex-direction:column;align-items:stretch}
   .admin-search-bar input,
   .admin-search-bar select{width:100%}
   .admin-search-bar button{width:100%;justify-content:center}
-
-  /* -- Admin tab scroll snap -- */
   .admin-tabs{
-    scroll-snap-type:x mandatory;
-    padding:6px;
+    scroll-snap-type:x mandatory;padding:6px;
     margin-left:calc(-1 * var(--container-pad));
     margin-right:calc(-1 * var(--container-pad));
     padding-left:var(--container-pad);
     padding-right:var(--container-pad);
-    border-radius:0;
-    border-left:none;
-    border-right:none;
+    border-radius:0;border-left:none;border-right:none;
   }
   .admin-tab{scroll-snap-align:start}
-
-  /* -- Filter bar -- */
   .filter-bar{flex-direction:column;align-items:stretch}
   .filter-bar input,
   .filter-bar select,
   .filter-bar button{width:100%}
-
-  /* -- Material item -- */
   .material-item{flex-wrap:wrap}
   .material-item .mat-actions{width:100%;justify-content:flex-start}
-
-  /* -- Notif composer options -- */
   .notif-composer .notif-tone-options label,
   .notif-composer .notif-audience-options label{font-size:11px;padding:6px 10px}
-
-  /* -- Toast -- */
   .toast{font-size:12.5px;padding:10px 16px;max-width:calc(100% - 24px)}
-
-  /* -- Admin floating buttons -- */
   .admin-edit-hint{font-size:10px;padding:6px 10px;max-width:calc(100% - 24px)}
-
-  /* -- Modal -- */
   .modal-content{border-radius:14px}
   .modal-header h2{font-size:14px}
-
-  /* -- Admin panel head -- */
   .admin-panel-head{padding:18px 16px}
   .admin-panel-head .aph-logout{padding:8px 14px;font-size:11px}
+
+  /* ---------- LIVE CAMERA POPUP (mobile) — feature disabled on phones ---------- */
+  .live-cam-popup,
+  .live-cam-popup.open,
+  .global-live-indicator{display:none!important}
+
+  .card,.course-card,.news-card,.admin-card,.academic-card,
+  .contact-form-card,.contact-info-list,.finance-entry-card,
+  .report-form-card,.notif-composer{overflow-wrap:anywhere}
 }
 
-/* Small tablets / large phones */
+/* ============================================================
+   SMALL TABLETS + LARGE PHONES
+   ============================================================ */
 @media (max-width:640px){
   .brand-text .brand-sub{display:none}
-  .header-stat{display:none}
-  .hero-slide h1{font-size:clamp(1.1rem,5.4vw,1.35rem)}
+  .site-header .brand-text .brand-name{font-size:15px}
+  .hero-slide h1{font-size:clamp(1.2rem,5.4vw,1.45rem)}
   .section-head h2{font-size:clamp(1.25rem,5.4vw,1.5rem)}
   .section-head p{font-size:12.5px}
   .card{padding:16px 15px}
-  .course-card .cc-head{padding:13px 14px}
-  .course-card .cc-body{padding:13px 14px}
-  .course-card .cc-actions{padding:0 14px 13px}
-  .quick-access .container{grid-template-columns:repeat(3,1fr)}
-  .qa-item{flex-direction:column;gap:3px;padding:8px 4px}
-  .qa-item i{width:26px;height:26px;font-size:12px}
-  .qa-item .qa-label{font-size:9px;white-space:normal;line-height:1.2;text-align:center}
   .footer-bottom{flex-direction:column;align-items:flex-start;gap:8px}
   .footer-bottom .legal{flex-direction:column;gap:6px}
   .social-edit-grid{grid-template-columns:1fr}
@@ -1578,22 +1965,24 @@ h1,h2,h3,h4,h5,h6,p,span,div,a,li,td,th,label{overflow-wrap:break-word;word-wrap
   .ledger-summary .ls-card .ls-lbl{font-size:9px;letter-spacing:.4px}
 }
 
-/* Small phones (iPhone SE, 320-390px) */
+/* ============================================================
+   SMALL PHONES
+   ============================================================ */
 @media (max-width:480px){
-  :root{--container-pad:clamp(12px,3.5vw,14px)}
+  :root{--container-pad:14px}
   .quick-access .container{grid-template-columns:repeat(3,1fr)}
-  .qa-item i{width:24px;height:24px;font-size:11px}
-  .qa-item .qa-label{font-size:8.5px}
+  .qa-item i{width:26px;height:26px;font-size:12px}
+  .qa-item .qa-label{font-size:9px}
   .admin-stat-grid{grid-template-columns:1fr;gap:9px}
   .admin-stat-card .asc-label{font-size:9.5px}
   .admin-stat-card .asc-num{font-size:16px}
-  .hero-slide h1{font-size:1.1rem}
+  .hero-slide h1{font-size:1.15rem}
+  .site-header .brand-text .brand-name{font-size:14.5px}
+  .site-header .brand-mark{width:40px;height:40px;font-size:16px}
   .hero-slide .btn-hero-primary,
-  .hero-slide .btn-hero-secondary{padding:9px 12px;font-size:10.5px}
+  .hero-slide .btn-hero-secondary{height:34px;padding:0 10px;font-size:10px}
   .section-head h2{font-size:1.2rem}
-  .grid-2,
-  .grid-3,
-  .grid-4{gap:12px}
+  .grid-2,.grid-3,.grid-4{gap:12px}
   .card{padding:14px 13px}
   .card h3{font-size:13.5px}
   .card p{font-size:12px}
@@ -1620,15 +2009,21 @@ h1,h2,h3,h4,h5,h6,p,span,div,a,li,td,th,label{overflow-wrap:break-word;word-wrap
   .form-actions .btn{flex:1 1 auto;justify-content:center}
 }
 
-/* Very small phones (320px) */
+/* ============================================================
+   VERY SMALL PHONES
+   ============================================================ */
 @media (max-width:360px){
   :root{--container-pad:11px}
-  .brand-text .brand-name{font-size:12px}
-  .brand-mark{width:34px;height:34px;font-size:14px}
-  .btn-apply-header,
-  .btn-portal-header{padding:6px 8px;font-size:10px}
-  .btn-apply-header .long,
-  .btn-portal-header .long{display:none}
+  .brand-text .brand-name{font-size:13.5px}
+  .brand-mark{width:34px;height:34px;font-size:14px;flex-shrink:0}
+  .site-header .header-right{gap:5px;grid-template-columns:40px 1fr 1fr 40px}
+  .site-header .btn-apply-header,
+  .site-header .btn-portal-header{padding:0 5px;font-size:9.5px;letter-spacing:0;height:42px;min-height:42px;gap:4px}
+  .site-header .btn-apply-header > i:first-child,
+  .site-header .btn-portal-header > i:first-child{font-size:11px}
+  .site-header .lock-icon-header{width:40px;height:40px}
+  .site-header .hvc-hamburger{width:40px;height:40px;min-width:40px;min-height:40px}
+  /* (removed duplicate — see rule above) */
   .topbar .contact-info a:nth-child(2){display:none}
   .quick-access .container{grid-template-columns:repeat(2,1fr)}
   .qa-item{border-right:1px solid var(--border);border-bottom:1px solid var(--border)}
@@ -1639,79 +2034,55 @@ h1,h2,h3,h4,h5,h6,p,span,div,a,li,td,th,label{overflow-wrap:break-word;word-wrap
   .notif-composer .notif-tone-options label,
   .notif-composer .notif-audience-options label{font-size:10px;padding:5px 8px}
   .admin-tab{font-size:10px;padding:7px 10px}
+  .hvc-drawer{width:min(240px,78vw)}
+  .hvc-drawer-actions.hvc-drawer-actions-grid{gap:6px;padding:12px 10px 6px}
+  .hvc-drawer-actions.hvc-drawer-actions-grid .hvc-drawer-btn{padding:11px 4px;font-size:10.5px;gap:5px}
+  .hvc-drawer-actions.hvc-drawer-actions-grid .hvc-drawer-btn i{font-size:12px}
 }
 
-/* Landscape phones — reduce hero height */
+/* ============================================================
+   LANDSCAPE PHONES
+   ============================================================ */
 @media (max-height:500px) and (orientation:landscape){
   .hero-slider{height:auto}
-  .hero-slide img{aspect-ratio:16/9}
+  .hero-slide img{aspect-ratio:16/9;max-height:88vh}
   .hero-slide h1{font-size:1.1rem}
   .live-cam-popup{max-height:96vh}
   .live-cam-stage{max-height:52vh}
 }
 
-/* Reduce motion */
+/* ============================================================
+   REDUCED MOTION
+   ============================================================ */
 @media (prefers-reduced-motion:reduce){
-  *,
-  *::before,
-  *::after{animation-duration:.01ms!important;animation-iteration-count:1!important;transition-duration:.01ms!important;scroll-behavior:auto!important}
+  *,*::before,*::after{
+    animation-duration:.01ms!important;
+    animation-iteration-count:1!important;
+    transition-duration:.01ms!important;
+    scroll-behavior:auto!important;
+  }
   .hero-slide{transition:none}
 }
 
-/* Print */
+/* ============================================================
+   PRINT
+   ============================================================ */
 @media print{
-  .topbar,
-  .main-nav,
-  .site-header,
-  .site-footer,
-  .scroll-top-btn,
-  .install-banner,
-  .admin-mode-indicator,
-  .admin-save-btn,
-  .admin-export-btn,
-  .admin-edit-hint,
-  .notification-bell,
-  .notification-display,
-  .live-cam-popup,
-  .global-live-indicator,
-  .hero-nav,
-  .hero-dots{display:none!important}
+  .topbar,.main-nav,.site-header,.site-footer,.scroll-top-btn,
+  .install-banner,.admin-mode-indicator,.admin-save-btn,.admin-export-btn,
+  .admin-edit-hint,.notification-bell,.notification-display,.live-cam-popup,
+  .global-live-indicator,.hero-nav,.hero-dots,.hvc-hamburger,.hvc-drawer,.hvc-drawer-backdrop{display:none!important}
   .page-section{display:block!important;padding:10px 0}
   body{background:#fff}
 }
-</style>
-<style>
+
 /* ============================================================
-   PART 2 STYLE — micro-refinements that layer on top of Part 1
-   (kept separate so the original file structure is preserved)
+   MICRO REFINEMENTS
    ============================================================ */
-
-/* Prevent iOS from zooming on input focus — force 16px */
-@media (max-width:768px){
-  input,select,textarea{
-    font-size:16px!important;
-  }
-  .hero-slide-manager .slide-item .si-info input,
-  .hero-slide-manager .slide-item .si-info textarea,
-  .tt-editor-table input{
-    font-size:16px!important;
-  }
-}
-
-/* Fix iOS 100vh issues globally */
-@supports (height:100dvh){
-  .nav-list{max-height:100dvh}
-}
-
-/* Ensure nothing inside a section can escape the container on mobile */
 @media (max-width:768px){
   .page-section{overflow-x:clip}
-  .card, .course-card, .news-card, .admin-card, .academic-card,
-  .contact-form-card, .contact-info-list, .finance-entry-card,
-  .report-form-card, .notif-composer{overflow-wrap:anywhere}
 }
 
-/* Stop long unbreakable strings (URLs, tokens, IDs) from causing overflow */
 .contact-row .cr-value,
 .announcement-item p,
 .notif-history-item .nh-msg,
@@ -1721,66 +2092,12 @@ h1,h2,h3,h4,h5,h6,p,span,div,a,li,td,th,label{overflow-wrap:break-word;word-wrap
 .modal-body,
 .material-item .mat-title{overflow-wrap:anywhere;word-break:break-word}
 
-/* Keep section headings from ever colliding with the eyebrow rule */
-.section-head{padding-top:2px;padding-bottom:2px}
-.section-head h2:only-child{margin-top:0}
-
-/* Improve tap targets on mobile */
-@media (max-width:768px){
-  .btn, button, a.qa-item, .course-card .cc-actions button,
-  .admin-tab, .student-dash-tab, .modal-close,
-  .notification-bell, .nav-toggle, .lock-icon-header{
-    min-height:40px;
-  }
-  .modal-close,
-  .nav-toggle,
-  .lock-icon-header,
-  .notification-bell{min-height:unset}
-}
-
-/* Fix dropdown hover gap on desktop (invisible bridge) */
-@media (min-width:769px){
-  .nav-list > li > .dropdown::before{
-    content:'';position:absolute;top:-12px;left:0;right:0;height:12px;
-  }
-}
-
-/* Hero description card: never overflow the slide on desktop */
-@media (min-width:901px){
-  .hero-slide .hero-description{
-    max-width:min(340px,32vw);
-  }
-}
-
-/* Two-column readme blocks inside about page */
-@media (max-width:900px){
-  #aboutWho,
-  #aboutVision{grid-template-columns:1fr}
-}
-
-/* Admin: force wrap on long IDs anywhere */
-.admin-table-wrap td,
-.admin-table-wrap th{word-break:break-word}
-
-/* Admin panel head on very small screens */
-@media (max-width:400px){
-  .admin-panel-head h3{font-size:14px}
-  .admin-panel-head p{font-size:11px}
-}
-
-/* Stepper horizontal scroll hint */
 .stepper::after{
   content:'';position:sticky;right:0;top:0;bottom:0;width:16px;
   background:linear-gradient(90deg,transparent,rgba(251,252,253,.9));
   pointer-events:none;flex:0 0 16px;
 }
 
-/* Live camera minimized state */
-.live-cam-popup.minimized .live-cam-stage,
-.live-cam-popup.minimized .live-cam-footer,
-.live-cam-popup.minimized .live-cam-filter-strip{display:none}
-
-/* Notification display on tiny screens */
 @media (max-width:400px){
   .notification-display{
     right:8px;left:8px;top:calc(56px + var(--safe-top));
@@ -1788,13 +2105,16 @@ h1,h2,h3,h4,h5,h6,p,span,div,a,li,td,th,label{overflow-wrap:break-word;word-wrap
   }
 }
 
-/* ============================================================
-   MOBILE HAMBURGER OVERLAY — final polish
-   ============================================================ */
-.nav-toggle .burger{pointer-events:none}
-.nav-toggle:focus-visible{outline:2px solid var(--gold);outline-offset:2px}
-.nav-list.open::-webkit-scrollbar{width:5px}
-.nav-list.open::-webkit-scrollbar-thumb{background:rgba(255,255,255,.2);border-radius:3px}
+/* Better tap targets on mobile */
+@media (hover:none) and (pointer:coarse){
+  button,.btn,.qa-item,.lock-icon-header,
+  .notification-bell,.modal-close,.admin-tab,.student-dash-tab,
+  .hero-slide .btn-hero-primary,.hero-slide .btn-hero-secondary,
+  .course-card .cc-actions button,.material-item .mat-actions button,
+  .filter-bar button,.admin-search-bar button{min-height:40px}
+  .contact-social-row a,
+  .footer-social a{min-width:44px;min-height:44px}
+}
 </style>
 </head>
 <body>
@@ -2026,7 +2346,7 @@ h1,h2,h3,h4,h5,h6,p,span,div,a,li,td,th,label{overflow-wrap:break-word;word-wrap
 </div>
 
 <!-- ============================================================
-     TOP BAR
+     TOP BAR (camera icon-only on mobile)
      ============================================================ -->
 <div class="topbar">
   <div class="container">
@@ -2036,7 +2356,7 @@ h1,h2,h3,h4,h5,h6,p,span,div,a,li,td,th,label{overflow-wrap:break-word;word-wrap
       <a href="#" onclick="showPage('contact');return false;"><i class="fas fa-map-marker-alt"></i> <span data-key="topLocation">Runyenjes, Embu County</span></a>
     </div>
     <div class="quick-links">
-      <button class="topbar-cam-btn" onclick="openLiveCamera()" type="button" title="Open Live Camera Studio">
+      <button class="topbar-cam-btn" onclick="openLiveCamera()" type="button" title="Open Live Camera Studio" aria-label="Camera">
         <i class="fas fa-camera"></i> <span data-key="topCamLabel">Camera</span>
       </button>
       <a href="#" onclick="showPage('status');return false;"><i class="fas fa-search"></i> <span data-key="topStatus">Check Status</span></a>
@@ -2045,7 +2365,7 @@ h1,h2,h3,h4,h5,h6,p,span,div,a,li,td,th,label{overflow-wrap:break-word;word-wrap
 </div>
 
 <!-- ============================================================
-     SITE HEADER
+     SITE HEADER (hamburger on mobile, all actions visible)
      ============================================================ -->
 <header class="site-header">
   <div class="container">
@@ -2068,26 +2388,22 @@ h1,h2,h3,h4,h5,h6,p,span,div,a,li,td,th,label{overflow-wrap:break-word;word-wrap
         <span class="bell-dot" id="bellDot"></span>
       </div>
       <button class="btn-apply-header" onclick="showPage('apply')" type="button"><i class="fas fa-file-signature"></i> <span class="long" data-key="btnApply">Apply Now</span></button>
+      <button class="hvc-hamburger" id="hvcHamburger" onclick="openHvcDrawer()" type="button" aria-label="Open menu">
+        <i class="fas fa-bars"></i>
+      </button>
     </div>
   </div>
 </header>
 
 <!-- ============================================================
-     MAIN NAVIGATION (with premium animated hamburger)
+     MAIN NAV (desktop only — hidden on mobile)
      ============================================================ -->
 <nav class="main-nav">
   <div class="container">
-    <button class="nav-toggle" id="navToggle" onclick="toggleMobileNav()" type="button" aria-label="Toggle menu" aria-expanded="false" aria-controls="navList">
-      <span class="burger" aria-hidden="true">
-        <span></span>
-        <span></span>
-        <span></span>
-      </span>
-    </button>
-    <ul class="nav-list" id="navList">
+    <ul class="nav-list" id="navList" data-nav-role="menu">
       <li class="active" data-page="home"><a href="#" onclick="showPage('home');return false;"><i class="fas fa-home"></i> <span data-key="navHome">Home</span></a></li>
       <li data-page="about">
-        <button onclick="toggleDropdown(this);" type="button"><span data-key="navAbout">About Us</span> <i class="fas fa-chevron-down caret"></i></button>
+        <button onclick="toggleDropdown(this);" type="button"><i class="fas fa-info-circle"></i> <span data-key="navAbout">About Us</span> <i class="fas fa-chevron-down caret"></i></button>
         <ul class="dropdown">
           <li><a href="#" onclick="navigateToSection('about','aboutWho');return false;"><i class="fas fa-info-circle"></i> <span data-key="navAboutCollege">About the College</span></a></li>
           <li><a href="#" onclick="navigateToSection('about','aboutVision');return false;"><i class="fas fa-bullseye"></i> <span data-key="navVisionMission">Vision &amp; Mission</span></a></li>
@@ -2098,13 +2414,13 @@ h1,h2,h3,h4,h5,h6,p,span,div,a,li,td,th,label{overflow-wrap:break-word;word-wrap
         </ul>
       </li>
       <li data-page="courses">
-        <button onclick="toggleDropdown(this);" type="button"><span data-key="navCourses">Courses</span> <i class="fas fa-chevron-down caret"></i></button>
+        <button onclick="toggleDropdown(this);" type="button"><i class="fas fa-graduation-cap"></i> <span data-key="navCourses">Courses</span> <i class="fas fa-chevron-down caret"></i></button>
         <ul class="dropdown">
           <li><a href="#" onclick="navigateToSection('courses','allCourses');return false;"><i class="fas fa-book"></i> <span data-key="navShortCourses">Short Courses</span></a></li>
         </ul>
       </li>
       <li data-page="admissions">
-        <button onclick="toggleDropdown(this);" type="button"><span data-key="navAdmissions">Admissions</span> <i class="fas fa-chevron-down caret"></i></button>
+        <button onclick="toggleDropdown(this);" type="button"><i class="fas fa-clipboard-check"></i> <span data-key="navAdmissions">Admissions</span> <i class="fas fa-chevron-down caret"></i></button>
         <ul class="dropdown">
           <li><a href="#" onclick="navigateToSection('admissions','adHowToApply');return false;"><i class="fas fa-list-ol"></i> <span data-key="navHowToApply">How to Apply</span></a></li>
           <li><a href="#" onclick="navigateToSection('admissions','adIntake');return false;"><i class="fas fa-calendar"></i> <span data-key="navIntakeDates">Intake Dates</span></a></li>
@@ -2114,7 +2430,7 @@ h1,h2,h3,h4,h5,h6,p,span,div,a,li,td,th,label{overflow-wrap:break-word;word-wrap
         </ul>
       </li>
       <li data-page="portal">
-        <button onclick="toggleDropdown(this);" type="button"><span data-key="navStudents">Students</span> <i class="fas fa-chevron-down caret"></i></button>
+        <button onclick="toggleDropdown(this);" type="button"><i class="fas fa-user-graduate"></i> <span data-key="navStudents">Students</span> <i class="fas fa-chevron-down caret"></i></button>
         <ul class="dropdown">
           <li><a href="#" onclick="showPage('portal');return false;"><i class="fas fa-sign-in-alt"></i> <span data-key="navPortalLogin">Student Portal</span></a></li>
           <li><a href="#" onclick="showPage('liveclasses');return false;"><i class="fas fa-video"></i> <span data-key="navLiveClasses">Live Classes</span></a></li>
@@ -2131,22 +2447,102 @@ h1,h2,h3,h4,h5,h6,p,span,div,a,li,td,th,label{overflow-wrap:break-word;word-wrap
     </ul>
   </div>
 </nav>
-<div class="nav-backdrop" id="navBackdrop" onclick="closeMobileNav()" aria-hidden="true"></div>
+
+<!-- ============================================================
+     MOBILE DRAWER (hamburger menu content)
+     ============================================================ -->
+<div class="hvc-drawer-backdrop" id="hvcDrawerBackdrop" onclick="closeHvcDrawer()"></div>
+<aside class="hvc-drawer" id="hvcDrawer" role="dialog" aria-label="Mobile navigation">
+  <div class="hvc-drawer-head">
+    <div class="hvc-brand">
+      <div class="hvc-brand-mark">H</div>
+      <div class="hvc-brand-text">Highway <span>Vocational Center</span></div>
+    </div>
+    <button class="hvc-drawer-close" onclick="closeHvcDrawer()" type="button" aria-label="Close menu"><i class="fas fa-times"></i></button>
+  </div>
+
+  <ul class="hvc-drawer-list">
+    <li data-page="home"><a href="#" onclick="drawerNavigate('home');return false;"><i class="fas fa-home"></i> <span>Home</span></a></li>
+
+    <li data-page="about">
+      <button class="hvc-drawer-toggle" onclick="toggleDrawerSub(this);" type="button">
+        <i class="fas fa-info-circle"></i> <span>About Us</span> <i class="fas fa-chevron-down hvc-drawer-caret"></i>
+      </button>
+      <ul class="hvc-drawer-submenu">
+        <li><a href="#" onclick="drawerNavigateSection('about','aboutWho');return false;"><i class="fas fa-info-circle"></i> About the College</a></li>
+        <li><a href="#" onclick="drawerNavigateSection('about','aboutVision');return false;"><i class="fas fa-bullseye"></i> Vision &amp; Mission</a></li>
+        <li><a href="#" onclick="drawerNavigateSection('about','aboutValues');return false;"><i class="fas fa-heart"></i> Core Values</a></li>
+        <li><a href="#" onclick="drawerNavigateSection('about','aboutPrincipal');return false;"><i class="fas fa-user-tie"></i> Principal's Message</a></li>
+        <li><a href="#" onclick="drawerNavigateSection('about','aboutAccreditation');return false;"><i class="fas fa-certificate"></i> Accreditation</a></li>
+        <li><a href="#" onclick="drawerNavigateSection('about','aboutDepartments');return false;"><i class="fas fa-building"></i> Departments</a></li>
+      </ul>
+    </li>
+
+    <li data-page="courses">
+      <button class="hvc-drawer-toggle" onclick="toggleDrawerSub(this);" type="button">
+        <i class="fas fa-graduation-cap"></i> <span>Courses</span> <i class="fas fa-chevron-down hvc-drawer-caret"></i>
+      </button>
+      <ul class="hvc-drawer-submenu">
+        <li><a href="#" onclick="drawerNavigate('courses');return false;"><i class="fas fa-book"></i> All Courses</a></li>
+        <li><a href="#" onclick="drawerNavigateSection('courses','allCourses');return false;"><i class="fas fa-book"></i> Short Courses</a></li>
+      </ul>
+    </li>
+
+    <li data-page="admissions">
+      <button class="hvc-drawer-toggle" onclick="toggleDrawerSub(this);" type="button">
+        <i class="fas fa-clipboard-check"></i> <span>Admissions</span> <i class="fas fa-chevron-down hvc-drawer-caret"></i>
+      </button>
+      <ul class="hvc-drawer-submenu">
+        <li><a href="#" onclick="drawerNavigateSection('admissions','adHowToApply');return false;"><i class="fas fa-list-ol"></i> How to Apply</a></li>
+        <li><a href="#" onclick="drawerNavigateSection('admissions','adIntake');return false;"><i class="fas fa-calendar"></i> Intake Dates</a></li>
+        <li><a href="#" onclick="drawerNavigate('apply');return false;"><i class="fas fa-file-signature"></i> Apply Online</a></li>
+        <li><a href="#" onclick="drawerNavigateSection('admissions','adScholarship');return false;"><i class="fas fa-hand-holding-usd"></i> Scholarships</a></li>
+        <li><a href="#" onclick="drawerNavigateSection('admissions','adFaq');return false;"><i class="fas fa-question-circle"></i> FAQ</a></li>
+      </ul>
+    </li>
+
+    <li data-page="portal">
+      <button class="hvc-drawer-toggle" onclick="toggleDrawerSub(this);" type="button">
+        <i class="fas fa-user-graduate"></i> <span>Students</span> <i class="fas fa-chevron-down hvc-drawer-caret"></i>
+      </button>
+      <ul class="hvc-drawer-submenu">
+        <li><a href="#" onclick="drawerNavigate('portal');return false;"><i class="fas fa-sign-in-alt"></i> Student Portal</a></li>
+        <li><a href="#" onclick="drawerNavigate('liveclasses');return false;"><i class="fas fa-video"></i> Live Classes</a></li>
+        <li><a href="#" onclick="drawerNavigate('studentlife');return false;"><i class="fas fa-users"></i> Student Life</a></li>
+        <li><a href="#" onclick="drawerNavigate('resources');return false;"><i class="fas fa-folder-open"></i> Resources</a></li>
+        <li><a href="#" onclick="drawerNavigate('status');return false;"><i class="fas fa-search"></i> Check Status</a></li>
+      </ul>
+    </li>
+
+    <li data-page="liveclasses"><a href="#" onclick="drawerNavigate('liveclasses');return false;"><i class="fas fa-video"></i> <span>Live Classes</span></a></li>
+    <li data-page="news"><a href="#" onclick="drawerNavigate('news');return false;"><i class="fas fa-newspaper"></i> <span>News</span></a></li>
+    <li data-page="gallery"><a href="#" onclick="drawerNavigate('gallery');return false;"><i class="fas fa-images"></i> <span>Gallery</span></a></li>
+    <li data-page="contact"><a href="#" onclick="drawerNavigate('contact');return false;"><i class="fas fa-map-pin"></i> <span>Contact</span></a></li>
+    <li data-page="status"><a href="#" onclick="drawerNavigate('status');return false;"><i class="fas fa-search"></i> <span>Check Status</span></a></li>
+    <li data-page="admin" id="hvcDrawerAdminLi" style="display:none;"><a href="#" onclick="drawerNavigate('admin');return false;"><i class="fas fa-user-shield"></i> <span>Admin Panel</span></a></li>
+  </ul>
+
+  <div class="hvc-drawer-actions hvc-drawer-actions-grid">
+    <button class="hvc-drawer-btn hvc-drawer-btn-primary" onclick="drawerNavigate('apply')" type="button" title="Apply Now"><i class="fas fa-file-signature"></i><span>Apply</span></button>
+    <button class="hvc-drawer-btn hvc-drawer-btn-secondary" onclick="drawerNavigate('portal')" type="button" title="Student Portal"><i class="fas fa-user-graduate"></i><span>Portal</span></button>
+    <button class="hvc-drawer-btn hvc-drawer-btn-admin" onclick="closeHvcDrawer();setTimeout(openAdminPanelLogin,220);" type="button" title="School Admin"><i class="fas fa-user-shield"></i><span>Admin</span></button>
+    <button class="hvc-drawer-btn hvc-drawer-btn-install" id="hvcDrawerInstallBtn" onclick="hvcDrawerInstallClick()" type="button" title="Install App"><i class="fas fa-download"></i><span>Install</span></button>
+  </div>
+</aside>
 
 <main>
   <!-- ============================================================
-       HOME PAGE
-       ============================================================ -->
-  <section class="page-section active-section" id="page-home" style="padding:0;">
+     HOME PAGE
+     ============================================================ -->
+<section class="page-section active-section" id="page-home" style="padding:0;">
   <div class="hero-slider" id="heroSlider">
+    <div id="heroSlidesContainer"></div>
     <div class="hero-placeholder" id="heroPlaceholder">
       <i class="fas fa-images"></i>
       <p data-key="heroPlaceholderText">No slides yet. Enable Edit Mode (Ctrl+Shift+A) to add hero slides.</p>
     </div>
-    <div id="heroSlidesContainer"></div>
     <button class="hero-nav hero-prev" id="heroPrev" type="button" aria-label="Previous slide"><i class="fas fa-chevron-left"></i></button>
     <button class="hero-nav hero-next" id="heroNext" type="button" aria-label="Next slide"><i class="fas fa-chevron-right"></i></button>
-    <div class="hero-dots" id="heroDots"></div>
   </div>
 
   <div class="container">
@@ -2238,9 +2634,9 @@ h1,h2,h3,h4,h5,h6,p,span,div,a,li,td,th,label{overflow-wrap:break-word;word-wrap
     <div class="container">
       <h2 data-key="ctaTitle" style="font-family:var(--font-heading);font-size:clamp(1.35rem,3.6vw,1.65rem);font-weight:800;margin-bottom:12px;color:#fff;">Ready to Start Your Journey?</h2>
       <p data-key="ctaText" style="color:#cbd5e1;font-size:clamp(12.5px,1.35vw,13.5px);max-width:580px;margin:0 auto 22px;line-height:1.65">Join hundreds of students who have transformed their lives through quality vocational training at Highway Vocational Center.</p>
-      <div style="display:flex;gap:10px;justify-content:center;flex-wrap:wrap;">
-        <button onclick="showPage('apply')" type="button" style="background:var(--green);color:#fff;padding:11px 22px;border-radius:5px;font-weight:700;font-size:12px;border:none;cursor:pointer;display:inline-flex;align-items:center;gap:7px;text-transform:uppercase;letter-spacing:.4px;"><i class="fas fa-file-signature"></i> <span data-key="ctaApplyBtn">Apply Online Now</span></button>
-        <button onclick="showPage('contact')" type="button" style="background:transparent;color:#fff;padding:11px 22px;border-radius:5px;font-weight:700;font-size:12px;border:1.5px solid rgba(255,255,255,.35);cursor:pointer;display:inline-flex;align-items:center;gap:7px;text-transform:uppercase;letter-spacing:.4px;"><i class="fas fa-phone"></i> <span data-key="ctaContactBtn">Contact Us</span></button>
+      <div class="home-cta-buttons">
+        <button onclick="showPage('apply')" type="button" class="home-cta-btn home-cta-primary"><i class="fas fa-file-signature"></i> <span data-key="ctaApplyBtn">Apply Online Now</span></button>
+        <button onclick="showPage('contact')" type="button" class="home-cta-btn home-cta-secondary"><i class="fas fa-phone"></i> <span data-key="ctaContactBtn">Contact Us</span></button>
       </div>
     </div>
   </div>
@@ -2296,25 +2692,25 @@ h1,h2,h3,h4,h5,h6,p,span,div,a,li,td,th,label{overflow-wrap:break-word;word-wrap
     </div>
     <div class="mt-30" id="aboutDepartments">
       <h3 style="font-family:var(--font-heading);color:var(--navy);font-size:clamp(15px,1.8vw,17.5px);margin-bottom:16px;" data-key="deptFacTitle">Departments &amp; Facilities</h3>
-      <div class="grid-2">
+      <div class="grid-2 dept-grid">
         <div class="card">
           <div class="card-icon"><i class="fas fa-building"></i></div>
           <h3 data-key="deptTitle">Departments</h3>
-          <ul style="list-style:none;padding:0;">
-            <li style="padding:5px 0;font-size:13px;"><i class="fas fa-check" style="color:var(--green);margin-right:8px;"></i><span data-key="dept1">Computer Studies Department</span></li>
-            <li style="padding:5px 0;font-size:13px;"><i class="fas fa-check" style="color:var(--green);margin-right:8px;"></i><span data-key="dept2">Beauty &amp; Therapy Department</span></li>
-            <li style="padding:5px 0;font-size:13px;"><i class="fas fa-check" style="color:var(--green);margin-right:8px;"></i><span data-key="dept3">HairDressing Department</span></li>
-            <li style="padding:5px 0;font-size:13px;"><i class="fas fa-check" style="color:var(--green);margin-right:8px;"></i><span data-key="dept4">Cyber &amp; eCitizen Services</span></li>
+          <ul class="dept-list">
+            <li><i class="fas fa-check"></i><span data-key="dept1">Computer Studies Department</span></li>
+            <li><i class="fas fa-check"></i><span data-key="dept2">Beauty &amp; Therapy Department</span></li>
+            <li><i class="fas fa-check"></i><span data-key="dept3">HairDressing Department</span></li>
+            <li><i class="fas fa-check"></i><span data-key="dept4">Cyber &amp; eCitizen Services</span></li>
           </ul>
         </div>
         <div class="card">
           <div class="card-icon"><i class="fas fa-desktop"></i></div>
           <h3 data-key="facTitle">Facilities</h3>
-          <ul style="list-style:none;padding:0;">
-            <li style="padding:5px 0;font-size:13px;"><i class="fas fa-check" style="color:var(--green);margin-right:8px;"></i><span data-key="fac1">Modern Computer Lab</span></li>
-            <li style="padding:5px 0;font-size:13px;"><i class="fas fa-check" style="color:var(--green);margin-right:8px;"></i><span data-key="fac2">Beauty &amp; Therapy Workshop</span></li>
-            <li style="padding:5px 0;font-size:13px;"><i class="fas fa-check" style="color:var(--green);margin-right:8px;"></i><span data-key="fac3">HairDressing Salon</span></li>
-            <li style="padding:5px 0;font-size:13px;"><i class="fas fa-check" style="color:var(--green);margin-right:8px;"></i><span data-key="fac4">Cyber Café &amp; Printing</span></li>
+          <ul class="dept-list">
+            <li><i class="fas fa-check"></i><span data-key="fac1">Modern Computer Lab</span></li>
+            <li><i class="fas fa-check"></i><span data-key="fac2">Beauty &amp; Therapy Workshop</span></li>
+            <li><i class="fas fa-check"></i><span data-key="fac3">HairDressing Salon</span></li>
+            <li><i class="fas fa-check"></i><span data-key="fac4">Cyber Café &amp; Printing</span></li>
           </ul>
         </div>
       </div>
@@ -2379,7 +2775,6 @@ h1,h2,h3,h4,h5,h6,p,span,div,a,li,td,th,label{overflow-wrap:break-word;word-wrap
     <div id="coursesDynamicWrap" style="margin-top:20px;"></div>
   </div>
 </section>
-
 <!-- ============================================================
      ADMISSIONS PAGE
      ============================================================ -->
@@ -2465,7 +2860,6 @@ h1,h2,h3,h4,h5,h6,p,span,div,a,li,td,th,label{overflow-wrap:break-word;word-wrap
     </div>
     <div class="card" style="padding:clamp(18px,3vw,28px);box-shadow:var(--shadow-md);">
       <form id="applicationForm" onsubmit="return false;" novalidate>
-        <!-- STEP 1 -->
         <div class="app-step active" data-step="1">
           <h3><i class="fas fa-user"></i> <span data-key="formStep1Title">Step 1: Personal Information</span></h3>
           <p class="step-desc" data-key="formStep1Desc">Please provide your personal details exactly as they appear on your official documents.</p>
@@ -2493,7 +2887,6 @@ h1,h2,h3,h4,h5,h6,p,span,div,a,li,td,th,label{overflow-wrap:break-word;word-wrap
           <div class="form-actions"><button type="button" class="btn btn-primary" onclick="goToAppStep(2)"><span data-key="formNextBtn">Next</span> <i class="fas fa-arrow-right"></i></button></div>
         </div>
 
-        <!-- STEP 2 -->
         <div class="app-step" data-step="2">
           <h3><i class="fas fa-address-book"></i> <span data-key="formStep2Title">Step 2: Contact Information</span></h3>
           <p class="step-desc" data-key="formStep2Desc">Provide your current contact details so we can reach you.</p>
@@ -2521,7 +2914,6 @@ h1,h2,h3,h4,h5,h6,p,span,div,a,li,td,th,label{overflow-wrap:break-word;word-wrap
           </div>
         </div>
 
-        <!-- STEP 3 -->
         <div class="app-step" data-step="3">
           <h3><i class="fas fa-school"></i> <span data-key="formStep3Title">Step 3: Academic Background</span></h3>
           <p class="step-desc" data-key="formStep3Desc">Tell us about your educational qualifications.</p>
@@ -2540,7 +2932,6 @@ h1,h2,h3,h4,h5,h6,p,span,div,a,li,td,th,label{overflow-wrap:break-word;word-wrap
           </div>
         </div>
 
-        <!-- STEP 4 -->
         <div class="app-step" data-step="4">
           <h3><i class="fas fa-graduation-cap"></i> <span data-key="formStep4Title">Step 4: Course Selection</span></h3>
           <p class="step-desc" data-key="formStep4Desc">Choose the program you wish to pursue.</p>
@@ -2568,7 +2959,6 @@ h1,h2,h3,h4,h5,h6,p,span,div,a,li,td,th,label{overflow-wrap:break-word;word-wrap
           </div>
         </div>
 
-        <!-- STEP 5 -->
         <div class="app-step" data-step="5">
           <h3><i class="fas fa-users"></i> <span data-key="formStep5Title">Step 5: Parent / Guardian Information</span></h3>
           <p class="step-desc" data-key="formStep5Desc">Provide details of your parent or guardian.</p>
@@ -2588,7 +2978,6 @@ h1,h2,h3,h4,h5,h6,p,span,div,a,li,td,th,label{overflow-wrap:break-word;word-wrap
           </div>
         </div>
 
-        <!-- STEP 6 -->
         <div class="app-step" data-step="6">
           <h3><i class="fas fa-upload"></i> <span data-key="formStep6Title">Step 6: Upload Documents</span></h3>
           <p class="step-desc" data-key="formStep6Desc">Upload clear copies of your documents. Accepted formats: PDF, JPG, PNG. Max 5MB each.</p>
@@ -2602,7 +2991,6 @@ h1,h2,h3,h4,h5,h6,p,span,div,a,li,td,th,label{overflow-wrap:break-word;word-wrap
           </div>
         </div>
 
-        <!-- STEP 7 -->
         <div class="app-step" data-step="7">
           <h3><i class="fas fa-info-circle"></i> <span data-key="formStep7Title">Step 7: Additional Information</span></h3>
           <p class="step-desc" data-key="formStep7Desc">Help us understand your needs better.</p>
@@ -2618,7 +3006,6 @@ h1,h2,h3,h4,h5,h6,p,span,div,a,li,td,th,label{overflow-wrap:break-word;word-wrap
           </div>
         </div>
 
-        <!-- STEP 8 -->
         <div class="app-step" data-step="8">
           <h3><i class="fas fa-check-circle"></i> <span data-key="formStep8Title">Step 8: Declaration &amp; Submission</span></h3>
           <p class="step-desc" data-key="formStep8Desc">Please review your application before submitting.</p>
@@ -2678,7 +3065,6 @@ h1,h2,h3,h4,h5,h6,p,span,div,a,li,td,th,label{overflow-wrap:break-word;word-wrap
     </div>
   </div>
 </section>
-
 <!-- ============================================================
      STUDENT PORTAL PAGE
      ============================================================ -->
@@ -2894,7 +3280,6 @@ h1,h2,h3,h4,h5,h6,p,span,div,a,li,td,th,label{overflow-wrap:break-word;word-wrap
     </div>
   </div>
 </section>
-
 <!-- ============================================================
      NEWS PAGE
      ============================================================ -->
@@ -3160,7 +3545,6 @@ h1,h2,h3,h4,h5,h6,p,span,div,a,li,td,th,label{overflow-wrap:break-word;word-wrap
     </div>
   </div>
 </section>
-
 <!-- ============================================================
      ADMIN PANEL PAGE
      ============================================================ -->
@@ -3472,8 +3856,7 @@ h1,h2,h3,h4,h5,h6,p,span,div,a,li,td,th,label{overflow-wrap:break-word;word-wrap
         </div>
       </div>
     </div>
-
-    <!-- RESOURCES TAB -->
+        <!-- RESOURCES TAB -->
     <div class="admin-tab-content" id="adminTab-resources">
       <div class="admin-card">
         <div class="admin-card-head">
@@ -3797,9 +4180,11 @@ h1,h2,h3,h4,h5,h6,p,span,div,a,li,td,th,label{overflow-wrap:break-word;word-wrap
         <p style="font-size:12.5px;" data-key="adminEditModeText">Press Ctrl+Shift+A anywhere to unlock full text-edit mode. Almost every label, button, heading, and menu on the site is editable. Click Save to publish.</p>
       </div>
     </div>
+
   </div>
 </section>
 </main>
+
 <!-- ============================================================
      FOOTER
      ============================================================ -->
@@ -3913,7 +4298,7 @@ h1,h2,h3,h4,h5,h6,p,span,div,a,li,td,th,label{overflow-wrap:break-word;word-wrap
      GALLERY VIEWER MODAL
      ============================================================ -->
 <div class="modal-overlay" id="galleryViewerModal">
-  <div class="modal-content" style="max-width:800px;">
+  <div class="modal-content" style="max-width:800px">
     <div class="modal-header">
       <h2 id="galleryViewerTitle">Image Viewer</h2>
       <button class="modal-close" onclick="closeGalleryViewer()" type="button" aria-label="Close"><i class="fas fa-times"></i></button>
@@ -3934,11 +4319,11 @@ h1,h2,h3,h4,h5,h6,p,span,div,a,li,td,th,label{overflow-wrap:break-word;word-wrap
 <div class="toast" id="toast" role="status" aria-live="polite"></div>
 
 <script>
-(function(){
+  (function(){
 'use strict';
 
 /* ================================================================
-   GLOBAL ERROR GUARDS — prevents white-screen crashes
+   GLOBAL ERROR GUARDS
    ================================================================ */
 window.addEventListener('error', function(e){
   console.error('[hvc:error]', e.message, e.filename, e.lineno);
@@ -3952,6 +4337,17 @@ window.addEventListener('unhandledrejection', function(e){
    STATE
    ================================================================ */
 var CONFIG = { PAYMENT_ID: '' };
+/* Mobile detection — used to give mobile its own install-banner code path */
+function isMobileDevice(){
+  try {
+    var ua = navigator.userAgent || '';
+    if(/Android|iPhone|iPad|iPod|Mobile|webOS|BlackBerry|Opera Mini|IEMobile/i.test(ua)) return true;
+    /* Coarse pointer = touch device */
+    if(window.matchMedia('(hover: none) and (pointer: coarse)').matches) return true;
+    if(window.innerWidth <= 768) return true;
+  } catch(e){}
+  return false;
+}
 var adminMode = false;
 var adminPanelAuthed = false;
 var ADMIN_PANEL_PASSWORD = '';
@@ -3988,41 +4384,78 @@ var APP_ICON_KEY = 'hvc_app_icon';
 var APP_ICON_KEY_192 = 'hvc_app_icon_192';
 var APP_ICON_KEY_512 = 'hvc_app_icon_512';
 var APPLICATION_DRAFT_KEY = 'hvc_application_draft_v2';
-var __renderDebounce = Object.create(null);
+var INSTALL_FLAG_KEY = 'hvc_installed_permanently';
+var INSTALL_DISMISS_KEY = 'hvc_install_dismissed_until';
 
-/* ================================================================
-   APP ICON CONSTANTS
-   ================================================================ */
 var DEFAULT_ICON_SVG = "data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 60 60'%3E%3Crect width='60' height='60' fill='%230a1f3d'/%3E%3Ctext x='30' y='42' text-anchor='middle' fill='%23ffffff' font-size='34' font-family='Arial' font-weight='bold'%3EH%3C/text%3E%3C/svg%3E";
 
-/* Capture install prompt as early as possible */
 window.addEventListener('beforeinstallprompt', function(e){
-  e.preventDefault();
+  /* Only preventDefault if our banner element actually exists.
+     Otherwise let Chrome show its mini-infobar. */
+  var banner = document.getElementById('installBanner');
+  if(banner) e.preventDefault();
   deferredInstallPrompt = e;
   console.log('[pwa] beforeinstallprompt captured');
+
+  /* Stale flag safety net */
+  if(isPermanentlyInstalled() && !isRunningAsInstalledApp()){
+    console.warn('[pwa] stale installed flag detected — clearing');
+    try { window.SB.remove(INSTALL_FLAG_KEY); } catch(err){}
+    try { localStorage.removeItem(INSTALL_FLAG_KEY); } catch(err){}
+  }
+
   setTimeout(function(){
-    if(typeof showInstallBanner === 'function' && !isAppInstalled()) showInstallBanner();
+    if(typeof showInstallBanner === 'function') showInstallBanner();
   }, 500);
 });
+
+/* Mobile fallback: show the banner on mobile if it hasn't shown yet. */
+window.addEventListener('load', function(){
+  setTimeout(function(){
+    try {
+      if(typeof isPermanentlyInstalled === 'function' && isPermanentlyInstalled()) return;
+      if(typeof isRunningAsInstalledApp === 'function' && isRunningAsInstalledApp()) return;
+      if(typeof isInstallDismissed === 'function' && isInstallDismissed()) return;
+      if(location.protocol === 'file:') return;
+      var banner = document.getElementById('installBanner');
+      if(!banner || banner.classList.contains('show')) return;
+      if(typeof showInstallBanner === 'function') showInstallBanner();
+    } catch(e){}
+  }, 6000);
+});
+/* (removed) — we no longer auto-persist an "installed" flag on boot.
+   Only the real `appinstalled` event writes the flag. */
+
 window.addEventListener('appinstalled', function(){
   deferredInstallPrompt = null;
-  if(typeof dismissInstallBanner === 'function') dismissInstallBanner();
+  var forever = {
+    installed: true,
+    installedAt: new Date().toISOString(),
+    detectedBy: 'appinstalled',
+    ua: navigator.userAgent
+  };
+  try { window.SB.setSoon('hvc_installed_v2', forever); } catch(e){}
+  try { localStorage.setItem('hvc_installed_v2', JSON.stringify(forever)); } catch(e){}
+  try { window.SB.remove(INSTALL_FLAG_KEY); } catch(e){}
+  try { localStorage.removeItem(INSTALL_FLAG_KEY); } catch(e){}
+  var banner = document.getElementById('installBanner');
+  if(banner) banner.classList.remove('show');
   if(typeof showToast === 'function') showToast('Highway Vocational Center installed!', 'success');
 });
 
 /* ================================================================
-   LIVE CAMERA STATE
+   LIVE CAMERA STATE (unchanged)
    ================================================================ */
 var liveCamState = {
   stream:null,facing:'environment',mode:'photo',filter:'natural',flashOn:false,gridOn:false,
   timerDelay:0,recording:false,mediaRecorder:null,recordedChunks:[],micEnabled:true,captures:[],
   lastCapture:null,qrScanTimer:null,qrDetector:null,locked:false,otherSessionId:null,dragged:false,
-  pos:{x:20,y:90},minimized:false,bcLockChannel:null,sessionId:null,viewers:1
+  pos:{x:20,y:90},minimized:false,bcLockChannel:null,sessionId:null,viewers:1,ready:false
 };
 var LIVE_CAM_CAPTURE_LIMIT = 30;
 
 /* ================================================================
-   TIMETABLE DEFAULT DATA
+   TIMETABLE DATA
    ================================================================ */
 var DEFAULT_TIMETABLE_DATA = {
   days: ['Monday','Tuesday','Wednesday','Thursday','Friday'],
@@ -4088,9 +4521,6 @@ var FEE_STRUCTURE = {
   'cyber-services':     { registration: 0,   tuition: 0,    label: 'Cyber & eCitizen Services', duration: 'Daily' }
 };
 
-/* ================================================================
-   STATUS BADGE MAP
-   ================================================================ */
 var APPLICATION_STATUSES = {
   submitted:            { label: 'Submitted',           color: '#dbeafe', text: '#1e40af', step: 1 },
   documents_verified:   { label: 'Documents Verified',  color: '#e0e7ff', text: '#3730a3', step: 2 },
@@ -4272,16 +4702,6 @@ function escapeHtml(s){
     return ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'})[c];
   });
 }
-
-function debounce(fn, wait){
-  var key = fn.name || 'anon';
-  return function(){
-    var self = this, args = arguments;
-    if(__renderDebounce[key]) clearTimeout(__renderDebounce[key]);
-    __renderDebounce[key] = setTimeout(function(){ fn.apply(self, args); }, wait || 150);
-  };
-}
-
 function showToast(message, type){
   var toast = document.getElementById('toast');
   if(!toast) return;
@@ -4319,7 +4739,7 @@ window.safeGetAsync = safeGetAsync;
 window.safeSetAsync = safeSetAsync;
 
 /* ================================================================
-   IMAGE COMPRESSION
+   IMAGE COMPRESSION + SQUARE PAD
    ================================================================ */
 function compressImage(dataUrl, maxW, q){
   return new Promise(function(resolve){
@@ -4336,8 +4756,6 @@ function compressImage(dataUrl, maxW, q){
     img.src = dataUrl;
   });
 }
-
-/* Square + pad on navy to guarantee PWA size compliance */
 function squarePadImage(sourceImgOrDataUrl, size, quality){
   return new Promise(function(resolve){
     var img = new Image();
@@ -4386,18 +4804,43 @@ function showPage(pageId){
     li.classList.remove('active');
     if(li.dataset.page === pageId) li.classList.add('active');
   });
+  document.querySelectorAll('#navList > li.open').forEach(function(li){ li.classList.remove('open'); });
+  /* Sync drawer active state */
+  document.querySelectorAll('#hvcDrawer .hvc-drawer-list > li').forEach(function(li){
+    li.classList.remove('active');
+    if(li.dataset.page === pageId) li.classList.add('active');
+  });
   window.scrollTo({ top: 0, behavior: 'smooth' });
-  closeMobileNav();
   if(pageId === 'home' && heroSlides.length > 1 && !checkPause() && !autoPlayStarted) resetSlideAutoPlay();
   if(pageId === 'admin') refreshAdminPanel();
   if(pageId === 'resources') renderPublicResources();
   if(pageId === 'liveclasses') renderPublicLiveClasses();
+
+  /* Only when the Apply page is opened do we try to restore a hanging draft.
+     This prevents the "Welcome back" toast from appearing anywhere else. */
+  if(pageId === 'apply'){
+    try {
+      var formEl = document.getElementById('applicationForm');
+      var successEl = document.getElementById('applicationSuccess');
+      /* If the success screen is showing, this session just submitted —
+         never restore a draft on top of it. */
+      var justSubmitted = successEl && successEl.style.display === 'block';
+      if(!justSubmitted){
+        var restored = restoreApplicationDraft();
+        if(restored){
+          setTimeout(function(){
+            showToast('Welcome back — your unfinished application has been restored.', 'success');
+          }, 500);
+        }
+      }
+    } catch(e){ console.warn('[draft] restore failed:', e.message); }
+  }
+
   try {
     if(pageId && pageId !== 'home') history.replaceState(null, '', '#page-' + pageId);
     else history.replaceState(null, '', '#home');
   } catch(e){}
 }
-
 function navigateToSection(pageId, sectionId){
   showPage(pageId);
   setTimeout(function(){
@@ -4417,62 +4860,364 @@ function navigateToSection(pageId, sectionId){
 }
 
 /* ================================================================
-   MOBILE NAV — premium animated hamburger
+   DESKTOP NAV DROPDOWN TOGGLE
    ================================================================ */
-function toggleMobileNav(){
-  var navList = document.getElementById('navList');
-  var toggle = document.getElementById('navToggle');
-  var backdrop = document.getElementById('navBackdrop');
-  if(!navList) return;
-  var isOpen = navList.classList.toggle('open');
-  if(toggle) toggle.setAttribute('aria-expanded', isOpen ? 'true' : 'false');
-  if(backdrop) backdrop.classList.toggle('open', isOpen);
-  if(isOpen){
-    // On mobile, hoist drawer + backdrop to <body> so no parent stacking context traps them
-    if(window.innerWidth <= 768){
-      if(navList.parentNode !== document.body) document.body.appendChild(navList);
-      if(backdrop && backdrop.parentNode !== document.body) document.body.appendChild(backdrop);
-    }
-    document.body.style.overflow = 'hidden';
-    document.documentElement.style.overflow = 'hidden';
-  } else {
-    document.body.style.overflow = '';
-    document.documentElement.style.overflow = '';
-    document.querySelectorAll('.nav-list > li').forEach(function(li){ li.classList.remove('open'); });
-  }
-}
-function closeMobileNav(){
-  var navList = document.getElementById('navList');
-  var toggle = document.getElementById('navToggle');
-  var backdrop = document.getElementById('navBackdrop');
-  if(navList) navList.classList.remove('open');
-  if(toggle) toggle.setAttribute('aria-expanded', 'false');
-  if(backdrop) backdrop.classList.remove('open');
-  document.body.style.overflow = '';
-  document.documentElement.style.overflow = '';
-  document.querySelectorAll('.nav-list > li').forEach(function(li){ li.classList.remove('open'); });
-  // On desktop, restore drawer to its original home inside .main-nav
-  if(window.innerWidth > 768){
-    var mainNavContainer = document.querySelector('.main-nav .container');
-    if(navList && mainNavContainer && navList.parentNode !== mainNavContainer){
-      mainNavContainer.appendChild(navList);
-    }
-    if(backdrop && backdrop.parentNode !== document.body && backdrop.parentNode){
-      // keep backdrop on body — it's position:fixed anyway
-    }
-  }
-}
 function toggleDropdown(btn){
   var li = btn.closest('li');
   if(!li) return;
-  if(window.innerWidth <= 768){
-    li.classList.toggle('open');
-    document.querySelectorAll('.nav-list > li').forEach(function(other){ if(other !== li) other.classList.remove('open'); });
+  var wasOpen = li.classList.contains('open');
+  var siblings = li.parentNode ? li.parentNode.children : [];
+  for(var i = 0; i < siblings.length; i++){ siblings[i].classList.remove('open'); }
+  if(!wasOpen) li.classList.add('open');
+}
+document.addEventListener('click', function(e){
+  if(window.innerWidth > 768) return;
+  var clickedLi = e.target.closest && e.target.closest('#navList > li');
+  var clickedDropdown = e.target.closest && e.target.closest('#navList .dropdown');
+  if(!clickedLi && !clickedDropdown){
+    var open = document.querySelectorAll('#navList > li.open');
+    for(var i = 0; i < open.length; i++){ open[i].classList.remove('open'); }
   }
+});
+document.addEventListener('click', function(e){
+  if(window.innerWidth > 768) return;
+  var link = e.target.closest && e.target.closest('#navList .dropdown a');
+  if(link){
+    var open = document.querySelectorAll('#navList > li.open');
+    for(var i = 0; i < open.length; i++){ open[i].classList.remove('open'); }
+  }
+});
+
+/* ================================================================
+   HAMBURGER DRAWER (MOBILE)
+   ================================================================ */
+function openHvcDrawer(){
+  var d = document.getElementById('hvcDrawer');
+  var b = document.getElementById('hvcDrawerBackdrop');
+  if(!d || !b) return;
+  b.classList.add('open');
+  /* Force reflow so transition plays */
+  void d.offsetWidth;
+  d.classList.add('open');
+  document.body.style.overflow = 'hidden';
+  /* Lock orientation of hamburger icon */
+  var h = document.getElementById('hvcHamburger');
+  if(h){ var i = h.querySelector('i'); if(i) i.className = 'fas fa-times'; }
+}
+function closeHvcDrawer(){
+  var d = document.getElementById('hvcDrawer');
+  var b = document.getElementById('hvcDrawerBackdrop');
+  if(!d || !b) return;
+  d.classList.remove('open');
+  b.classList.remove('open');
+  if(!document.querySelector('.live-cam-popup.open') && !checkPause()){
+    document.body.style.overflow = '';
+  }
+  var h = document.getElementById('hvcHamburger');
+  if(h){ var i = h.querySelector('i'); if(i) i.className = 'fas fa-bars'; }
+}
+function toggleDrawerSub(btn){
+  var li = btn.closest('li');
+  if(!li) return;
+  var wasOpen = li.classList.contains('open');
+  var siblings = li.parentNode ? li.parentNode.children : [];
+  for(var i = 0; i < siblings.length; i++){ siblings[i].classList.remove('open'); }
+  if(!wasOpen) li.classList.add('open');
+}
+function drawerNavigate(pageId){
+  closeHvcDrawer();
+  setTimeout(function(){ showPage(pageId); }, 180);
+}
+function drawerNavigateSection(pageId, sectionId){
+  closeHvcDrawer();
+  setTimeout(function(){ navigateToSection(pageId, sectionId); }, 220);
+}
+/* Close drawer on resize to desktop; close camera on resize to mobile */
+window.addEventListener('resize', function(){
+  if(window.innerWidth > 768){
+    var d = document.getElementById('hvcDrawer');
+    if(d && d.classList.contains('open')) closeHvcDrawer();
+  } else {
+    var cam = document.getElementById('liveCamPopup');
+    if(cam && cam.classList.contains('open')) closeLiveCamera();
+  }
+});
+/* Close drawer with ESC (handled in keydown too, kept here for safety) */
+document.addEventListener('keydown', function(e){
+  if(e.key === 'Escape'){
+    var d = document.getElementById('hvcDrawer');
+    if(d && d.classList.contains('open')) closeHvcDrawer();
+  }
+});
+
+/* ================================================================
+   HERO SWIPE (MOBILE ONLY — finger left/right)
+   ================================================================ */
+function initHeroSwipe(){
+  var slider = document.getElementById('heroSlider');
+  if(!slider || slider.dataset.swipeInit === '1') return;
+  slider.dataset.swipeInit = '1';
+  var touchStartX = 0, touchStartY = 0, touchMoved = false, isHorizontal = false;
+  var MIN_DISTANCE = 40;
+  var RATIO = 1.4;
+
+  slider.addEventListener('touchstart', function(e){
+    if(window.innerWidth > 900) return;
+    if(!e.touches || e.touches.length !== 1) return;
+    touchStartX = e.touches[0].clientX;
+    touchStartY = e.touches[0].clientY;
+    touchMoved = false;
+    isHorizontal = false;
+  }, { passive: true });
+
+  slider.addEventListener('touchmove', function(e){
+    if(window.innerWidth > 900) return;
+    if(!e.touches || e.touches.length !== 1) return;
+    var dx = e.touches[0].clientX - touchStartX;
+    var dy = e.touches[0].clientY - touchStartY;
+    if(!touchMoved){
+      if(Math.abs(dx) > 8 || Math.abs(dy) > 8){
+        touchMoved = true;
+        isHorizontal = Math.abs(dx) > Math.abs(dy) * RATIO;
+      }
+    }
+    if(isHorizontal && Math.abs(dx) > 20){
+      /* Let our handler own the gesture, but don't preventDefault to keep it passive-safe */
+    }
+  }, { passive: true });
+
+  slider.addEventListener('touchend', function(e){
+    if(window.innerWidth > 900) return;
+    if(!touchMoved || !isHorizontal) return;
+    if(!e.changedTouches || !e.changedTouches.length) return;
+    var dx = e.changedTouches[0].clientX - touchStartX;
+    var dy = e.changedTouches[0].clientY - touchStartY;
+    if(Math.abs(dx) < MIN_DISTANCE) return;
+    if(Math.abs(dx) < Math.abs(dy) * RATIO) return;
+    if(dx < 0) nextSlide();
+    else prevSlide();
+  }, { passive: true });
 }
 
 /* ================================================================
-   HERO SLIDER
+   INSTALL BANNER — PERMANENT SILENCE AFTER INSTALL
+   ================================================================ */
+function isRunningAsInstalledApp(){
+  try {
+    if(window.matchMedia('(display-mode: standalone)').matches) return true;
+    if(window.matchMedia('(display-mode: fullscreen)').matches) return true;
+    if(window.matchMedia('(display-mode: minimal-ui)').matches) return true;
+    if(window.matchMedia('(display-mode: window-controls-overlay)').matches) return true;
+    if(window.navigator.standalone === true) return true;
+  } catch(e){}
+  return false;
+}
+function isPermanentlyInstalled(){
+  /* Only trust 100% reliable signals — nothing else. */
+  if(isRunningAsInstalledApp()) return true;
+
+  /* Trust the explicit "appinstalled" event flag (new key, only set
+     by the real event — old keys with detectedBy:'displayMode' are ignored) */
+  try {
+    var mem = safeGet('hvc_installed_v2', null);
+    if(mem && mem.installed === true && mem.detectedBy === 'appinstalled') return true;
+  } catch(e){}
+
+  try {
+    var ls = localStorage.getItem('hvc_installed_v2');
+    if(ls){
+      var o = JSON.parse(ls);
+      if(o && o.installed === true && o.detectedBy === 'appinstalled') return true;
+    }
+  } catch(e){}
+
+  /* Clean up old key so it can never block again */
+  try { localStorage.removeItem('hvc_installed_permanently'); } catch(e){}
+
+  return false;
+}
+function markInstallDismissed(permanent){
+  try {
+    if(permanent){
+      /* Permanent flag: only set this from the real `appinstalled` event,
+         never from user dismissal. Here we just do a local hide. */
+      localStorage.setItem('hvc_banner_hidden_local', '1');
+    } else {
+      /* 24-hour dismissal is DEVICE-LOCAL only. Never sync to Supabase,
+         otherwise clicking "Later" once hides the banner on every device. */
+      var until = Date.now() + 24 * 60 * 60 * 1000;
+      localStorage.setItem(INSTALL_DISMISS_KEY, JSON.stringify({ until: until }));
+    }
+  } catch(e){}
+}
+function isInstallDismissed(){
+  if(isPermanentlyInstalled()) return true;
+
+  /* Read ONLY from localStorage — dismissal is a per-device preference,
+     not a global setting. Never pull it from Supabase. */
+  try {
+    var ls = localStorage.getItem(INSTALL_DISMISS_KEY);
+    if(!ls) return false;
+    var d = JSON.parse(ls);
+    if(!d) return false;
+    var until = d.until;
+    if(until === null || until === undefined) return true;
+    if(Date.now() > until){
+      localStorage.removeItem(INSTALL_DISMISS_KEY);
+      return false;
+    }
+    return true;
+  } catch(e){
+    return false;
+  }
+}
+function showInstallBanner(){
+  if(isPermanentlyInstalled()) return;
+  if(location.protocol === 'file:') return;
+  if(isInstallDismissed()) return;
+  var banner = document.getElementById('installBanner');
+  if(!banner){
+    console.warn('[pwa] #installBanner element not found in DOM');
+    return;
+  }
+  if(banner.classList.contains('show')){
+    return; /* already visible — do nothing */
+  }
+  banner.classList.add('show');
+
+  /* Clear any display:none left over from a previous dismiss */
+  banner.style.removeProperty('display');
+
+  /* FORCE visible with inline styles — CSS cannot override these */
+  banner.style.setProperty('display', 'flex', 'important');
+  banner.style.setProperty('position', 'fixed', 'important');
+  banner.style.setProperty('bottom', '0', 'important');
+  banner.style.setProperty('left', '0', 'important');
+  banner.style.setProperty('right', '0', 'important');
+  banner.style.setProperty('z-index', '2147483647', 'important');
+  banner.style.setProperty('visibility', 'visible', 'important');
+  banner.style.setProperty('opacity', '1', 'important');
+  banner.style.setProperty('transform', 'none', 'important');
+
+  /* Mobile-specific safe-area handling */
+  var safeBottom = 14;
+  try {
+    var probe = getComputedStyle(document.documentElement).getPropertyValue('--safe-bottom');
+    if(probe && probe.indexOf('px') !== -1) safeBottom = 14 + parseInt(probe, 10);
+  } catch(e){}
+  banner.style.setProperty('padding-bottom', safeBottom + 'px', 'important');
+
+  console.log('[pwa] banner shown (mobile=' + (window.innerWidth <= 768) + ')');
+  /* mark so we don't log twice */
+  banner.dataset.pwaShown = '1';
+  var btn = banner.querySelector('.ib-install-btn');
+  if(!btn) return;
+
+  if(isIOSSafari()){
+    btn.innerHTML = '<i class="fas fa-share"></i> How to Install';
+  } else if(isIOSDevice()){
+    btn.innerHTML = '<i class="fas fa-share"></i> How to Install';
+  } else if(deferredInstallPrompt){
+    btn.innerHTML = '<i class="fas fa-download"></i> Install';
+  } else {
+    btn.innerHTML = '<i class="fas fa-download"></i> Install App';
+  }
+}
+function dismissInstallBanner(permanent){
+  var banner = document.getElementById('installBanner');
+  if(banner){
+    banner.classList.remove('show');
+    /* Remove all forced inline styles added by showInstallBanner() */
+    banner.style.removeProperty('display');
+    banner.style.removeProperty('position');
+    banner.style.removeProperty('bottom');
+    banner.style.removeProperty('left');
+    banner.style.removeProperty('right');
+    banner.style.removeProperty('z-index');
+    banner.style.removeProperty('visibility');
+    banner.style.removeProperty('opacity');
+    banner.style.removeProperty('transform');
+    banner.style.removeProperty('padding-bottom');
+    /* Belt-and-braces: hard-hide it */
+    banner.style.display = 'none';
+  }
+  if(permanent){ markInstallDismissed(true); return; }
+  markInstallDismissed(false);
+  /* Do NOT auto-reshow — user will see it again on next full page load
+     only if they are still not installed and the 24h window has passed */
+}
+function triggerInstall(){
+  if(isPermanentlyInstalled()){ showToast('App is already installed', ''); return; }
+
+  /* iOS — every browser uses Share → Add to Home Screen */
+  if(isIOSDevice()){
+    var isSafari = isIOSSafari();
+    var steps = isSafari
+      ? 'To install on iPhone/iPad (Safari):\n\n1. Tap the Share button (\u25A1\u2191) at the bottom of the screen\n2. Scroll down and tap "Add to Home Screen"\n3. Tap "Add" in the top-right corner\n\nThe app will then appear on your home screen.'
+      : 'To install on iPhone/iPad:\n\n1. Tap the Share/Menu button (\u25A1\u2191 or \u22EE)\n2. Scroll down and tap "Add to Home Screen"\n3. Tap "Add"\n\nThe app will then appear on your home screen.';
+    alert(steps);
+    dismissInstallBanner(false);
+    return;
+  }
+
+  if(location.protocol === 'file:'){
+    alert('To install this app, please open the site through a web server (https://). The install banner cannot work when the file is opened directly from disk.');
+    return;
+  }
+
+  /* Chrome/Edge/Android — use the native install prompt if we have it */
+  if(deferredInstallPrompt){
+    deferredInstallPrompt.prompt();
+    deferredInstallPrompt.userChoice.then(function(choiceResult){
+      if(choiceResult.outcome === 'accepted'){
+        showToast('Installing app...', 'success');
+      } else {
+        showToast('Installation cancelled', '');
+        dismissInstallBanner(false);
+      }
+      deferredInstallPrompt = null;
+    }).catch(function(){ deferredInstallPrompt = null; });
+    return;
+  }
+
+  /* No deferred prompt yet — wait up to 2 seconds in case Chrome is about to fire it */
+  showToast('Preparing install...', '');
+  var tries = 0;
+  var waitTimer = setInterval(function(){
+    tries++;
+    if(deferredInstallPrompt){
+      clearInterval(waitTimer);
+      deferredInstallPrompt.prompt();
+      deferredInstallPrompt.userChoice.then(function(choiceResult){
+        if(choiceResult.outcome === 'accepted'){
+          showToast('Installing app...', 'success');
+        } else {
+          showToast('Installation cancelled', '');
+          dismissInstallBanner(false);
+        }
+        deferredInstallPrompt = null;
+      }).catch(function(){ deferredInstallPrompt = null; });
+      return;
+    }
+    if(tries >= 12){
+      clearInterval(waitTimer);
+      /* Still nothing — show manual instructions */
+      var ua = navigator.userAgent || '';
+      var isAndroid = /Android/i.test(ua);
+      var msg;
+      if(isAndroid){
+        msg = 'To install on Android:\n\n1. Tap the browser menu (\u22EE) at the top-right\n2. Tap "Install app" or "Add to Home screen"\n3. Confirm by tapping "Install"\n\nIf you don\'t see "Install app":\n\u2022 Reload the page and wait 5 seconds\n\u2022 Make sure you are on HTTPS (not file://)\n\u2022 Visit the site at least twice';
+      } else {
+        msg = 'To install this app:\n\nOpen your browser menu and select "Install app" or "Add to Home Screen".';
+      }
+      alert(msg);
+    }
+  }, 150);
+}
+function isIOSDevice(){ return /iPad|iPhone|iPod/.test(navigator.userAgent) && !window.MSStream; }
+function isIOSSafari(){ return isIOSDevice() && /^((?!chrome|android|crios|fxios).)*safari/i.test(navigator.userAgent); }
+/* ================================================================
+   HERO SLIDER (NO DOTS — indicators removed)
    ================================================================ */
 function loadHeroSlides(){
   heroSlides = safeGet('hero_slides', []);
@@ -4489,19 +5234,20 @@ function saveHeroSlides(){
 function renderHeroSlides(){
   var container = document.getElementById('heroSlidesContainer');
   var placeholder = document.getElementById('heroPlaceholder');
-  var dots = document.getElementById('heroDots');
   var count = document.getElementById('slideCount');
   var list = document.getElementById('slideList');
+  var slider = document.getElementById('heroSlider');
   if(!container) return;
   container.innerHTML = '';
-  if(dots) dots.innerHTML = '';
   if(heroSlides.length === 0){
-    if(placeholder) placeholder.style.display = 'flex';
+    if(placeholder){ placeholder.style.display = 'flex'; placeholder.style.visibility = 'visible'; }
+    if(slider) slider.classList.remove('has-slides');
     if(count) count.textContent = '0';
     if(list) list.innerHTML = '<div class="empty-slides">No slides yet. Click "Add Image Slide" to get started.</div>';
     return;
   }
   if(placeholder) placeholder.style.display = 'none';
+  if(slider) slider.classList.add('has-slides');
   heroSlides.forEach(function(slide, index){
     var slideDiv = document.createElement('div');
     slideDiv.className = 'hero-slide' + (index === currentSlideIndex ? ' active' : '');
@@ -4510,7 +5256,7 @@ function renderHeroSlides(){
     var text = slide.text || 'NITA registered TVET institution offering practical, industry-relevant training in Embu County, Kenya.';
     var description = slide.description || 'A short description of what this slide shows. Edit this in Admin Mode.';
     slideDiv.innerHTML =
-      '<img src="' + slide.url + '" alt="">' +
+      '<img src="' + slide.url + '" alt="" loading="eager" decoding="async">' +
       '<div class="hero-content">' +
         '<div class="hero-eyebrow"><i class="fas fa-graduation-cap"></i> <span class="editable-slide" data-slide-key="eyebrow" data-slide-id="' + slide.id + '">' + eyebrow + '</span></div>' +
         '<h1 class="editable-slide" data-slide-key="title" data-slide-id="' + slide.id + '">' + title + '</h1>' +
@@ -4519,21 +5265,11 @@ function renderHeroSlides(){
           '<button class="btn-hero-primary" onclick="showPage(\'apply\')" type="button"><i class="fas fa-file-signature"></i> Apply for Admission</button>' +
           '<button class="btn-hero-secondary" onclick="showPage(\'courses\')" type="button"><i class="fas fa-graduation-cap"></i> Explore Courses</button>' +
         '</div>' +
+        '<div class="hero-description"><div class="hd-label"><i class="fas fa-info-circle"></i> About this image</div><div class="editable-slide" data-slide-key="description" data-slide-id="' + slide.id + '">' + description + '</div></div>' +
       '</div>' +
-      '<div class="hero-description"><div class="hd-label"><i class="fas fa-info-circle"></i> About this image</div><div class="editable-slide" data-slide-key="description" data-slide-id="' + slide.id + '">' + description + '</div></div>' +
       '<button class="slide-remove-btn" onclick="deleteHeroSlide(\'' + slide.id + '\')" type="button" aria-label="Delete slide"><i class="fas fa-times"></i></button>';
     container.appendChild(slideDiv);
   });
-  if(dots){
-    heroSlides.forEach(function(s, i){
-      var dot = document.createElement('button');
-      dot.type = 'button';
-      dot.className = (i === currentSlideIndex ? 'active' : '');
-      dot.setAttribute('aria-label', 'Go to slide ' + (i + 1));
-      dot.onclick = function(){ goToSlide(i); };
-      dots.appendChild(dot);
-    });
-  }
   if(count) count.textContent = heroSlides.length;
   if(list){
     list.innerHTML = heroSlides.map(function(s){
@@ -4576,7 +5312,6 @@ function goToSlide(index){
   if(index >= heroSlides.length) index = 0;
   currentSlideIndex = index;
   document.querySelectorAll('.hero-slide').forEach(function(s, i){ s.classList.toggle('active', i === index); });
-  document.querySelectorAll('.hero-dots button').forEach(function(d, i){ d.classList.toggle('active', i === index); });
   resetSlideAutoPlay();
 }
 function nextSlide(){ if(heroSlides.length) goToSlide(currentSlideIndex + 1); }
@@ -4738,7 +5473,7 @@ async function saveAllChanges(){
     var r4 = await window.SB.set('social_links', links);
     applySocialLinks(links);
     broadcastRefresh();
-    if(r1 && r2 && r3 && r4) showToast('Saved ✓', 'success');
+    if(r1 && r2 && r3 && r4) showToast('Saved \u2713', 'success');
     else showToast('Save FAILED — open console (F12)', 'error');
   } catch(e){
     showToast('Save error: ' + e.message, 'error');
@@ -4826,7 +5561,9 @@ function updatePauseUI(){
   } else {
     if(overlay) overlay.classList.remove('active');
     var livePopup = document.getElementById('liveCamPopup');
-    if(document.body.style.overflow === 'hidden' && (!livePopup || !livePopup.classList.contains('open'))){
+    var drawer = document.getElementById('hvcDrawer');
+    var drawerOpen = drawer && drawer.classList.contains('open');
+    if(document.body.style.overflow === 'hidden' && (!livePopup || !livePopup.classList.contains('open')) && !drawerOpen){
       document.body.style.overflow = '';
     }
     if(cd) cd.textContent = '';
@@ -4982,6 +5719,8 @@ function verifyAdminPanelPassword(){
     closeAdminPanelLogin();
     var navAdmin = document.getElementById('navAdminLi');
     if(navAdmin) navAdmin.style.display = '';
+    var drawerAdmin = document.getElementById('hvcDrawerAdminLi');
+    if(drawerAdmin) drawerAdmin.style.display = '';
     showPage('admin');
     refreshAdminPanel();
     showToast('Welcome, Administrator', 'success');
@@ -4994,6 +5733,8 @@ function adminPanelLogout(){
   adminPanelAuthed = false;
   var navAdmin = document.getElementById('navAdminLi');
   if(navAdmin) navAdmin.style.display = 'none';
+  var drawerAdmin = document.getElementById('hvcDrawerAdminLi');
+  if(drawerAdmin) drawerAdmin.style.display = 'none';
   showPage('home');
   showToast('Logged out of admin panel', '');
 }
@@ -5230,7 +5971,6 @@ function deleteResource(id){
   renderPublicResources();
   showToast('Resource deleted', '');
 }
-
 /* ================================================================
    ANNOUNCEMENTS
    ================================================================ */
@@ -5694,7 +6434,7 @@ function renderAdminApplications(){
   var meta = document.getElementById('adminAppSearchMeta');
   if(meta){
     var total = apps.length;
-    meta.innerHTML = 'Showing <span class="badge-count">' + filtered.length + '</span> of <span class="badge-count">' + total + '</span> applications' + (search ? ' · <span class="badge-filter">search: "' + escapeHtml(search) + '"</span>' : '') + (statusFilter ? ' · <span class="badge-filter">status: ' + escapeHtml((APPLICATION_STATUSES[statusFilter]||{}).label || statusFilter) + '</span>' : '');
+    meta.innerHTML = 'Showing <span class="badge-count">' + filtered.length + '</span> of <span class="badge-count">' + total + '</span> applications' + (search ? ' \u00B7 <span class="badge-filter">search: "' + escapeHtml(search) + '"</span>' : '') + (statusFilter ? ' \u00B7 <span class="badge-filter">status: ' + escapeHtml((APPLICATION_STATUSES[statusFilter]||{}).label || statusFilter) + '</span>' : '');
   }
   if(!tbody) return;
   if(filtered.length === 0){
@@ -5873,7 +6613,7 @@ function renderAdminStudents(){
     return (s.studentId + ' ' + s.firstName + ' ' + s.lastName + ' ' + (s.course||'') + ' ' + (s.email||'') + ' ' + (s.phone||'')).toLowerCase().indexOf(search) !== -1;
   });
   if(meta){
-    meta.innerHTML = 'Showing <span class="badge-count">' + filtered.length + '</span> of <span class="badge-count">' + students.length + '</span> students' + (search ? ' · <span class="badge-filter">search: "' + escapeHtml(search) + '"</span>' : '');
+    meta.innerHTML = 'Showing <span class="badge-count">' + filtered.length + '</span> of <span class="badge-count">' + students.length + '</span> students' + (search ? ' \u00B7 <span class="badge-filter">search: "' + escapeHtml(search) + '"</span>' : '');
   }
   if(filtered.length === 0){
     tbody.innerHTML = '<tr><td colspan="6" data-label=""><div class="admin-empty"><i class="fas fa-user-graduate"></i><p>' + (students.length === 0 ? 'No students yet. Add one or accept an application.' : 'No students match your search.') + '</p></div></td></tr>';
@@ -6138,7 +6878,7 @@ function renderAdminPerStudentLedger(){
       '<div class="dci-icon" style="background:' + (balanced ? '#d1fae5' : '#fee2e2') + ';color:' + (balanced ? '#065f46' : '#991b1b') + ';"><i class="fas fa-user"></i></div>' +
       '<div class="dci-info">' +
         '<div class="dci-title">' + escapeHtml(s.studentId) + ' — ' + escapeHtml(s.firstName + ' ' + s.lastName) + carryBadge + '</div>' +
-        '<div class="dci-desc">' + escapeHtml(s.course || '') + ' · Intake ' + escapeHtml(s.intake || '—') + '</div>' +
+        '<div class="dci-desc">' + escapeHtml(s.course || '') + ' \u00B7 Intake ' + escapeHtml(s.intake || '—') + '</div>' +
         '<div class="dci-meta">' +
           '<span>Total: KES ' + (s.totalFees||0).toLocaleString() + '</span>' +
           '<span>Paid: KES ' + (s.paid||0).toLocaleString() + '</span>' +
@@ -6343,7 +7083,7 @@ function submitReportBack(){
     result.innerHTML = '<div class="reportback-result">' +
       '<div class="rr-title"><i class="fas fa-check-circle" style="color:var(--green);"></i> Report Back Confirmed — ' + escapeHtml(term) + '</div>' +
       '<div class="rr-line"><span>Balance before:</span><span>KES ' + currentBalance.toLocaleString() + '</span></div>' +
-      (deducted > 0 ? '<div class="rr-line"><span>Overpayment credit applied:</span><span style="color:#065f46;">− KES ' + deducted.toLocaleString() + '</span></div>' : '<div class="rr-line"><span>Overpayment credit applied:</span><span>KES 0</span></div>') +
+      (deducted > 0 ? '<div class="rr-line"><span>Overpayment credit applied:</span><span style="color:#065f46;">\u2212 KES ' + deducted.toLocaleString() + '</span></div>' : '<div class="rr-line"><span>Overpayment credit applied:</span><span>KES 0</span></div>') +
       '<div class="rr-line"><span>New balance for this term:</span><span>KES ' + (s.balance || 0).toLocaleString() + '</span></div>' +
       (s.overpaymentCarry > 0 ? '<div class="rr-line"><span>Remaining credit carried forward:</span><span>KES ' + s.overpaymentCarry.toLocaleString() + '</span></div>' : '') +
       (s.balance > 0 ? '<div class="rr-line"><span>Amount you need to pay:</span><span style="color:#dc2626;">KES ' + s.balance.toLocaleString() + '</span></div>' : '') +
@@ -6386,7 +7126,7 @@ function renderAdminReports(){
   });
   var meta = document.getElementById('adminReportSearchMeta');
   if(meta){
-    meta.innerHTML = 'Showing <span class="badge-count">' + filtered.length + '</span> of <span class="badge-count">' + reports.length + '</span> reports' + (search ? ' · <span class="badge-filter">search: "' + escapeHtml(search) + '"</span>' : '') + (statusFilter ? ' · <span class="badge-filter">status: ' + escapeHtml(statusFilter) + '</span>' : '');
+    meta.innerHTML = 'Showing <span class="badge-count">' + filtered.length + '</span> of <span class="badge-count">' + reports.length + '</span> reports' + (search ? ' \u00B7 <span class="badge-filter">search: "' + escapeHtml(search) + '"</span>' : '') + (statusFilter ? ' \u00B7 <span class="badge-filter">status: ' + escapeHtml(statusFilter) + '</span>' : '');
   }
   if(filtered.length === 0){ box.innerHTML = '<div class="admin-empty"><i class="fas fa-inbox"></i><p>No reports found.</p></div>'; return; }
   box.innerHTML = filtered.map(function(r){
@@ -6664,7 +7404,6 @@ function renderMaterialsForStudent(courseKey){
 }
 function viewMaterial(title){ showToast('Opening "' + title + '"...', 'success'); }
 function downloadMaterial(title){ showToast('Downloading "' + title + '"...', 'success'); }
-
 /* ================================================================
    COURSE FILTER
    ================================================================ */
@@ -6732,7 +7471,7 @@ function renderTestimonials(){
   testimonials.forEach(function(t){
     var slide = document.createElement('div');
     slide.className = 'testimonial-slide';
-    slide.innerHTML = '<div class="stars">★★★★★</div><div class="quote">"' + escapeHtml(t.message) + '"</div><div class="author-name">' + escapeHtml(t.name) + '</div><div class="author-role">' + escapeHtml(t.role) + '</div>';
+    slide.innerHTML = '<div class="stars">\u2605\u2605\u2605\u2605\u2605</div><div class="quote">"' + escapeHtml(t.message) + '"</div><div class="author-name">' + escapeHtml(t.name) + '</div><div class="author-role">' + escapeHtml(t.role) + '</div>';
     slider.appendChild(slide);
   });
   if(dots){
@@ -7043,228 +7782,7 @@ function renderDynamicSocialRows(){
 }
 
 /* ================================================================
-   APP ICON + PWA MANIFEST — FIXED FOR CUSTOM ICONS
-   ================================================================ */
-function getAppIcon(){
-  var stored = safeGet(APP_ICON_KEY, null);
-  return stored || DEFAULT_ICON_SVG;
-}
-function applyAppIconEverywhere(){
-  var icon = getAppIcon();
-  var ib = document.getElementById('installBannerIcon');
-  if(ib) ib.innerHTML = '<img src="' + icon + '" alt="App Icon" style="width:100%;height:100%;object-fit:cover;border-radius:10px;">';
-  var lm = document.getElementById('logoMark');
-  if(lm) lm.innerHTML = '<img src="' + icon + '" alt="Logo">';
-  var prev = document.getElementById('settingAppIconPreview');
-  if(prev) prev.src = icon;
-  var fav = document.querySelector("link[rel='icon']");
-  if(fav) fav.href = icon;
-  var appleFav = document.querySelector("link[rel='apple-touch-icon']");
-  if(appleFav) appleFav.href = icon;
-}
-function generateIconDataURL(size){
-  var cacheKey = '_icon_cache_' + size;
-  if(window[cacheKey]) return window[cacheKey];
-  var canvas = document.createElement('canvas');
-  canvas.width = size; canvas.height = size;
-  var ctx = canvas.getContext('2d');
-  ctx.fillStyle = '#0a1f3d';
-  ctx.fillRect(0, 0, size, size);
-  ctx.fillStyle = '#0a6b3b';
-  ctx.fillRect(0, size - Math.round(size * 0.06), size, Math.round(size * 0.06));
-  ctx.fillStyle = '#ffffff';
-  ctx.font = 'bold ' + Math.round(size * 0.62) + 'px Arial, sans-serif';
-  ctx.textAlign = 'center';
-  ctx.textBaseline = 'middle';
-  ctx.fillText('H', size / 2, size / 2 + Math.round(size * 0.02));
-  var url = canvas.toDataURL('image/png');
-  window[cacheKey] = url;
-  return url;
-}
-
-/* ---- FIXED: rebuildManifest now handles any icon size correctly ---- */
-async function rebuildManifest(){
-  try {
-    var customIcon512 = safeGet(APP_ICON_KEY_512, null);
-    var customIcon192 = safeGet(APP_ICON_KEY_192, null);
-    var customIconAny = safeGet(APP_ICON_KEY, null);
-
-    var png192, png512;
-
-    // If we already have properly-sized icons stored, use them
-    if(customIcon512 && customIcon192){
-      png192 = customIcon192;
-      png512 = customIcon512;
-    }
-    // If we only have a single custom icon (any format/size), regenerate both sizes now
-    else if(customIconAny && customIconAny.indexOf('data:') === 0){
-      var s512 = await squarePadImage(customIconAny, 512, 0.92);
-      var s192 = await squarePadImage(customIconAny, 192, 0.9);
-      if(s512){ png512 = s512; window.SB.setSoon(APP_ICON_KEY_512, s512); }
-      if(s192){ png192 = s192; window.SB.setSoon(APP_ICON_KEY_192, s192); }
-    }
-    // Fallback: generate the default H logo programmatically
-    if(!png192 || !png512){
-      png192 = generateIconDataURL(192);
-      png512 = generateIconDataURL(512);
-    }
-
-    var manifest = {
-      name: 'Highway Vocational Center',
-      short_name: 'HVC',
-      description: 'NITA Registered TVET Institution — Embu County, Kenya',
-      start_url: location.href.split('#')[0],
-      scope: location.href.replace(/[^/]*$/, '').replace(/[?#].*$/, ''),
-      display: 'standalone',
-      orientation: 'portrait',
-      background_color: '#0a1f3d',
-      theme_color: '#0a1f3d',
-      icons: [
-        { src: png192, sizes: '192x192', type: 'image/png', purpose: 'any' },
-        { src: png512, sizes: '512x512', type: 'image/png', purpose: 'any' },
-        { src: png192, sizes: '192x192', type: 'image/png', purpose: 'maskable' },
-        { src: png512, sizes: '512x512', type: 'image/png', purpose: 'maskable' }
-      ]
-    };
-
-    var json = JSON.stringify(manifest);
-    // If manifest grows too large (>500KB), strip icons to keep it valid
-    if(json.length > 500000){
-      console.warn('[manifest] too large (' + json.length + ' bytes), using generated icons');
-      manifest.icons = [
-        { src: generateIconDataURL(192), sizes: '192x192', type: 'image/png', purpose: 'any' },
-        { src: generateIconDataURL(512), sizes: '512x512', type: 'image/png', purpose: 'any' }
-      ];
-      json = JSON.stringify(manifest);
-    }
-    var dataUrl = 'data:application/manifest+json;charset=utf-8,' + encodeURIComponent(json);
-    var link = document.getElementById('dynamicManifest');
-    if(link) link.href = dataUrl;
-  } catch(e){
-    console.warn('[manifest] build failed:', e.message);
-  }
-}
-
-/* ---- FIXED: uploadAppIcon now generates exact 192 + 512 PNG icons ---- */
-function uploadAppIcon(){
-  var input = document.createElement('input');
-  input.type = 'file';
-  input.accept = 'image/png,image/jpeg,image/webp,image/svg+xml';
-  input.onchange = function(e){
-    var file = e.target.files[0];
-    if(!file) return;
-    if(file.size > 5 * 1024 * 1024){ showToast('Icon too large (max 5MB)', 'error'); return; }
-    var reader = new FileReader();
-    reader.onload = function(ev){
-      var img = new Image();
-      img.onload = async function(){
-        // Generate BOTH required sizes with proper padding
-        var icon192 = await squarePadImage(ev.target.result, 192, 0.9);
-        var icon512 = await squarePadImage(ev.target.result, 512, 0.92);
-
-        if(!icon192 || !icon512){
-          showToast('Could not process that image. Try a different file.', 'error');
-          return;
-        }
-
-        // Try uploading both to Supabase Storage for short URLs
-        var url192 = null, url512 = null;
-        try {
-          url192 = await window.SBStorage.uploadSlot(icon192, 'brand', 'icon-192');
-          url512 = await window.SBStorage.uploadSlot(icon512, 'brand', 'icon-512');
-        } catch(err){ /* fall back to data URLs */ }
-
-        // Prefer storage URLs (short, cacheable); fall back to data URLs
-        var final192 = (url192 && url192.indexOf('http') === 0) ? url192 : icon192;
-        var final512 = (url512 && url512.indexOf('http') === 0) ? url512 : icon512;
-
-        window.SB.setSoon(APP_ICON_KEY, final512);
-        window.SB.setSoon(APP_ICON_KEY_192, final192);
-        window.SB.setSoon(APP_ICON_KEY_512, final512);
-
-        applyAppIconEverywhere();
-        await rebuildManifest();
-        broadcastRefresh();
-        showToast('App icon updated! Install prompt should now work.', 'success');
-      };
-      img.onerror = function(){ showToast('Could not read that image. Try PNG or JPG.', 'error'); };
-      img.src = ev.target.result;
-    };
-    reader.readAsDataURL(file);
-  };
-  input.click();
-}
-function resetAppIcon(){
-  if(!confirm('Reset the app icon to the default H logo?')) return;
-  try {
-    window.SB.remove(APP_ICON_KEY);
-    window.SB.remove(APP_ICON_KEY_192);
-    window.SB.remove(APP_ICON_KEY_512);
-  } catch(e){}
-  applyAppIconEverywhere();
-  rebuildManifest();
-  broadcastRefresh();
-  showToast('App icon reset to default', 'success');
-}
-
-/* ================================================================
-   SETTINGS
-   ================================================================ */
-async function saveAdminSettings(){
-  var pwEl = document.getElementById('settingAdminPw');
-  if(!pwEl) return;
-  var pw = pwEl.value.trim();
-  if(!pw){ showToast('Enter a password or leave blank to keep existing', ''); return; }
-  if(pw.length < 4){ showToast('Password must be at least 4 characters', 'error'); return; }
-  await window.SB.setSetting('admin_panel_password', pw);
-  await window.SB.setSetting('edit_mode_password', pw);
-  await window.SB.setSetting('system_password', pw);
-  ADMIN_PANEL_PASSWORD = pw;
-  adminPassword = pw;
-  systemPassword = pw;
-  pwEl.value = '';
-  showToast('Password saved to Supabase', 'success');
-}
-async function wipeAllData(){
-  if(!confirm('WARNING: This will delete ALL applications, students, payments, and announcements. Are you sure?')) return;
-  if(!confirm('This action CANNOT be undone. Type OK to confirm.')) return;
-  var keys = ['applications','students','announcements','testimonials','gallery_images','student_reports','admin_notif_history','notifications','resources','timetable_data','live_classes','dynamic_courses','dynamic_iframes','dynamic_socials','dynamic_whyus','dynamic_popular','dynamic_news','site_content','site_placeholders','hero_slides','social_links','live_cam_pos','wf_pause','pause_timer_end','highway_install_dismissed','highway_welcome_shown'];
-  for(var i=0;i<keys.length;i++){ try { await window.SB.remove(keys[i]); } catch(e){} }
-  try {
-    await window.SB.client.from('students').delete().gte('created_at', '1970-01-01');
-    await window.SB.client.from('applications').delete().gte('submitted_at', '1970-01-01');
-    try { await window.SB.client.from('payments').delete().gte('created_at', '1970-01-01'); } catch(e){}
-    try {
-      var counterNames = ['student_counter', 'app_counter'];
-      for(var ci = 0; ci < counterNames.length; ci++){
-        await window.SB.client.from('counters').upsert({ name: counterNames[ci], value: 0 }, { onConflict: 'name' });
-      }
-    } catch(e){}
-  } catch(e){ console.warn('[sb] wipe partial failure', e); }
-  showToast('All data wiped from Supabase', 'success');
-  setTimeout(function(){ location.reload(); }, 1000);
-}
-
-/* ================================================================
-   GENERIC MODAL
-   ================================================================ */
-function showGenericModal(title, bodyHtml){
-  var existing = document.getElementById('genericModal');
-  if(existing) existing.remove();
-  var modal = document.createElement('div');
-  modal.id = 'genericModal';
-  modal.className = 'modal-overlay open';
-  modal.innerHTML = '<div class="modal-content" style="max-width:720px;"><div class="modal-header"><h2><i class="fas fa-file-alt"></i> ' + escapeHtml(title) + '</h2><button class="modal-close" onclick="closeGenericModal()" type="button" aria-label="Close"><i class="fas fa-times"></i></button></div><div class="modal-body">' + bodyHtml + '</div></div>';
-  modal.addEventListener('click', function(e){ if(e.target === modal) closeGenericModal(); });
-  document.body.appendChild(modal);
-}
-function closeGenericModal(){
-  var m = document.getElementById('genericModal');
-  if(m) m.remove();
-}
-
-/* ================================================================
-   DYNAMIC COURSES
+   DYNAMIC COURSES MANAGER
    ================================================================ */
 function loadDynamicCourses(){
   dynamicCourses = safeGet('dynamic_courses', []);
@@ -7277,7 +7795,7 @@ function renderDynamicCoursesOnSite(){
   if(dynamicCourses.length === 0){ wrap.innerHTML = ''; return; }
   wrap.innerHTML = '<div class="grid-3">' + dynamicCourses.map(function(c){
     return '<div class="course-card" data-dept="' + escapeHtml(c.dept || '') + '" data-name="' + escapeHtml(c.name) + '" data-level="' + escapeHtml((c.level||'').toLowerCase()) + '" data-entry="' + escapeHtml((c.entry||'').toLowerCase()) + '" data-duration="' + escapeHtml((c.duration||'').toLowerCase()) + '">' +
-      '<div class="cc-head"><div class="cc-icon">' + (c.emoji || '📚') + '</div><div><h3>' + escapeHtml(c.name) + '</h3><div class="cc-level">' + escapeHtml(c.level || '') + ' · ' + escapeHtml(c.duration || '') + '</div></div></div>' +
+      '<div class="cc-head"><div class="cc-icon">' + (c.emoji || '📚') + '</div><div><h3>' + escapeHtml(c.name) + '</h3><div class="cc-level">' + escapeHtml(c.level || '') + ' \u00B7 ' + escapeHtml(c.duration || '') + '</div></div></div>' +
       '<div class="cc-body"><p>' + escapeHtml(c.desc || '') + '</p><div class="cc-meta">' + (c.tags || '').split(',').filter(function(t){return t.trim();}).map(function(t){ return '<span>' + escapeHtml(t.trim()) + '</span>'; }).join('') + '</div></div>' +
       '<div class="cc-actions"><button class="btn-apply-sm" onclick="showPage(\'apply\')" type="button">Apply Now</button></div>' +
     '</div>';
@@ -7403,7 +7921,6 @@ function openIframePage(id){
   var pageEl = document.getElementById('page-iframe-viewer'); if(pageEl) pageEl.classList.add('active-section');
   document.querySelectorAll('.nav-list > li').forEach(function(li){ li.classList.remove('active'); });
   window.scrollTo({ top: 0, behavior: 'smooth' });
-  closeMobileNav();
 }
 function closeIframePage(){
   var iframe = document.getElementById('dynamicIframe');
@@ -7941,12 +8458,103 @@ function saveApplicationDraft(){
     var data = collectApplicationData();
     data._step = currentAppStep;
     data._savedAt = new Date().toISOString();
-    safeSet(APPLICATION_DRAFT_KEY, data);
+
+    /* Don't persist a completely empty draft — this is what causes the
+       false "Welcome back" toast for first-time visitors. */
+    var realFields = [
+      'firstName','middleName','lastName','dob','gender','idNumber','birthCert',
+      'maritalStatus','disabilityDetails','phone','altPhone','email','ward','town',
+      'homeTown','school','yearCompleted','kcseIndex','kcseGrade','guardianName',
+      'guardianPhone','guardianOccupation','additionalInfo'
+    ];
+    var choiceFields = [
+      'gender','county','subCounty','homeCounty','homeSubCounty','guardianCounty',
+      'guardianSubCounty','education','department','course','level','intake',
+      'studyMode','campus','guardianRelation','hearAbout','financialAid','scholarship'
+    ];
+    var hasAny = false;
+    for(var i = 0; i < realFields.length; i++){
+      var v = data[realFields[i]];
+      if(v !== undefined && v !== null && String(v).trim() !== ''){ hasAny = true; break; }
+    }
+    if(!hasAny){
+      for(var j = 0; j < choiceFields.length; j++){
+        var cv = data[choiceFields[j]];
+        if(cv !== undefined && cv !== null && String(cv).trim() !== ''){ hasAny = true; break; }
+      }
+    }
+    if(!hasAny && data.nationality && String(data.nationality).trim().toLowerCase() !== 'kenyan') hasAny = true;
+    if(!hasAny && currentAppStep > 1) hasAny = true;
+
+    if(hasAny){
+      safeSet(APPLICATION_DRAFT_KEY, data);
+    } else {
+      try { window.SB.remove(APPLICATION_DRAFT_KEY); } catch(e){}
+      try { localStorage.removeItem(APPLICATION_DRAFT_KEY); } catch(e){}
+    }
   } catch(e){}
 }
 function restoreApplicationDraft(){
+  /* If an application was already submitted, never restore anything */
+  try {
+    if(localStorage.getItem('hvc_app_submitted') === '1'){
+      clearApplicationDraft();
+      return false;
+    }
+  } catch(e){}
+
+  /* If a draft was intentionally cleared very recently (e.g. just submitted),
+     do not restore it — this prevents the toast flashing after submit */
+  try {
+    var clearedAt = parseInt(localStorage.getItem('hvc_draft_cleared') || '0', 10);
+    if(clearedAt && Date.now() - clearedAt < 60 * 1000){ return false; }
+  } catch(e){}
+
   var draft = safeGet(APPLICATION_DRAFT_KEY, null);
   if(!draft) return false;
+
+  /* Draft must be recent — anything older than 30 days is stale */
+  if(draft._savedAt){
+    var age = Date.now() - new Date(draft._savedAt).getTime();
+    if(age > 30 * 24 * 60 * 60 * 1000){
+      clearApplicationDraft();
+      return false;
+    }
+  }
+
+  /* Treat a draft as "real" only if the user actually typed something
+     AND progressed meaningfully. An empty draft gets written by
+     saveApplicationDraft() on the very first blur/change. */
+  var realFields = [
+    'firstName','middleName','lastName','dob','gender','idNumber','birthCert',
+    'maritalStatus','disabilityDetails','phone','altPhone','email','ward','town',
+    'homeTown','school','yearCompleted','kcseIndex','kcseGrade','guardianName',
+    'guardianPhone','guardianOccupation','additionalInfo'
+  ];
+  var filledCount = 0;
+  for(var i = 0; i < realFields.length; i++){
+    var v = draft[realFields[i]];
+    if(v !== undefined && v !== null && String(v).trim() !== ''){ filledCount++; }
+  }
+  var choiceFields = ['gender','county','subCounty','homeCounty','homeSubCounty','guardianCounty','guardianSubCounty','education','department','course','level','intake','studyMode','campus','guardianRelation','hearAbout','financialAid','scholarship'];
+  var chosenCount = 0;
+  for(var j = 0; j < choiceFields.length; j++){
+    var cv = draft[choiceFields[j]];
+    if(cv !== undefined && cv !== null && String(cv).trim() !== ''){ chosenCount++; }
+  }
+
+  /* Real draft = at least 2 filled text fields, OR 1 text + 1 choice,
+     OR past step 1, OR a name typed in */
+  var hasName = (draft.firstName && String(draft.firstName).trim() !== '') ||
+                (draft.lastName && String(draft.lastName).trim() !== '');
+  var pastStep1 = draft._step && Number(draft._step) > 1;
+  var meaningful = (filledCount >= 2) || (filledCount >= 1 && chosenCount >= 1) || hasName || pastStep1;
+
+  if(!meaningful){
+    clearApplicationDraft();
+    return false;
+  }
+
   Object.keys(draft).forEach(function(k){
     if(k.charAt(0) === '_') return;
     var el = document.getElementById('app' + k.charAt(0).toUpperCase() + k.slice(1));
@@ -7984,7 +8592,13 @@ function restoreApplicationDraft(){
   }
   return true;
 }
-function clearApplicationDraft(){ try { window.SB.remove(APPLICATION_DRAFT_KEY); } catch(e){} }
+function clearApplicationDraft(){
+  try { window.SB.remove(APPLICATION_DRAFT_KEY); } catch(e){}
+  try { localStorage.removeItem(APPLICATION_DRAFT_KEY); } catch(e){}
+  /* Mark that a draft was intentionally wiped so restoreApplicationDraft()
+     does not resurrect it from a stale in-memory cache */
+  try { localStorage.setItem('hvc_draft_cleared', String(Date.now())); } catch(e){}
+}
 async function submitApplication(){
   for(var step = 1; step <= 7; step++){
     if(!validateStep(step)){
@@ -8019,6 +8633,8 @@ async function submitApplication(){
   apps.push(data);
   saveAllApplications(apps);
   clearApplicationDraft();
+  /* Permanent marker for this browser — stops any future draft restore */
+  try { localStorage.setItem('hvc_app_submitted', '1'); } catch(e){}
   var form = document.getElementById('applicationForm'); if(form) form.style.display = 'none';
   var stepper = document.getElementById('appStepper'); if(stepper) stepper.style.display = 'none';
   var success = document.getElementById('applicationSuccess'); if(success) success.style.display = 'block';
@@ -8101,7 +8717,7 @@ function checkApplicationStatus(){
 }
 
 /* ================================================================
-   LIVE CAMERA
+   LIVE CAMERA (state + basic capture/lock; kept lightweight)
    ================================================================ */
 function ensureLiveCamChannels(){
   if(liveCamState.bcLockChannel) return;
@@ -8110,7 +8726,8 @@ function ensureLiveCamChannels(){
     liveCamState.bcLockChannel.onmessage = function(e){
       if(!e.data) return;
       if(e.data.type === 'announce' && e.data.sessionId !== liveCamState.sessionId){
-        if(!liveCamState.locked && !(document.getElementById('liveCamPopup') || {classList:{contains:function(){return false;}}}).classList.contains('open')){
+        var popup = document.getElementById('liveCamPopup');
+        if(!liveCamState.locked && (!popup || !popup.classList.contains('open'))){
           setLockedState(true, e.data.sessionId);
         }
       } else if(e.data.type === 'release' && e.data.sessionId !== liveCamState.sessionId){
@@ -8130,6 +8747,8 @@ function setLockedState(locked, otherSessionId){
   if(otherSessionId) liveCamState.otherSessionId = otherSessionId;
   var lockedOverlay = document.getElementById('liveCamLocked');
   if(lockedOverlay) lockedOverlay.classList.toggle('show', locked);
+  /* Live "someone is broadcasting" indicator is desktop-only */
+  if(window.innerWidth <= 768) return;
   var indicator = document.getElementById('globalLiveIndicator');
   if(indicator) indicator.classList.toggle('show', locked);
 }
@@ -8150,12 +8769,25 @@ function openLiveCamera(){
   var popup = document.getElementById('liveCamPopup');
   if(!popup) return;
   popup.classList.add('open');
-  var rect = popup.getBoundingClientRect();
-  var maxX = Math.max(6, window.innerWidth - rect.width - 6);
-  var maxY = Math.max(6, window.innerHeight - rect.height - 6);
-  liveCamState.pos.x = Math.min(Math.max(6, liveCamState.pos.x), maxX);
-  liveCamState.pos.y = Math.min(Math.max(6, liveCamState.pos.y), maxY);
-  applyLiveCamPosition();
+
+  /* MOBILE OVERFLOW FIX: on phones, always anchor to a safe edge.
+     We do NOT touch popup.style here — the CSS media query handles layout.
+     We only clamp the SAVED position so desktop drag positions don't leak to mobile. */
+  if(window.innerWidth <= 768){
+    liveCamState.pos.x = 10;
+    liveCamState.pos.y = 10;
+    popup.style.left = '';
+    popup.style.top = '';
+    popup.style.right = '';
+    popup.style.bottom = '';
+  } else {
+    var rect = popup.getBoundingClientRect();
+    var maxX = Math.max(6, window.innerWidth - rect.width - 6);
+    var maxY = Math.max(6, window.innerHeight - rect.height - 6);
+    liveCamState.pos.x = Math.min(Math.max(6, liveCamState.pos.x), maxX);
+    liveCamState.pos.y = Math.min(Math.max(6, liveCamState.pos.y), maxY);
+    applyLiveCamPosition();
+  }
   liveCamState.sessionId = 'sess_' + Date.now() + '_' + Math.random().toString(36).substr(2,5);
   ensureLiveCamChannels();
   try {
@@ -8270,6 +8902,7 @@ function resetLiveCamUI(){
   liveCamState.mode = 'photo';
   liveCamState.filter = 'natural';
   liveCamState.recording = false;
+  liveCamState.ready = false;
   updateLiveCamModeButtons();
   updateLiveCamFilterUI();
   updateLiveCamShutterIcon();
@@ -8293,7 +8926,7 @@ function startLiveCameraStream(){
   stopLiveCamStream();
   var wantAudio = liveCamState.micEnabled;
   var constraints = {
-    video: { facingMode: { ideal: liveCamState.facing }, width:  { ideal: 1280 }, height: { ideal: 720 } },
+    video: { facingMode: { ideal: liveCamState.facing }, width: { ideal: 1280 }, height: { ideal: 720 } },
     audio: wantAudio
   };
   navigator.mediaDevices.getUserMedia(constraints)
@@ -8305,14 +8938,39 @@ function startLiveCameraStream(){
       video.muted = true;
       video.setAttribute('playsinline', '');
       video.setAttribute('autoplay', '');
+      video.setAttribute('webkit-playsinline', '');
       video.className = 'f-' + liveCamState.filter;
-      video.classList.toggle('mirrored', liveCamState.facing === 'user');
-      var p = video.play();
-      if(p && p.catch) p.catch(function(){});
+      if(liveCamState.facing === 'user') video.classList.add('mirrored');
+      var tryPlay = function(){
+        var p = video.play();
+        if(p && p.catch) p.catch(function(){});
+      };
+      /* Mark ready only once the browser has decoded real frames */
+      var markReady = function(){
+        if(video.videoWidth > 0 && video.videoHeight > 0){
+          liveCamState.ready = true;
+        }
+      };
+      video.onloadedmetadata = markReady;
+      video.oncanplay = markReady;
+      video.onplaying = markReady;
+      tryPlay();
+      setTimeout(tryPlay, 200);
+      /* Poll as a fallback in case the events fire oddly on mobile */
+      var pollTries = 0;
+      var poll = setInterval(function(){
+        pollTries++;
+        if(video.videoWidth > 0 && video.videoHeight > 0){
+          liveCamState.ready = true;
+          clearInterval(poll);
+        }
+        if(pollTries > 30) clearInterval(poll);
+      }, 200);
     })
     .catch(function(err){
       if(err && err.name === 'NotAllowedError'){ showToast('Please allow camera access in your browser', 'error'); }
       else if(err && err.name === 'NotFoundError'){ showToast('No camera found on this device', 'error'); }
+      else if(err && err.name === 'NotReadableError'){ showToast('Camera is busy — close other apps using it', 'error'); }
       else { showToast('Could not start camera. Try again.', 'error'); }
     });
 }
@@ -8429,8 +9087,22 @@ function doTakeLiveCamPhoto(){
   var video = document.getElementById('liveCamVideo');
   var canvas = document.getElementById('liveCamCanvas');
   if(!video || !canvas) return;
+  if(video.videoWidth === 0 || video.videoHeight === 0 || video.readyState < 2){
+    var waited = 0;
+    var waitTimer = setInterval(function(){
+      waited += 150;
+      var v = document.getElementById('liveCamVideo');
+      if(v && v.videoWidth > 0 && v.videoHeight > 0 && v.readyState >= 2){
+        clearInterval(waitTimer);
+        doTakeLiveCamPhoto();
+      } else if(waited >= 2500){
+        clearInterval(waitTimer);
+        showToast('Camera is taking longer than expected — check permissions', 'error');
+      }
+    }, 150);
+    return;
+  }
   var w = video.videoWidth, h = video.videoHeight;
-  if(!w || !h){ showToast('Camera not ready', 'error'); return; }
   canvas.width = w; canvas.height = h;
   var ctx = canvas.getContext('2d');
   if(liveCamState.facing === 'user'){ ctx.translate(w, 0); ctx.scale(-1, 1); }
@@ -8686,7 +9358,6 @@ function initBroadcastChannel(){
     if(adminPanelAuthed){ renderAdminPayments(); renderAdminPerStudentLedger(); renderAdminLedgerSummary(); }
   });
 
-  // Pause heavy work when tab is hidden
   document.addEventListener('visibilitychange', function(){
     if(document.hidden){
       if(slideAutoPlayTimer){ clearInterval(slideAutoPlayTimer); slideAutoPlayTimer = null; autoPlayStarted = false; }
@@ -8776,62 +9447,211 @@ function initApplicationFormLiveValidation(){
     });
     el.addEventListener('change', function(){ validateField(el); saveApplicationDraft(); });
   });
-  var restored = restoreApplicationDraft();
-  if(restored) showToast('Welcome back — your application progress has been restored.', 'success');
+  /* NOTE: We deliberately DO NOT restore the draft or show the
+     "Welcome back" toast here. That only happens when the user
+     actually opens the Apply page — see showPage('apply') below. */
 }
 
 /* ================================================================
-   INSTALL PROMPT
+   APP ICON + PWA MANIFEST
    ================================================================ */
-function isAppInstalled(){
-  if(window.matchMedia('(display-mode: standalone)').matches) return true;
-  if(window.matchMedia('(display-mode: fullscreen)').matches) return true;
-  if(window.matchMedia('(display-mode: minimal-ui)').matches) return true;
-  if(window.navigator.standalone === true) return true;
-  if(document.referrer && document.referrer.indexOf('android-app://') === 0) return true;
-  return false;
+function getAppIcon(){
+  var stored = safeGet(APP_ICON_KEY, null);
+  return stored || DEFAULT_ICON_SVG;
 }
-function isIOSDevice(){ return /iPad|iPhone|iPod/.test(navigator.userAgent) && !window.MSStream; }
-function isIOSSafari(){ return isIOSDevice() && /^((?!chrome|android|crios|fxios).)*safari/i.test(navigator.userAgent); }
-function isFileProtocol(){ return location.protocol === 'file:'; }
+function applyAppIconEverywhere(){
+  var icon = getAppIcon();
+  var ib = document.getElementById('installBannerIcon');
+  if(ib) ib.innerHTML = '<img src="' + icon + '" alt="App Icon" style="width:100%;height:100%;object-fit:cover;border-radius:10px;">';
+  var lm = document.getElementById('logoMark');
+  if(lm) lm.innerHTML = '<img src="' + icon + '" alt="Logo">';
+  var prev = document.getElementById('settingAppIconPreview');
+  if(prev) prev.src = icon;
+  var fav = document.querySelector("link[rel='icon']");
+  if(fav) fav.href = icon;
+  var appleFav = document.querySelector("link[rel='apple-touch-icon']");
+  if(appleFav) appleFav.href = icon;
+}
+function generateIconDataURL(size){
+  var cacheKey = '_icon_cache_' + size;
+  if(window[cacheKey]) return window[cacheKey];
+  var canvas = document.createElement('canvas');
+  canvas.width = size; canvas.height = size;
+  var ctx = canvas.getContext('2d');
+  ctx.fillStyle = '#0a1f3d';
+  ctx.fillRect(0, 0, size, size);
+  ctx.fillStyle = '#0a6b3b';
+  ctx.fillRect(0, size - Math.round(size * 0.06), size, Math.round(size * 0.06));
+  ctx.fillStyle = '#ffffff';
+  ctx.font = 'bold ' + Math.round(size * 0.62) + 'px Arial, sans-serif';
+  ctx.textAlign = 'center';
+  ctx.textBaseline = 'middle';
+  ctx.fillText('H', size / 2, size / 2 + Math.round(size * 0.02));
+  var url = canvas.toDataURL('image/png');
+  window[cacheKey] = url;
+  return url;
+}
+async function rebuildManifest(){
+  try {
+    var customIcon512 = safeGet(APP_ICON_KEY_512, null);
+    var customIcon192 = safeGet(APP_ICON_KEY_192, null);
+    var customIconAny = safeGet(APP_ICON_KEY, null);
 
-function showInstallBanner(){
-  if(isAppInstalled()) return;
-  if(isFileProtocol()) return;
-  var banner = document.getElementById('installBanner');
-  if(!banner) return;
-  banner.classList.add('show');
-  var btn = banner.querySelector('.ib-install-btn');
-  if(isIOSSafari() && btn) btn.innerHTML = '<i class="fas fa-share"></i> How to Install';
-  else if(btn) btn.innerHTML = '<i class="fas fa-download"></i> Install';
+    var png192, png512;
+
+    if(customIcon512 && customIcon192){
+      png192 = customIcon192;
+      png512 = customIcon512;
+    }
+    else if(customIconAny && customIconAny.indexOf('data:') === 0){
+      var s512 = await squarePadImage(customIconAny, 512, 0.92);
+      var s192 = await squarePadImage(customIconAny, 192, 0.9);
+      if(s512){ png512 = s512; window.SB.setSoon(APP_ICON_KEY_512, s512); }
+      if(s192){ png192 = s192; window.SB.setSoon(APP_ICON_KEY_192, s192); }
+    }
+    if(!png192 || !png512){
+      png192 = generateIconDataURL(192);
+      png512 = generateIconDataURL(512);
+    }
+
+    var manifest = {
+      name: 'Highway Vocational Center',
+      short_name: 'HVC',
+      description: 'NITA Registered TVET Institution — Embu County, Kenya',
+      start_url: location.href.split('#')[0],
+      scope: location.href.replace(/[^/]*$/, '').replace(/[?#].*$/, ''),
+      display: 'standalone',
+      orientation: 'portrait',
+      background_color: '#0a1f3d',
+      theme_color: '#0a1f3d',
+      icons: [
+        { src: png192, sizes: '192x192', type: 'image/png', purpose: 'any' },
+        { src: png512, sizes: '512x512', type: 'image/png', purpose: 'any' },
+        { src: png192, sizes: '192x192', type: 'image/png', purpose: 'maskable' },
+        { src: png512, sizes: '512x512', type: 'image/png', purpose: 'maskable' }
+      ]
+    };
+
+    var json = JSON.stringify(manifest);
+    if(json.length > 500000){
+      console.warn('[manifest] too large (' + json.length + ' bytes), using generated icons');
+      manifest.icons = [
+        { src: generateIconDataURL(192), sizes: '192x192', type: 'image/png', purpose: 'any' },
+        { src: generateIconDataURL(512), sizes: '512x512', type: 'image/png', purpose: 'any' }
+      ];
+      json = JSON.stringify(manifest);
+    }
+    var dataUrl = 'data:application/manifest+json;charset=utf-8,' + encodeURIComponent(json);
+    var link = document.getElementById('dynamicManifest');
+    if(link) link.href = dataUrl;
+  } catch(e){
+    console.warn('[manifest] build failed:', e.message);
+  }
 }
-function dismissInstallBanner(){
-  var banner = document.getElementById('installBanner');
-  if(banner) banner.classList.remove('show');
-  setTimeout(function(){ if(!isAppInstalled()) showInstallBanner(); }, 5 * 60 * 1000);
+function uploadAppIcon(){
+  var input = document.createElement('input');
+  input.type = 'file';
+  input.accept = 'image/png,image/jpeg,image/webp,image/svg+xml';
+  input.onchange = function(e){
+    var file = e.target.files[0];
+    if(!file) return;
+    if(file.size > 5 * 1024 * 1024){ showToast('Icon too large (max 5MB)', 'error'); return; }
+    var reader = new FileReader();
+    reader.onload = function(ev){
+      var img = new Image();
+      img.onload = async function(){
+        var icon192 = await squarePadImage(ev.target.result, 192, 0.9);
+        var icon512 = await squarePadImage(ev.target.result, 512, 0.92);
+        if(!icon192 || !icon512){ showToast('Could not process that image. Try a different file.', 'error'); return; }
+        var url192 = null, url512 = null;
+        try {
+          url192 = await window.SBStorage.uploadSlot(icon192, 'brand', 'icon-192');
+          url512 = await window.SBStorage.uploadSlot(icon512, 'brand', 'icon-512');
+        } catch(err){}
+        var final192 = (url192 && url192.indexOf('http') === 0) ? url192 : icon192;
+        var final512 = (url512 && url512.indexOf('http') === 0) ? url512 : icon512;
+        window.SB.setSoon(APP_ICON_KEY, final512);
+        window.SB.setSoon(APP_ICON_KEY_192, final192);
+        window.SB.setSoon(APP_ICON_KEY_512, final512);
+        applyAppIconEverywhere();
+        await rebuildManifest();
+        broadcastRefresh();
+        showToast('App icon updated! Install prompt should now work.', 'success');
+      };
+      img.onerror = function(){ showToast('Could not read that image. Try PNG or JPG.', 'error'); };
+      img.src = ev.target.result;
+    };
+    reader.readAsDataURL(file);
+  };
+  input.click();
 }
-function triggerInstall(){
-  if(isIOSSafari()){
-    alert('To install on iPhone/iPad:\n\n1. Tap the Share button (□↑) at the bottom\n2. Scroll and tap "Add to Home Screen"\n3. Tap "Add"');
-    dismissInstallBanner();
-    return;
-  }
-  if(isFileProtocol()){
-    alert('To install this app, please open the site through a web server (https://). The install banner cannot work when the file is opened directly from disk.');
-    return;
-  }
-  if(deferredInstallPrompt){
-    deferredInstallPrompt.prompt();
-    deferredInstallPrompt.userChoice.then(function(choiceResult){
-      if(choiceResult.outcome === 'accepted'){ showToast('App installed successfully!', 'success'); dismissInstallBanner(); }
-      else { showToast('Installation cancelled', ''); }
-      deferredInstallPrompt = null;
-    }).catch(function(){ deferredInstallPrompt = null; });
-  } else {
-    var msg = 'To install: open the browser menu (⋮) and select "Install app" or "Add to Home Screen".';
-    showToast(msg, '');
-    setTimeout(function(){ alert(msg); }, 300);
-  }
+function resetAppIcon(){
+  if(!confirm('Reset the app icon to the default H logo?')) return;
+  try {
+    window.SB.remove(APP_ICON_KEY);
+    window.SB.remove(APP_ICON_KEY_192);
+    window.SB.remove(APP_ICON_KEY_512);
+  } catch(e){}
+  applyAppIconEverywhere();
+  rebuildManifest();
+  broadcastRefresh();
+  showToast('App icon reset to default', 'success');
+}
+
+/* ================================================================
+   SETTINGS
+   ================================================================ */
+async function saveAdminSettings(){
+  var pwEl = document.getElementById('settingAdminPw');
+  if(!pwEl) return;
+  var pw = pwEl.value.trim();
+  if(!pw){ showToast('Enter a password or leave blank to keep existing', ''); return; }
+  if(pw.length < 4){ showToast('Password must be at least 4 characters', 'error'); return; }
+  await window.SB.setSetting('admin_panel_password', pw);
+  await window.SB.setSetting('edit_mode_password', pw);
+  await window.SB.setSetting('system_password', pw);
+  ADMIN_PANEL_PASSWORD = pw;
+  adminPassword = pw;
+  systemPassword = pw;
+  pwEl.value = '';
+  showToast('Password saved to Supabase', 'success');
+}
+async function wipeAllData(){
+  if(!confirm('WARNING: This will delete ALL applications, students, payments, and announcements. Are you sure?')) return;
+  if(!confirm('This action CANNOT be undone. Type OK to confirm.')) return;
+  var keys = ['applications','students','announcements','testimonials','gallery_images','student_reports','admin_notif_history','notifications','resources','timetable_data','live_classes','dynamic_courses','dynamic_iframes','dynamic_socials','dynamic_whyus','dynamic_popular','dynamic_news','site_content','site_placeholders','hero_slides','social_links','live_cam_pos','wf_pause','pause_timer_end','highway_install_dismissed','highway_welcome_shown'];
+  for(var i=0;i<keys.length;i++){ try { await window.SB.remove(keys[i]); } catch(e){} }
+  try {
+    await window.SB.client.from('students').delete().gte('created_at', '1970-01-01');
+    await window.SB.client.from('applications').delete().gte('submitted_at', '1970-01-01');
+    try { await window.SB.client.from('payments').delete().gte('created_at', '1970-01-01'); } catch(e){}
+    try {
+      var counterNames = ['student_counter', 'app_counter'];
+      for(var ci = 0; ci < counterNames.length; ci++){
+        await window.SB.client.from('counters').upsert({ name: counterNames[ci], value: 0 }, { onConflict: 'name' });
+      }
+    } catch(e){}
+  } catch(e){ console.warn('[sb] wipe partial failure', e); }
+  showToast('All data wiped from Supabase', 'success');
+  setTimeout(function(){ location.reload(); }, 1000);
+}
+
+/* ================================================================
+   GENERIC MODAL
+   ================================================================ */
+function showGenericModal(title, bodyHtml){
+  var existing = document.getElementById('genericModal');
+  if(existing) existing.remove();
+  var modal = document.createElement('div');
+  modal.id = 'genericModal';
+  modal.className = 'modal-overlay open';
+  modal.innerHTML = '<div class="modal-content" style="max-width:720px;"><div class="modal-header"><h2><i class="fas fa-file-alt"></i> ' + escapeHtml(title) + '</h2><button class="modal-close" onclick="closeGenericModal()" type="button" aria-label="Close"><i class="fas fa-times"></i></button></div><div class="modal-body">' + bodyHtml + '</div></div>';
+  modal.addEventListener('click', function(e){ if(e.target === modal) closeGenericModal(); });
+  document.body.appendChild(modal);
+}
+function closeGenericModal(){
+  var m = document.getElementById('genericModal');
+  if(m) m.remove();
 }
 
 /* ================================================================
@@ -8846,11 +9666,51 @@ function init(){
     updatePauseUI();
   }, 5000);
 
-  setTimeout(function(){
-    if(isAppInstalled()) return;
-    if(isFileProtocol()) return;
+  /* Track visit count for iOS install heuristic */
+  try {
+    var vc = parseInt(localStorage.getItem('hvc_visit_count') || '0', 10) + 1;
+    localStorage.setItem('hvc_visit_count', String(vc));
+  } catch(e){}
+
+  /* Install banner — idempotent triggers, no lock. showInstallBanner()
+     itself does all the skip-checking and only shows the banner once. */
+  function tryShowBanner(reason){
+    console.log('[pwa] trigger:', reason);
     showInstallBanner();
-  }, 4000);
+  }
+
+  /* Desktop + mobile: fire multiple times, safe because showInstallBanner
+     exits immediately if already shown or if any skip condition applies. */
+  setTimeout(function(){ tryShowBanner('2s'); }, 2000);
+  setTimeout(function(){ tryShowBanner('4s'); }, 4000);
+  setTimeout(function(){ tryShowBanner('8s'); }, 8000);
+
+  /* Mobile: extra triggers that survive timer throttling */
+  document.addEventListener('touchstart', function(){ tryShowBanner('touchstart'); }, { passive: true });
+  document.addEventListener('click', function(){ tryShowBanner('click'); }, { passive: true });
+  /* Scroll trigger fires only once per page load */
+var __scrollTriggered = false;
+document.addEventListener('scroll', function(){
+  if(__scrollTriggered) return;
+  __scrollTriggered = true;
+  tryShowBanner('scroll');
+}, { passive: true });
+  document.addEventListener('visibilitychange', function(){
+    if(!document.hidden) tryShowBanner('visible');
+  });
+
+  /* Debug: log the mobile environment once */
+  if(isMobileDevice()){
+    console.log('[pwa-env]', {
+      ua: navigator.userAgent,
+      protocol: location.protocol,
+      secureContext: window.isSecureContext,
+      isIOS: isIOSDevice(),
+      standalone: isRunningAsInstalledApp(),
+      hasSW: 'serviceWorker' in navigator,
+      hasBIP: !!deferredInstallPrompt
+    });
+  }
 
   var st = document.getElementById('scrollTopBtn');
   if(st){
@@ -8862,6 +9722,9 @@ function init(){
   var heroNext = document.getElementById('heroNext');
   if(heroPrev) heroPrev.addEventListener('click', function(e){ e.stopPropagation(); prevSlide(); });
   if(heroNext) heroNext.addEventListener('click', function(e){ e.stopPropagation(); nextSlide(); });
+
+  initHeroSwipe();
+
   var pwClose = document.getElementById('pwModalClose');
   if(pwClose) pwClose.addEventListener('click', function(){ var m = document.getElementById('pwModal'); if(m) m.classList.remove('active'); });
   var pwModal = document.getElementById('pwModal');
@@ -8930,7 +9793,11 @@ function init(){
   document.addEventListener('keydown', function(e){
     if(e.key === 'Escape'){
       closeAdminPasswordModal(); closeAdminPanelLogin(); closeNotificationEditor(); closeNotification();
-      closeGalleryViewer(); closeMobileNav(); closeLiveCamGallery(); closeGenericModal();
+      closeGalleryViewer(); closeLiveCamGallery(); closeGenericModal();
+      var openNav = document.querySelectorAll('#navList > li.open');
+      for(var i = 0; i < openNav.length; i++){ openNav[i].classList.remove('open'); }
+      var drawer = document.getElementById('hvcDrawer');
+      if(drawer && drawer.classList.contains('open')) closeHvcDrawer();
     }
     if(e.ctrlKey && e.shiftKey && (e.key === 'a' || e.key === 'A')){
       e.preventDefault();
@@ -8956,11 +9823,10 @@ function init(){
   ensureLiveCamChannels();
   initApplicationFormLiveValidation();
 
-  window.addEventListener('resize', function(){
-    if(window.innerWidth > 768){
-      closeMobileNav();
-    }
-  });
+  /* Do NOT restore any draft at boot. The draft is only restored when
+     the user explicitly opens the Apply page. This guarantees the
+     "Welcome back" toast can never appear before the user has started
+     applying, and can never appear after they have submitted. */
 
   if(!safeGet('highway_welcome_shown', false)){
     setTimeout(function(){
@@ -8985,9 +9851,12 @@ function init(){
 window.showToast = showToast;
 window.showPage = showPage;
 window.navigateToSection = navigateToSection;
-window.toggleMobileNav = toggleMobileNav;
-window.closeMobileNav = closeMobileNav;
 window.toggleDropdown = toggleDropdown;
+window.openHvcDrawer = openHvcDrawer;
+window.closeHvcDrawer = closeHvcDrawer;
+window.toggleDrawerSub = toggleDrawerSub;
+window.drawerNavigate = drawerNavigate;
+window.drawerNavigateSection = drawerNavigateSection;
 window.toggleAdminMode = toggleAdminMode;
 window.saveAllChanges = saveAllChanges;
 window.exportData = exportData;
@@ -9105,7 +9974,7 @@ window.closeLiveCamQrResult = closeLiveCamQrResult;
 window.requestLiveCamSlot = requestLiveCamSlot;
 window.triggerInstall = triggerInstall;
 window.dismissInstallBanner = dismissInstallBanner;
-window.isAppInstalled = isAppInstalled;
+window.isAppInstalled = isPermanentlyInstalled;
 window.isIOSDevice = isIOSDevice;
 window.isIOSSafari = isIOSSafari;
 window.showInstallBanner = showInstallBanner;
@@ -9145,6 +10014,108 @@ window.renderTermFeeEditor = renderTermFeeEditor;
 window.rebuildManifest = rebuildManifest;
 
 /* ================================================================
+   MOBILE DRAWER — INSTALL APP BUTTON
+   ================================================================ */
+function hvcDrawerInstallClick(){
+  /* Close the drawer first so the browser prompt / alert is visible */
+  closeHvcDrawer();
+
+  setTimeout(function(){
+    /* Already installed → tell the user and hide the button */
+    if(isPermanentlyInstalled() || isRunningAsInstalledApp()){
+      showToast('App is already installed on this device', 'success');
+      var btn = document.getElementById('hvcDrawerInstallBtn');
+      if(btn) btn.style.display = 'none';
+      return;
+    }
+
+    /* iOS → alert with "Add to Home Screen" instructions */
+    if(isIOSDevice()){
+      triggerInstall();
+      return;
+    }
+
+    /* Android / Chrome / Edge → use the native install prompt if available */
+    if(deferredInstallPrompt){
+      try { deferredInstallPrompt.prompt(); } catch(e){}
+      deferredInstallPrompt.userChoice.then(function(choice){
+        if(choice && choice.outcome === 'accepted'){
+          showToast('Installing Highway Vocational Center...', 'success');
+        } else {
+          showToast('Installation cancelled', '');
+        }
+        deferredInstallPrompt = null;
+      }).catch(function(){
+        deferredInstallPrompt = null;
+      });
+      return;
+    }
+
+    /* No native prompt ready yet → fall back to triggerInstall(),
+       which shows manual instructions if the prompt never arrives */
+    triggerInstall();
+  }, 260);
+}
+window.hvcDrawerInstallClick = hvcDrawerInstallClick;
+
+/* Hide the drawer install button if the app is already installed */
+(function hideDrawerInstallBtnIfInstalled(){
+  try {
+    var btn = document.getElementById('hvcDrawerInstallBtn');
+    if(!btn) return;
+    if(isPermanentlyInstalled() || isRunningAsInstalledApp()){
+      btn.style.display = 'none';
+    }
+  } catch(e){}
+})();
+
+/* Also hide the button the moment the app is installed */
+window.addEventListener('appinstalled', function(){
+  var btn = document.getElementById('hvcDrawerInstallBtn');
+  if(btn) btn.style.display = 'none';
+});
+
+/* Debug helpers — remove these later if you want */
+window.debugPwa = {
+  isPermanentlyInstalled: isPermanentlyInstalled,
+  isRunningAsInstalledApp: isRunningAsInstalledApp,
+  isInstallDismissed: isInstallDismissed,
+  isMobileDevice: isMobileDevice,
+  showBanner: showInstallBanner,
+  env: function(){
+    return {
+      ua: navigator.userAgent,
+      protocol: location.protocol,
+      secureContext: window.isSecureContext,
+      isIOS: isIOSDevice(),
+      isMobile: isMobileDevice(),
+      standalone: isRunningAsInstalledApp(),
+      hasSW: 'serviceWorker' in navigator,
+      hasBIP: !!deferredInstallPrompt
+    };
+  },
+  /* Clear all flags AND immediately re-show the banner on the current page */
+  clearAll: function(){
+    var keys = ['hvc_installed_permanently','hvc_installed_v2',
+                'hvc_install_dismissed_until','hvc_dismissed_v2',
+                'hvc_visit_count','hvc_banner_hidden_local'];
+    keys.forEach(function(k){
+      try { localStorage.removeItem(k); } catch(e){}
+      try { window.SB.remove(k); } catch(e){}
+    });
+    console.log('debugPwa.clearAll: storage cleared');
+
+    /* Force the banner to show right now */
+    var banner = document.getElementById('installBanner');
+    if(banner){
+      banner.classList.add('show');
+      banner.style.cssText = 'display:flex!important;position:fixed!important;bottom:0!important;left:0!important;right:0!important;top:auto!important;z-index:2147483647!important;visibility:visible!important;opacity:1!important;transform:none!important;width:100%!important;max-width:100vw!important;';
+      console.log('debugPwa.clearAll: banner forced visible');
+    }
+  }
+};
+
+/* ================================================================
    SERVICE WORKER
    ================================================================ */
 (function initServiceWorker(){
@@ -9177,7 +10148,7 @@ async function loadPasswords(){
       console.error('[sb] MISSING admin_settings rows:', missing.join(', '));
       setTimeout(function(){
         alert('Admin passwords missing from Supabase admin_settings:\n\n' + missing.join('\n') +
-              '\n\nRun in Supabase → SQL Editor:\n\n' +
+              '\n\nRun in Supabase \u2192 SQL Editor:\n\n' +
               "insert into admin_settings(key, value) values\n" +
               "('edit_mode_password','your-pw'),\n" +
               "('system_password','your-pw'),\n" +
@@ -9206,6 +10177,5 @@ else boot();
 
 })();
 </script>
-
 </body>
 </html>
