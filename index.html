@@ -41,8 +41,11 @@
 <script src="https://cdn.jsdelivr.net/npm/jsqr@1.4.0/dist/jsQR.js" defer></script>
 
 <!-- Favicon -->
-<link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 192 192'%3E%3Crect width='192' height='192' fill='%230a1f3d'/%3E%3Ctext x='96' y='135' text-anchor='middle' fill='%23ffffff' font-size='115' font-family='Arial' font-weight='bold'%3EH%3C/text%3E%3C/svg%3E">
-<link rel="apple-touch-icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 192 192'%3E%3Crect width='192' height='192' fill='%230a1f3d'/%3E%3Ctext x='96' y='135' text-anchor='middle' fill='%23ffffff' font-size='115' font-family='Arial' font-weight='bold'%3EH%3C/text%3E%3C/svg%3E">
+<link rel="icon" type="image/x-icon" href="favicon.ico">
+<link rel="icon" type="image/png" sizes="32x32" href="favicon-32x32.png">
+<link rel="icon" type="image/png" sizes="16x16" href="favicon-16x16.png">
+<link rel="apple-touch-icon" sizes="180x180" href="apple-touch-icon.png">
+<link rel="manifest" href="site.webmanifest">
 
 <style>
 /* ============================================================
@@ -9467,10 +9470,7 @@ function applyAppIconEverywhere(){
   if(lm) lm.innerHTML = '<img src="' + icon + '" alt="Logo">';
   var prev = document.getElementById('settingAppIconPreview');
   if(prev) prev.src = icon;
-  var fav = document.querySelector("link[rel='icon']");
-  if(fav) fav.href = icon;
-  var appleFav = document.querySelector("link[rel='apple-touch-icon']");
-  if(appleFav) appleFav.href = icon;
+  /* Favicon is now handled by real PNG files — do NOT overwrite it */
 }
 function generateIconDataURL(size){
   var cacheKey = '_icon_cache_' + size;
